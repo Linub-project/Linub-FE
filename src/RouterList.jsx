@@ -1,4 +1,4 @@
-import AuthenticationLayout from "@/layouts/AuthenticationLayout";
+import AuthenticationLayout from "@/layouts/authenticationLayout";
 import MainLayout from "@/layouts/mainLayout";
 import LoginPage from "@/pages/authentication/login";
 import SignupPage from "@/pages/authentication/signup";
