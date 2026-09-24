@@ -1,9 +1,9 @@
 import AuthenticationLayout from "@/layouts/AuthenticationLayout";
+import MainLayout from "@/layouts/mainLayout";
 import LoginPage from "@/pages/authentication/login";
+import SignupPage from "@/pages/authentication/signup";
+import HomePage from "@/pages/home";
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
-import SignupPage from "./pages/authentication/signup";
-import HomePage from "./pages/home";
 
 export const RouterList = () => [
   {
