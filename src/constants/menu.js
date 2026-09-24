@@ -3,5 +3,5 @@ export const MENU = [
   { key: "DICTIONARY", label: "사전", path: "dictionary" },
   { key: "EXAM", label: "시험", path: "exam" },
   { key: "LINUXLAB", label: "Linux Lab", path: "lab" },
-  { key: "GUIDE", label: "학습 가이드", path: "guide" },
+  { key: "GUIDE", label: "학습가이드", path: "guide" },
 ];

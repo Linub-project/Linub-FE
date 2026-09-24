@@ -19,14 +19,14 @@ const Header = () => {
     const location = useLocation();
     const [selectedMenu, setSelectedMenu] = useState("HOME");
 
-    const handleSelectMenu = (key, path) => {
+    const handleMenuSelect = (key, path) => {
         setSelectedMenu(key);
         navigate(`/${path}`);
     }
 
     useEffect(() => {
         const fetchSelectedMenu = () => {
-            if(location.pathname.length === "/") {
+            if(location.pathname === "/") {
                 setSelectedMenu("HOME");
             } else if(location.pathname.startsWith("/dictionary")) {
                 setSelectedMenu("DICTIONARY");
@@ -46,27 +46,26 @@ const Header = () => {
 
     return (
         <S.Container>
-            <div style={{display: "flex", gap: "50px"}}>
-                <S.LogoContainer onClick={() => handleSelectMenu(MENU[0].key, MENU[0].path)}>
+            <div style={{display: "flex"}}>
+                <S.LogoContainer onClick={() => handleMenuSelect(MENU[0].key, MENU[0].path)}>
                     <img src={logo} width={"32px"}/>
-                    <span className="typo-heading-1">Linub</span>
+                    <S.LogoText className="typo-heading-1">Linub</S.LogoText>
                 </S.LogoContainer>
                 <S.MenuContainer>
                     {MENU.map((menu) => {
-                        if(menu.key === "GUIDE") return;
                         const isSelected = selectedMenu === menu.key;
+                        console.log(menu.label+" "+isSelected)
                         return (
                             <S.MenuText
                                 key={menu.key}
                                 className={isSelected ? "typo-title-1" : "typo-content-1"}
-                                isSelected={isSelected}
-                                onClick={() => handleSelectMenu(menu.key, menu.path)}
+                                $isSelected={isSelected}
+                                onClick={() => handleMenuSelect(menu.key, menu.path)}
                             >
                                 {menu.label}
                             </S.MenuText>
                         );
                     })}
-                    <S.GuideText className={selectedMenu === "GUIDE" ? "typo-title-1" : "typo-content-1"} onClick={() => handleSelectMenu(MENU[4].key, MENU[4].path)}>학습 가이드</S.GuideText>
                 </S.MenuContainer>
             </div>
             <div style={{display: "flex", gap: "16px"}}>
@@ -77,7 +76,7 @@ const Header = () => {
                 <IconButton icon={bell_active} />
                 <S.ProfileArea>
                     <ProfileImage user={userDummy} size={30}/>
-                    <span className="typo-title-1">{userDummy.name}</span>
+                    <S.Nickname className="typo-title-1">{userDummy.name}</S.Nickname>
                 </S.ProfileArea>
             </div>
         </S.Container>

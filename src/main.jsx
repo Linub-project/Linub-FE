@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil';
 import App from './App.jsx';
 import '@/styles/font.css';
 import '@/styles/color.css';
+import '@/styles/transition.css';
 import '@/styles/spacing.css';
 import '@/styles/typography.css';
 

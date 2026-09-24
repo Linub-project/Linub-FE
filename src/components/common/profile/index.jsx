@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 const ProfileImage = ({user, size}) => {
+    const navigate = useNavigate();
+
     return (
         <img src={user.profileImage} 
             style={{
@@ -7,6 +11,7 @@ const ProfileImage = ({user, size}) => {
                 borderRadius: "50%",
                 cursor: "pointer"
             }}
+            onClick={() => navigate(`/mymenu`)}
         />
     );
 }
