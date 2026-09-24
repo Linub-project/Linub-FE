@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Linub icon</title>
+  <desc id="desc">A centered uppercase L rotated 30 degrees counterclockwise, its right tip joined to an upright lowercase b with aligned bottoms.</desc>
+  <rect x="32" y="32" width="448" height="448" rx="104" fill="#0B1739"/>
+  <g transform="translate(-10.831248 0)">
+  <path d="M151.662497 209.030615L236.515308 356L310 313.573593" fill="none" stroke="#0F766E" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M310 156V356M310 236H322C356 236 382 262 382 296S356 356 322 356H310" fill="none" stroke="#F7FAFF" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

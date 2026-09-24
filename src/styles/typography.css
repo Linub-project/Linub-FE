@@ -1,0 +1,50 @@
+/* typography.css */
+
+.typo-display {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.typo-heading-1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.typo-heading-2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.typo-heading-3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.typo-title-1 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.typo-title-2 {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.typo-content-1 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.typo-content-2 {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.typo-content-3 {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.terminal {
+  font-family: "JetBrains Mono", monospace;
+}
