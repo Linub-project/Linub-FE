@@ -9,11 +9,6 @@ export const Container = styled.div`
     min-height: 60px;
     border-bottom: 1px solid var(--color-border);
     padding: 0 24px;
-
-    transition: var(--transition-media-query);
-    @media (max-width: ${breakpoint.xsmall}) {
-        padding: 0 8px;
-    };
 `
 
 export const LogoContainer = styled.div`
@@ -23,11 +18,6 @@ export const LogoContainer = styled.div`
     gap: 12px;
     cursor: pointer;
     margin-right: 50px;
-
-    transition: var(--transition-media-query);
-    @media (max-width: ${breakpoint.small}) {
-        margin-right: 15px
-    };
 `
 
 export const LogoText = styled.div`
@@ -44,7 +34,7 @@ export const MenuContainer = styled.div`
     gap: 10px;
 
     transition: var(--transition-media-query);
-    @media (max-width: ${breakpoint.xsmall}) {
+    @media (max-width: ${breakpoint.small}) {
         gap: 0px;
     };
 `
@@ -59,6 +49,12 @@ export const MenuText = styled.div`
     color: ${({$isSelected}) => $isSelected ? "var(--color-text-primary)" : "var(--color-text-default)"};
     background-color: ${({$isSelected}) => $isSelected ? "var(--color-bg-subtle)" : ""};
     white-space: nowrap;
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        width: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    };
 `
 
 export const SearchArea = styled.div`

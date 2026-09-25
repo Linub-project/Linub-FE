@@ -54,7 +54,6 @@ const Header = () => {
                 <S.MenuContainer>
                     {MENU.map((menu) => {
                         const isSelected = selectedMenu === menu.key;
-                        console.log(menu.label+" "+isSelected)
                         return (
                             <S.MenuText
                                 key={menu.key}
