@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "@/styles/breakpoint";
 
 export const Container = styled.div`
     display: flex;
@@ -11,10 +12,29 @@ export const Container = styled.div`
 
 export const SubContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     max-width: 1200px;
     width: 100%;
-    gap: 48px;
+    gap: 30px;
     padding: 40px 24px;
     background-color: var(--color-bg-subtle);
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        flex-direction: column;
+    }
+`
+
+export const LeftArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 48px;
+`
+
+export const RightArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    width: 100%;
+    gap: 48px;
 `
