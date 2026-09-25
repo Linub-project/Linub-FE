@@ -6,7 +6,7 @@ export const Container = styled.div`
     flex-direction: column;
     max-width: 1200px;
     width: 100%;
-    margin: 0 120px 50px 120px;
+    margin: 50px 120px 50px 120px;
 `
 
 export const MainArea = styled.div`
@@ -55,10 +55,10 @@ export const SubmenuArea = styled.div`
 `
 
 export const MenuText = styled.span`
-    color: var(--color-primary--800);
+    color: var(--neutral-700);
     cursor: pointer;
     
     &:hover {
-        text-decoration: underline;
+        color: var(--neutral-900);
     }
 `

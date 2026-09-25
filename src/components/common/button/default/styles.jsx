@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -8,15 +12,16 @@ export const StyledButton = styled.button`
   ${({ $size }) =>
     $size === "large" &&
     css`
-      height: 40px;
-      padding: 0 16px;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 20px;
     `}
 
   ${({ $size }) =>
     $size === "small" &&
     css`
-      height: 32px;
-      padding: 0 12px;
+      font-size: 14px;
+      padding: 6px 12px;
     `}
 
   ${({ $variant }) =>
@@ -48,4 +53,25 @@ export const StyledButton = styled.button`
   &:disabled {
     cursor: not-allowed;
   }
+`;
+
+const spin = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+`;
+
+export const Spinner = styled.span`
+  width: 14px;
+  height: 14px;
+
+  border: 2px solid var(--neutral-100);
+  border-top-color: transparent;
+  border-radius: 50%;
+
+  animation: ${spin} 0.7s linear infinite;
 `;

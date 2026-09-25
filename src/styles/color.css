@@ -81,7 +81,7 @@
 
   /* shadow */
   --shadow-default: 0 0 12px rgba(0, 0, 0, 0.08);
-  --shadow-big: 0 0 12px rgba(0, 0, 0, 1);
+  --shadow-big: 0 0 12px rgba(0, 0, 0, 0.16);
   --shadow-input: 0 0 12px rgba(15, 118, 110, 0.08);
   --shadow-input-error: 0 0 12px rgba(226, 70, 102, 0.12);
 }

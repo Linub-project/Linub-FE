@@ -1,10 +1,12 @@
 import * as S from './styles';
 
 const Button = ({
-    children = "Button",
+    text = "Button",
     variant = "primary",
     size = "large",
     disabled = false,
+    loading = false,
+    loadingText = "저장 중",
     type = "button",
     onClick,
 }) => {
@@ -16,7 +18,14 @@ const Button = ({
             type={type}
             onClick={onClick}
         >
-            {children}
+            {loading ? (
+                <>
+                    <S.Spinner />
+                    {loadingText}
+                </>
+            ) : (
+                text
+            )}
         </S.StyledButton>
     );
 }

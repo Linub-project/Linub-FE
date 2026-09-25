@@ -1,4 +1,4 @@
-import * as NICKNAME from "../constants/nicknameCandidate";
+import * as NICKNAME from "@/constants/nicknameCandidate";
 
 export const createRandomNickname = () => {
     const firstWords = NICKNAME.NICKNAME_FIRST();
