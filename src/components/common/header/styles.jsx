@@ -18,6 +18,11 @@ export const LogoContainer = styled.div`
     gap: 12px;
     cursor: pointer;
     margin-right: 50px;
+
+    transition: var(--transition-media-query);
+    @media (max-width: ${breakpoint.small}) {
+        margin-right: 15px;
+    };
 `
 
 export const LogoText = styled.div`
