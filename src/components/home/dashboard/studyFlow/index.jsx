@@ -1,16 +1,8 @@
-import { FastStartMenu } from "@/constants/fastStart";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const StudyFlow = () => {
-    const getMenuStyle = (color) => {
-        if(color === "primary") {
-            return {"text": "--color-primary", "border": "--color-primary"};
-        } else if(color === "secondary") {
-            return {"text": "--color-secondary", "border": "--color-secondary"};
-        } else {
-            return {"text": "--color-text-default", "border": "--neutral-300"};
-        }
-    }
+    const navigate = useNavigate();
 
     return (
         <S.Container>
@@ -20,29 +12,28 @@ const StudyFlow = () => {
                     color: "var(--color-text-primary)"
                 }}
             >학습 흐름</span>
-            <S.MenuArea>
-                {
-                    FastStartMenu.map((item, idx) => {
-                        const selectedColor = getMenuStyle(item.color);
-
-                        return (
-                            <S.MenuChip key={idx} style={{border: `1px solid var(${selectedColor.border})`}}>
-                                <span 
-                                    style={{fontSize: "24px", marginBottom: "12px"}}
-                                >{item.icon}</span>
-                                <span
-                                    className="typo-title-1"
-                                    style={{color: `var(${selectedColor.text})`, marginBottom: "8px"}}
-                                >{item.title}</span>
-                                <span
-                                    className="typo-content-4"
-                                    style={{color: "var(--color-text-default)"}}
-                                >{item.description}</span>
-                            </S.MenuChip>
-                        );
-                    })
-                }
-            </S.MenuArea>
+            <div
+                style={{
+                    border: "1px solid var(--color-border)",
+                    padding: "12px 16px"
+                }}
+            >
+                <div 
+                    className="typo-content-1"
+                    style={{color: "var(--color-text-primary)", marginBottom: "6px"}}>
+                    시험에서 틀린 문제는 사전으로 다시 학습하고, 배운 명령어는 Linux Lab에서 바로 실행할 수 있습니다. Linub에서는 학습, 확인, 실습이 서로 연결됩니다.
+                </div>
+                <div>
+                    <span
+                        className="typo-content-3"
+                        style={{
+                            color: "var(--color-primary)",
+                            cursor: "pointer"
+                        }}
+                        onClick={() => navigate("/guide")}
+                    >학습 가이드 보기 →</span>
+                </div>
+            </div>
         </S.Container>
     );
 }

@@ -1,7 +1,10 @@
-import * as S from "./styles";
 import { DUMMY_COMMUNITY } from "@/constants/dummy";
+import { useNavigate } from "react-router-dom";
+import * as S from "./styles";
 
 const RecentCommunity = () => {
+    const navigate = useNavigate();
+
     return (
         <S.Container>
             <span
@@ -52,6 +55,7 @@ const RecentCommunity = () => {
                     color: "var(--color-primary)",
                     cursor: "pointer"
                 }}
+                onClick={() => navigate("/community")}
             >커뮤니티 이동 →</span>
         </S.Container>
     );

@@ -4,6 +4,7 @@ import LoginPage from "@/pages/authentication/login";
 import SignupPage from "@/pages/authentication/signup";
 import HomePage from "@/pages/home";
 import { createBrowserRouter } from "react-router-dom";
+import DictionaryPage from "@/pages/dictionary";
 
 export const RouterList = () => [
   {
@@ -25,7 +26,11 @@ export const RouterList = () => [
       {
         path: "",
         element: <HomePage />,
-      }
+      },
+      {
+        path: "/dictionary",
+        element: <DictionaryPage />,
+      },
     ]
   }
 ];

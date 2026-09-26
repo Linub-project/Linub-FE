@@ -17,8 +17,8 @@ const HomeDashboard = () => {
                     <StudyFlow />
                 </S.LeftArea>
                 <S.RightArea>
-                    <Statistic />
                     <RecentCommunity />
+                    <Statistic />
                 </S.RightArea>
             </S.SubContainer>
         </S.Container>

@@ -1,7 +1,10 @@
 import { FastStartMenu } from "@/constants/fastStart";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const FastStart = () => {
+const navigate = useNavigate();
+
     const getMenuStyle = (color) => {
         if(color === "primary") {
             return {"text": "--color-primary", "border": "--color-primary"};
@@ -26,7 +29,10 @@ const FastStart = () => {
                         const selectedColor = getMenuStyle(item.color);
 
                         return (
-                            <S.MenuChip key={idx} style={{border: `1px solid var(${selectedColor.border})`}}>
+                            <S.MenuChip
+                                key={idx} style={{border: `1px solid var(${selectedColor.border})`}}
+                                onClick={() => navigate(item.path)}
+                            >
                                 <span 
                                     style={{fontSize: "24px", marginBottom: "12px"}}
                                 >{item.icon}</span>

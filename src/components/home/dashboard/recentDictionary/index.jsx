@@ -1,8 +1,11 @@
 import { DUMMY_RECENT_DICTIONARY } from "@/constants/dummy";
 import { getLegendStyle } from "@/utils/legendStyler";
 import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
 
 const RecentDictionary = () => {
+    const navigate = useNavigate();
+
     return (
         <S.Container>
             <span
@@ -69,6 +72,7 @@ const RecentDictionary = () => {
                     color: "var(--color-primary)",
                     cursor: "pointer"
                 }}
+                onClick={() => navigate("/dictionary")}
             >전체 사전 보기 →</span>
         </S.Container>
     );

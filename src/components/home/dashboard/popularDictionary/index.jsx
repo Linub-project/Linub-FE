@@ -1,8 +1,11 @@
 import { DUMMY_POPULAR_DICTIONARY } from "@/constants/dummy";
 import { getLegendStyle } from "@/utils/legendStyler";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const PopularDictionary = () => {
+    const navigate = useNavigate();
+    
     return (
         <S.Container>
             <span
@@ -74,6 +77,7 @@ const PopularDictionary = () => {
                     color: "var(--color-primary)",
                     cursor: "pointer"
                 }}
+                onClick={() => navigate("/dictionary")}
             >전체 사전 보기 →</span>
         </S.Container>
     );
