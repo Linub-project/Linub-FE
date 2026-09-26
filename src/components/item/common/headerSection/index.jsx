@@ -4,7 +4,7 @@ import { useCompareQueue } from "@/contexts/compareQueueContext";
 import { getLegendStyle } from "@/utils/legendstyler";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
-import { formatDate, DATE_FORMAT } from "../../../../utils/dateFormatter";
+import { formatDate, DATE_FORMAT } from "@/utils/dateFormatter";
 
 const HeaderSection = ({ id, item }) => {
     const legendStyle = getLegendStyle(item.type);
