@@ -38,7 +38,7 @@ export const RouterList = () => [
         element: <DictionaryPage />,
       },
       {
-        path: "/dictionary/:item",
+        path: "/dictionary/item/:itemId",
         element: <ItemPage />,
       },
       {

@@ -237,3 +237,74 @@ export const DUMMY_DICTIONARY = [
         tags: ["파일시스템", "마운트", "스토리지"],
     },
 ];
+
+export const DUMMY_CONCEPT = [
+  {
+    id: 1,
+    topic: "chmod",
+    summary: "파일과 디렉터리의 접근 권한을 변경하는 명령어입니다.",
+    content:
+      "chmod는 Linux에서 파일이나 디렉터리의 읽기, 쓰기, 실행 권한을 변경할 때 사용하는 명령어입니다.",
+    dictionaryCategory: "USER_PERMISSION",
+    dictionaryType: "COMMAND",
+    updatedAt: "2026-09-26T14:32:00",
+    viewCnt: 1284,
+    compareCnt: 96,
+    examples: [
+      {
+        id: 1,
+        content: "chmod 755 script.sh",
+      },
+      {
+        id: 2,
+        content: "chmod u+x deploy.sh",
+      },
+    ],
+  },
+
+  {
+    id: 2,
+    topic: "/etc/passwd",
+    summary: "Linux 시스템의 사용자 계정 정보를 저장하는 파일입니다.",
+    content:
+      "/etc/passwd 파일에는 시스템에 등록된 사용자 계정의 이름, UID, GID, 홈 디렉터리, 로그인 셸 등의 정보가 저장됩니다.",
+    dictionaryCategory: "USER_ACCOUNT",
+    dictionaryType: "FILE",
+    updatedAt: "2026-09-25T19:15:00",
+    viewCnt: 843,
+    compareCnt: 21,
+    examples: [
+      {
+        id: 3,
+        content: "cat /etc/passwd",
+      },
+      {
+        id: 4,
+        content: "grep root /etc/passwd",
+      },
+    ],
+  },
+
+  {
+    id: 3,
+    topic: "프로세스",
+    summary: "실행 중인 프로그램의 인스턴스를 의미합니다.",
+    content:
+      "프로세스는 Linux에서 현재 실행되고 있는 프로그램을 의미합니다. 각 프로세스는 고유한 PID를 가지며 운영체제에 의해 관리됩니다.",
+    dictionaryCategory: "PROCESS",
+    dictionaryType: "CONCEPT",
+    updatedAt: "2026-09-24T09:40:00",
+    viewCnt: 2176,
+    compareCnt: 38,
+    examples: [
+      {
+        id: 5,
+        content: "ps aux",
+      },
+      {
+        id: 6,
+        content: "ps -ef",
+      },
+    ],
+  },
+];
