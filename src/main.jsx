@@ -8,7 +8,7 @@ import '@/styles/transition.css';
 import '@/styles/spacing.css';
 import '@/styles/typography.css';
 import '@/styles/global.css';
-import { CompareQueueProvider } from "@/contexts/CompareQueueContext";
+import { CompareQueueProvider } from "@/contexts/compareQueueContext";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
