@@ -1,4 +1,4 @@
-import { TopicChip } from "@/components/common/cardchip/Cardchip";
+import { TopicChip } from "@/components/common/cardchip/CardChip";
 import Hr from "@/components/common/layout/hr";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";

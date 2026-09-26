@@ -1,10 +1,10 @@
 import bookmark from "@/assets/icon/icon_bookmark.svg";
 import compare from "@/assets/icon/icon_compare_neutral.svg";
 import { useCompareQueue } from "@/contexts/compareQueueContext";
-import { getLegendStyle } from "@/utils/legendstyler";
+import { getLegendStyle } from "@/utils/legendStyler";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
-import { formatDate, DATE_FORMAT } from "../../../../utils/dateFormatter";
+import { formatDate, DATE_FORMAT } from "@/utils/dateFormatter";
 
 const HeaderSection = ({ id, item }) => {
     const legendStyle = getLegendStyle(item.type);

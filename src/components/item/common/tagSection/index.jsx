@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import Hr from "@/components/common/layout/hr";
-import { TopicChip } from "@/components/common/cardchip/Cardchip";
+import { TopicChip } from "@/components/common/cardchip/CardChip";
 
 const TagSection = ({ id, item }) => {
     return (
