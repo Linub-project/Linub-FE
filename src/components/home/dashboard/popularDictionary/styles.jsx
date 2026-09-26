@@ -25,7 +25,6 @@ export const Index = styled.td`
 
 export const Keyword = styled.td`
     color: var(--color-primary);
-    font-family: "JetBrains Mono";
     text-align: center;
 `
 

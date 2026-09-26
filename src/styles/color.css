@@ -80,6 +80,9 @@
   --color-danger-hover: var(--red-600);
   --color-danger-disabled: var(--red-100);
 
+  /* Semantic - Terminal */
+  --color-terminal-bg: var(--neutral-900);
+
   /* shadow */
   --shadow-default: 0 0 12px rgba(0, 0, 0, 0.08);
   --shadow-big: 0 0 12px rgba(0, 0, 0, 0.16);

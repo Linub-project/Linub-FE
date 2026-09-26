@@ -1,16 +1,27 @@
 import { createContext, useContext, useState } from "react";
+import { useToast } from "@/contexts/toastContext";
 
 const CompareQueueContext = createContext(null);
 
 export const CompareQueueProvider = ({ children }) => {
     const [queue, setQueue] = useState([]);
+    const { showToast } = useToast();
 
     const add = (item) => {
-        if (queue.length >= 2) return "비교 항목은 최대 2개까지 추가할 수 있습니다.";
+        if (queue.length >= 2) {
+            showToast("비교 항목은 최대 2개까지 추가할 수 있습니다.");
+            return;
+        }
 
         if (queue.length > 0) {
-            if (item.title === queue[0].title) return "이미 추가된 항목입니다.";
-            if (item.type !== queue[0].type) return "같은 종류의 사전만 비교할 수 있습니다.";
+            if (item.title === queue[0].title) {
+                showToast("이미 추가된 항목입니다.");
+                return;
+            }
+            if (item.type !== queue[0].type) {
+                showToast("같은 종류의 사전만 비교할 수 있습니다.");
+                return;
+            }
         }
 
         setQueue((prev) => [...prev, item]);

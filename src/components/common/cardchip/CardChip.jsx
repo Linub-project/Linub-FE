@@ -24,7 +24,16 @@ export const TagChip = styled.span`
     color: var(--color-text-default);
 `
 
-export const CommandChip = styled.span`
-
-`
-
+export const TopicChip = styled.span`
+    text-align: center;
+    padding: 6px 10px;
+    background-color: var(--white);
+    border: 1px solid var(--color-border);
+    font-size: 12px;
+    color: ${({ $color }) => $color || "var(--color-text-default)"};
+    cursor: pointer;
+    
+    &: hover {
+        background-color: var(--color-bg-subtle);
+    }
+`;

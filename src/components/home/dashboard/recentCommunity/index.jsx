@@ -32,10 +32,11 @@ const RecentCommunity = () => {
                                         <div
                                             className="typo-content-3"
                                             style={{
-                                                backgroundColor: "var(--color-danger-bg)",
-                                                color: "var(--color-danger)",
+                                                backgroundColor: "var(--color-bg-subtle)",
+                                                color: "var(--color-text-default)",
                                                 padding: "2px 6px",
-                                                textAlign: "center"
+                                                textAlign: "center",
+                                                border: "1px solid var(--color-border)"
                                             }}
                                         >
                                             {item.tag}

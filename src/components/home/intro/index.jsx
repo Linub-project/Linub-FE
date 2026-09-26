@@ -23,9 +23,8 @@ const HomeIntro = () => {
                 }}
             >
                 <span
-                    className="typo-title-1"
+                    className="typo-title-1 terminal"
                     style={{
-                        fontFamily: "JetBrains Mono",
                         color: "var(--color-primary)",
                         width: "100%",
                     }}

@@ -5,7 +5,6 @@
     font-family: 'Pretendard';
     border-radius: 3px;
     box-sizing: border-box;
-    max-width: ;
 }
 
 table {
@@ -30,4 +29,12 @@ td {
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 12px 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
 }

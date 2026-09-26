@@ -19,7 +19,7 @@ const DictionaryList = ({ category }) => {
     const [filteredDictionary, setFilteredDictionary] = useState(DUMMY_DICTIONARY);
 
     const handleDictionaryAddToQueue = (item) => {
-        add(item)
+        const message = add(item);
     }
 
     const handleDictionaryTypeFilter = (type) => {

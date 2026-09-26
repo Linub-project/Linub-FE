@@ -5,6 +5,11 @@
   font-weight: 700;
 }
 
+.typo-display-2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
 .typo-heading-1 {
   font-size: 22px;
   font-weight: 700;
@@ -12,7 +17,7 @@
 
 .typo-heading-2 {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .typo-heading-3 {
