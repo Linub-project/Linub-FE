@@ -63,6 +63,7 @@
   /* Semantic - Background */
   --color-bg: var(--white);
   --color-bg-subtle: var(--neutral-50);
+  --color-bg-hover: #F9F9F9;
 
   /* Semantic - Border */
   --color-border: var(--neutral-100);

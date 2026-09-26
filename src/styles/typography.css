@@ -45,6 +45,11 @@
   font-weight: 400;
 }
 
+.typo-content-4 {
+  font-size: 12px;
+  font-weight: 300;
+}
+
 .terminal {
   font-family: "JetBrains Mono", monospace;
 }

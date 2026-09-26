@@ -1,6 +1,6 @@
 import magnify from "@/assets/icon/icon_magnify.svg";
 import Button from "@/components/common/button/default";
-import { TagChip } from "@/components/common/cardchip/CardChip.jsx";
+import { Chip } from "@/components/common/cardchip/CardChip.jsx";
 import { getRandomCommand } from "@/utils/commandUtil";
 import { useEffect, useState } from "react";
 import * as S from "./styles";
@@ -29,7 +29,7 @@ const HomeIntro = () => {
                         color: "var(--color-primary)",
                         width: "100%",
                     }}
-                >$ linub --start</span>
+                >$ linub --start<S.Cursor /></span>
                 <span
                     className="typo-display"
                 >Linux,<br />아는 것에서 쓰는 것으로.</span>
@@ -77,7 +77,7 @@ const HomeIntro = () => {
                         {
                             randomCommand.map((com, idx) => {
                                 return (
-                                    <TagChip key={idx}>{com}</TagChip>
+                                    <Chip key={idx}>{com}</Chip>
                                 )
                             })
                         }

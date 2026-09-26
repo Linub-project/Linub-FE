@@ -4,6 +4,7 @@ const Button = ({
     text = "Button",
     variant = "primary",
     size = "large",
+    width = "auto",
     disabled = false,
     loading = false,
     loadingText = "저장 중",
@@ -17,6 +18,7 @@ const Button = ({
             disabled={disabled}
             type={type}
             onClick={onClick}
+            $width={width}
         >
             {loading ? (
                 <>

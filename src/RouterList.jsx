@@ -2,8 +2,9 @@ import AuthenticationLayout from "@/layouts/authenticationLayout";
 import MainLayout from "@/layouts/mainLayout";
 import LoginPage from "@/pages/authentication/login";
 import SignupPage from "@/pages/authentication/signup";
+import DictionaryPage from "@/pages/dictionary";
 import HomePage from "@/pages/home";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 export const RouterList = () => [
   {
@@ -25,7 +26,15 @@ export const RouterList = () => [
       {
         path: "",
         element: <HomePage />,
-      }
+      },
+      {
+          path: "/dictionary",
+          element: <Navigate to="/dictionary/ARCHIVE" replace />,
+      },
+      {
+        path: "/dictionary/:category?",
+        element: <DictionaryPage />,
+      },
     ]
   }
 ];
