@@ -38,7 +38,7 @@ const RecentDictionary = () => {
                                 return (
                                     <tr key={item.id}>
                                         <S.Keyword
-                                            className="typo-title-1"
+                                            className="typo-title-1 terminal"
                                         >{item.keyword}</S.Keyword>
                                         <S.Tag
                                             className="typo-content-3"

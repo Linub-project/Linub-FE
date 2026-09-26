@@ -4,7 +4,9 @@ import LoginPage from "@/pages/authentication/login";
 import SignupPage from "@/pages/authentication/signup";
 import DictionaryPage from "@/pages/dictionary";
 import HomePage from "@/pages/home";
+import ItemPage from "@/pages/item";
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import WrongPage from "@/pages/wrong";
 
 export const RouterList = () => [
   {
@@ -32,11 +34,19 @@ export const RouterList = () => [
           element: <Navigate to="/dictionary/ARCHIVE" replace />,
       },
       {
-        path: "/dictionary/:category?",
+        path: "/dictionary/:category",
         element: <DictionaryPage />,
       },
+      {
+        path: "/dictionary/:item",
+        element: <ItemPage />,
+      },
+      {
+        path: "*",
+        element: <WrongPage />
+      }
     ]
-  }
+  },
 ];
 
 export const RouterObject = createBrowserRouter(RouterList());
