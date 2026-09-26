@@ -61,7 +61,7 @@ const CompareQueue = () => {
                                                 <span
                                                     className="typo-content-1"
                                                     style={{color: "var(--color-text-primary)", flex: "1"}}
-                                                >{item.title}</span>
+                                                >{item.topic}</span>
                                                 <span
                                                     className="typo-content-3"
                                                     style={{color: "var(--neutral-300)", cursor: "pointer"}}

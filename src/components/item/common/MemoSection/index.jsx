@@ -1,8 +1,15 @@
-const MemoSection = () => {
+import * as S from "./styles";
+import Hr from "@/components/common/layout/hr";
+
+const MemoSection = ({ id, item }) => {
     return (
-        <>
-            content
-        </>
+        <S.Container id={id}>
+            <p
+                className="typo-heading-2"
+                style={{marginBottom: "6px"}}
+            >개인 메모</p>
+            <Hr marginBottom="12px" />
+        </S.Container>
     );
 }
 

@@ -1,7 +1,8 @@
-import * as S from "./styles";
-import { useParams } from "react-router-dom";
-import { SECTION_CONFIG } from "@/constants/sectionConfig";
+import ItemIndex from "@/components/item/itemIndex";
 import { DUMMY_CONCEPT } from "@/constants/dummy";
+import { SECTION_CONFIG } from "@/constants/sectionConfig";
+import { useParams } from "react-router-dom";
+import * as S from "./styles";
 
 const Item = () => {
     const { itemId=1 } = useParams();
@@ -17,13 +18,18 @@ const Item = () => {
 
     return (
         <S.Container>
-            {sections.map(({ id, component: Section }) => (
-                <Section
-                    key={id}
-                    id={id}
-                    item={item}
-                />
-            ))}
+            <S.SubContainer>
+                <S.SectionArea>
+                    {sections.map(({ id, component: Section }) => (
+                        <Section
+                            key={id}
+                            id={id}
+                            item={item}
+                        />
+                    ))}
+                </S.SectionArea>
+                <ItemIndex sections={sections} />
+            </S.SubContainer>
         </S.Container>
     );
 };
