@@ -35,7 +35,7 @@ export const CloseContainer = styled.div`
     align-items: center;
     justify-content: flex-end;
     cursor: pointer;
-    padding: 12px 16px;
+    padding: 8px 16px;
     border-radius: 50px;
 
     box-shadow: var(--shadow-default);
@@ -48,9 +48,9 @@ export const CloseContainer = styled.div`
 export const QueueItem = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 12px 16px;
     width: 100%;
+    gap: 12px;
 
     &: hover {
         background-color: var(--color-bg-subtle);

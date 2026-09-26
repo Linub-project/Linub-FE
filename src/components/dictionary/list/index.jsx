@@ -6,6 +6,7 @@ import { DICTIONARY_CATEGORY } from "@/constants/dictionaryCategory";
 import { DICTIONARY_TYPE } from "@/constants/dictionaryType";
 import { DUMMY_DICTIONARY } from "@/constants/dummy";
 import { useCompareQueue } from "@/contexts/compareQueueContext";
+import { useToast } from "@/contexts/toastContext";
 import { useState } from "react";
 import * as S from "./styles";
 
@@ -17,9 +18,11 @@ const DictionaryList = ({ category }) => {
     const [searchText, setSearchText] = useState();
     const { add } = useCompareQueue();
     const [filteredDictionary, setFilteredDictionary] = useState(DUMMY_DICTIONARY);
+    const { showToast } = useToast();
 
     const handleDictionaryAddToQueue = (item) => {
-        add(item)
+        const message = add(item);
+        if(message) showToast(message);
     }
 
     const handleDictionaryTypeFilter = (type) => {

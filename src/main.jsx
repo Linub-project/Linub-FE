@@ -9,11 +9,14 @@ import '@/styles/spacing.css';
 import '@/styles/typography.css';
 import '@/styles/global.css';
 import { CompareQueueProvider } from "@/contexts/compareQueueContext";
+import { ToastProvider } from "@/contexts/toastContext";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <CompareQueueProvider>
-        <App />
-    </CompareQueueProvider>
+    <ToastProvider>
+      <CompareQueueProvider>
+          <App />
+      </CompareQueueProvider>
+    </ToastProvider>
   </StrictMode>
 );

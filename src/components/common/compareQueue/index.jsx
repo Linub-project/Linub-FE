@@ -4,10 +4,15 @@ import Hr from "@/components/common/layout/hr";
 import { useCompareQueue } from "@/contexts/compareQueueContext";
 import { useState } from "react";
 import * as S from "./styles";
+import { getLegendStyle } from "@/utils/legendStyler";
 
 const CompareQueue = () => {
     const [isQueueOpen, setIsQueueOpen] = useState(false);
     const { queue, remove } = useCompareQueue();
+
+    if(queue.length < 1) {
+        return null;
+    }
 
     return (
         <>
@@ -39,28 +44,33 @@ const CompareQueue = () => {
                                     width: "100%"
                                 }}
                             >
-                                {queue.length === 0 ? (
-                                    <div
-                                        className="typo-content-2"
-                                        style={{
-                                            padding: "12px 16px"
-                                        }}
-                                    >비교할 사전을 추가해주세요.</div>
-                                ) : (
-                                    queue.map((item) => (
-                                        <S.QueueItem key={item.id}>
-                                            <span
-                                                className="typo-content-1"
-                                                style={{color: "var(--color-text-primary)"}}
-                                            >{item.title}</span>
-                                            <span
-                                                className="typo-content-3"
-                                                style={{color: "var(--neutral-300)", cursor: "pointer"}}
-                                                onClick={() => remove(item.id)}
-                                            >제거</span>
-                                        </S.QueueItem>
-                                    ))
-                                )}
+                                {
+                                    queue.map((item) => {
+                                        const legendStyle = getLegendStyle(item.type);
+
+                                        return (
+                                            <S.QueueItem key={item.id}>
+                                                <span
+                                                    className="typo-content-3"
+                                                    style={{
+                                                        color: `var(${legendStyle.text})`,
+                                                        backgroundColor: `var(${legendStyle.bg})`,
+                                                        padding: "2px 6px",
+                                                    }}
+                                                >{item.type}</span>
+                                                <span
+                                                    className="typo-content-1"
+                                                    style={{color: "var(--color-text-primary)", flex: "1"}}
+                                                >{item.title}</span>
+                                                <span
+                                                    className="typo-content-3"
+                                                    style={{color: "var(--neutral-300)", cursor: "pointer"}}
+                                                    onClick={() => remove(item.id)}
+                                                >제거</span>
+                                            </S.QueueItem>
+                                        );
+                                    })
+                                }
                             </div>
                             <Hr />
                             <div style={{padding: "12px 16px", width: "100%"}}>
