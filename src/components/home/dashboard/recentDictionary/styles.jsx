@@ -9,22 +9,6 @@ export const Container = styled.div`
     gap: 12px;
 `
 
-export const Tr = styled.tr`
-    border-bottom: 1px solid var(--color-border);
-    cursor: pointer;
-
-    td {
-        padding: 12px 16px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    &: hover {
-        background-color: var(--color-bg-subtle);
-    }
-`
-
 export const Time = styled.td`
     color: var(--neutral-500);
     text-align: right;

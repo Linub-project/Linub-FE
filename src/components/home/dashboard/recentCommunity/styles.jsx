@@ -4,6 +4,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
     gap: 12px;
 `
 
@@ -15,14 +16,9 @@ export const TableArea = styled.div`
     border-radius: 6px;
 `
 
-export const Category = styled.td`
-    font-size: 14px;
-    color: var(--color-text-default);
+export const Tag = styled.td`
 `
 
-export const Value = styled.td`
-    font-size: 14px;
-    font-weight: 600;
+export const Title = styled.td`
     color: var(--neutral-600);
-    text-align: right;
 `

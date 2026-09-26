@@ -1,0 +1,50 @@
+import { FastStartMenu } from "@/constants/fastStart";
+import * as S from "./styles";
+
+const StudyFlow = () => {
+    const getMenuStyle = (color) => {
+        if(color === "primary") {
+            return {"text": "--color-primary", "border": "--color-primary"};
+        } else if(color === "secondary") {
+            return {"text": "--color-secondary", "border": "--color-secondary"};
+        } else {
+            return {"text": "--color-text-default", "border": "--neutral-300"};
+        }
+    }
+
+    return (
+        <S.Container>
+            <span
+                className="typo-title-1"
+                style={{
+                    color: "var(--color-text-primary)"
+                }}
+            >학습 흐름</span>
+            <S.MenuArea>
+                {
+                    FastStartMenu.map((item, idx) => {
+                        const selectedColor = getMenuStyle(item.color);
+
+                        return (
+                            <S.MenuChip key={idx} style={{border: `1px solid var(${selectedColor.border})`}}>
+                                <span 
+                                    style={{fontSize: "24px", marginBottom: "12px"}}
+                                >{item.icon}</span>
+                                <span
+                                    className="typo-title-1"
+                                    style={{color: `var(${selectedColor.text})`, marginBottom: "8px"}}
+                                >{item.title}</span>
+                                <span
+                                    className="typo-content-4"
+                                    style={{color: "var(--color-text-default)"}}
+                                >{item.description}</span>
+                            </S.MenuChip>
+                        );
+                    })
+                }
+            </S.MenuArea>
+        </S.Container>
+    );
+}
+
+export default StudyFlow;

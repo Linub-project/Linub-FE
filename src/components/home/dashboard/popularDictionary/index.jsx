@@ -38,7 +38,7 @@ const PopularDictionary = () => {
                                 const legendStyle = getLegendStyle(item.tag);
 
                                 return (
-                                    <S.Tr key={item.id}>
+                                    <tr key={item.id}>
                                         <S.Index
                                             className="typo-content-1"
                                         >{item.index}</S.Index>
@@ -61,7 +61,7 @@ const PopularDictionary = () => {
                                             </div>
                                         </S.Tag>
                                         <S.Description>{item.description}</S.Description>
-                                    </S.Tr>
+                                    </tr>
                                 );
                             })
                         }

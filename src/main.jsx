@@ -8,6 +8,7 @@ import '@/styles/color.css';
 import '@/styles/transition.css';
 import '@/styles/spacing.css';
 import '@/styles/typography.css';
+import '@/styles/global.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

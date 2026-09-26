@@ -20,12 +20,7 @@ const RecentDictionary = () => {
                     overflow: "hidden"
                 }}
             >
-                <table
-                    style={{
-                        borderCollapse: "collapse",
-                        width: "100%"
-                    }}
-                >
+                <table>
                     <colgroup>
                         <col style={{ width: "20%" }} />
                         <col style={{ width: "20%" }} />
@@ -38,7 +33,7 @@ const RecentDictionary = () => {
                                 const legendStyle = getLegendStyle(item.tag);
 
                                 return (
-                                    <S.Tr key={item.id}>
+                                    <tr key={item.id}>
                                         <S.Keyword
                                             className="typo-title-1"
                                         >{item.keyword}</S.Keyword>
@@ -61,7 +56,7 @@ const RecentDictionary = () => {
                                         <S.Time
                                             className="typo-content-3"
                                         >{item.time}</S.Time>
-                                    </S.Tr>
+                                    </tr>
                                 );
                             })
                         }

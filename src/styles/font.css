@@ -76,13 +76,4 @@
         font-weight: 700;
         font-style: normal;
     }
-    box-sizing: border-box;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    color: var(--neutral-900);
-    font-family: 'Pretendard';
-    border-radius: 3px;
 }

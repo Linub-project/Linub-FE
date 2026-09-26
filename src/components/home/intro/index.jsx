@@ -29,7 +29,7 @@ const HomeIntro = () => {
                         color: "var(--color-primary)",
                         width: "100%",
                     }}
-                >$ linub --start</span>
+                >$ linub --start<S.Cursor /></span>
                 <span
                     className="typo-display"
                 >Linux,<br />아는 것에서 쓰는 것으로.</span>

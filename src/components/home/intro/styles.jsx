@@ -34,3 +34,21 @@ export const SearchInput = styled.input.attrs({
         color: var(--neutral-500);
     }
 `;
+
+export const Cursor = styled.span`
+    display: inline-block;
+    width: 2px;
+    height: 14px;
+    margin-left: 5px;
+
+    background: var(--color-primary);
+    vertical-align: -2px;
+
+    animation: blink 1.5s steps(1) infinite;
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+`;

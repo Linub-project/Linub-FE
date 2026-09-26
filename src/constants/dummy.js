@@ -4,7 +4,7 @@ export const DUMMY_POPULAR_DICTIONARY = [
         index: 1,
         keyword: "chmod",
         tag: "Command",
-        description: "파일이나 디렉터리의 접근 권한을 변경",
+        description: "파일이나 디렉터리의 접근 권한을 변경, 파일이나 디렉터리의 접근 권한을 변경aslkdfj",
     },
     {
         id: 2,
@@ -92,5 +92,33 @@ export const DUMMY_RECENT_DICTIONARY = [
         tag: "Concept",
         description: "현재 실행 중인 프로그램의 인스턴스",
         time: "어제",
+    },
+];
+
+export const DUMMY_COMMUNITY = [
+    {
+        id: 1,
+        tag: "notice",
+        description: "리눅스마스터 시험 관련 문항 100개 추가 안내",
+    },
+    {
+        id: 2,
+        tag: "notice",
+        description: "터미널 실습 환경 개선",
+    },
+    {
+        id: 3,
+        tag: "notice",
+        description: "인증 가능한 자격증 추가 안내",
+    },
+    {
+        id: 4,
+        tag: "qna",
+        description: "chmod 권한 설정 관련 질문",
+    },
+    {
+        id: 5,
+        tag: "free",
+        description: "Linux Lab 사용 후기",
     },
 ];
