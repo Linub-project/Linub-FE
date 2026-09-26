@@ -4,7 +4,8 @@ const Hr = () => {
             style={{
                 backgroundColor: "var(--neutral-100)",
                 height: "1px",
-                border: "none"
+                border: "none",
+                width: "100%"
             }}
         />
     );

@@ -1,6 +1,6 @@
 import magnify from "@/assets/icon/icon_magnify.svg";
 import Button from "@/components/common/button/default";
-import { TagChip } from "@/components/common/cardchip/CardChip.jsx";
+import { Chip } from "@/components/common/cardchip/CardChip.jsx";
 import { getRandomCommand } from "@/utils/commandUtil";
 import { useEffect, useState } from "react";
 import * as S from "./styles";
@@ -77,7 +77,7 @@ const HomeIntro = () => {
                         {
                             randomCommand.map((com, idx) => {
                                 return (
-                                    <TagChip key={idx}>{com}</TagChip>
+                                    <Chip key={idx}>{com}</Chip>
                                 )
                             })
                         }

@@ -9,7 +9,6 @@ export const Container = styled.div`
 
 export const TableArea = styled.div`
     background-color: var(--white);
-    max-width: 300px;
     width: 100%;
     border: 1px solid var(--color-border);
     border-radius: 6px;
