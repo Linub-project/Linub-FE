@@ -29,11 +29,14 @@ const ExampleSection = ({ id, item }) => {
                                     gap: "2px"
                                 }}
                             >
-                                <TerminalBG content={e.content} />
-                                <p style={{
-                                    padding: "2px 6px",
-                                    color: "var(--color-text-primary)"
-                                }}>{e.description}</p>
+                                <TerminalBG content={e.content} language="TEXT" />
+                                <p
+                                    className="typo-content-1"
+                                    style={{
+                                        padding: "2px 6px",
+                                        color: "var(--color-text-primary)"
+                                    }}
+                                >{e.description}</p>
                             </div>
                         );
                     })

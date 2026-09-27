@@ -31,10 +31,17 @@ const ContentSection = ({ id, item }) => {
                     </colgroup>
                     <tbody>
                         {
-                            item.options.map((o) => {
+                            item.arguments.map((a) => {
                                 return (
-                                    <tr key={o.id}>
-                                        <td>
+                                    <tr key={a.id}>
+                                        <td
+                                            style={{
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                width: "100%",
+                                                gap: "8px"
+                                            }}
+                                        >
                                             <div
                                                 className="typo-title-2"
                                                 style={{
@@ -43,10 +50,54 @@ const ContentSection = ({ id, item }) => {
                                                     padding: "2px 4px",
                                                     border: "1px solid var(--color-border)",
                                                     whiteSpace: "normal",
-                                                    wordBreak: "break-all"
-                                                }}>
-                                                    
-                                            </div>
+                                                    wordBreak: "break-all",
+                                                    width: "fit-content"
+                                                }}>{a.name}</div>
+                                            <div
+                                                className="typo-content-1"
+                                                style={{color: "var(--color-text-default)"}}
+                                            >{a.description}</div>
+                                            {a.valueType === "REFERENCE" && a.referenceGroup?.values?.length > 0 && (
+                                                <div
+                                                    className="typo-content-3"
+                                                    style={{
+                                                        display: "flex",
+                                                        flexDirection: "column",
+                                                        width: "100%",
+                                                        gap: "4px",
+                                                    }}
+                                                >
+                                                    <span
+                                                        style={{
+                                                            color: "var(--neutral-300)",
+                                                        }}
+                                                    >
+                                                        사용가능한 값
+                                                    </span>
+
+                                                    <div
+                                                        style={{
+                                                            display: "flex",
+                                                            flexWrap: "wrap",
+                                                            gap: "4px",
+                                                            width: "100%",
+                                                        }}
+                                                    >
+                                                        {a.referenceGroup.values.map((v) => (
+                                                            <span
+                                                                key={v}
+                                                                style={{
+                                                                    padding: "2px 4px",
+                                                                    border: "1px solid var(--color-border)",
+                                                                    color: "var(--color-text-default)",
+                                                                }}
+                                                            >
+                                                                {v}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
                                         </td>
                                     </tr>
                                 );

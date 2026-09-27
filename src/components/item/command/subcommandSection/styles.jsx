@@ -27,6 +27,10 @@ export const Top = styled.div`
     border-radius: 6px;
     border-bottom-left-radius: ${({$isOpen}) => $isOpen ? "0" : "6px"};
     border-bottom-right-radius: ${({$isOpen}) => $isOpen ? "0" : "6px"};
+
+    &:hover {
+        background-color: var(--color-bg-subtle);
+    }
 `
 
 export const Bottom = styled.div`
