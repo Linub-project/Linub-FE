@@ -14,7 +14,7 @@ export const SubContainer = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 600px;
     margin: 60px 0;
     padding: 16px 24px;
 `

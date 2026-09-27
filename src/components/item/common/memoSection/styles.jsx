@@ -7,4 +7,5 @@ export const Container = styled.div`
     align-items: flex-start;
     width: 100%;
     background-color: var(--color-bg-subtle);
+    gap: 6px;
 `
