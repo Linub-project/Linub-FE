@@ -20,7 +20,7 @@ const StudyFlow = () => {
             >
                 <div 
                     className="typo-content-1"
-                    style={{color: "var(--color-text-primary)", marginBottom: "6px"}}>
+                    style={{color: "var(--color-text-default)", marginBottom: "6px"}}>
                     시험에서 틀린 문제는 사전으로 다시 학습하고, 배운 명령어는 Linux Lab에서 바로 실행할 수 있습니다. Linub에서는 학습, 확인, 실습이 서로 연결됩니다.
                 </div>
                 <div>

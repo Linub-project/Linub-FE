@@ -26,14 +26,17 @@ export const SubContainer = styled.div`
 export const LeftArea = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    flex: 1;
     gap: 48px;
 `
 
 export const RightArea = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 300px;
-    width: 100%;
+    width: 300px;
     gap: 48px;
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        width: 100%;
+    }
 `

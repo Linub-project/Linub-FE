@@ -3,12 +3,30 @@ import { breakpoint } from "@/styles/breakpoint";
 
 export const Container = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: space-between;
     width: 100%;
     min-height: 60px;
     border-bottom: 1px solid var(--color-border);
     padding: 0 24px;
+`
+
+export const SubContainer = styled.div`
+    display: "flex";
+    align-items: center;
+`
+
+export const LeftArea = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    
+    transition: var(--transition-media-query);
+    @media (max-width: ${breakpoint.small}) {
+        gap: 15px;
+        width: 100%;
+    };
 `
 
 export const LogoContainer = styled.div`
@@ -17,12 +35,6 @@ export const LogoContainer = styled.div`
     align-items: center;
     gap: 12px;
     cursor: pointer;
-    margin-right: 50px;
-
-    transition: var(--transition-media-query);
-    @media (max-width: ${breakpoint.small}) {
-        margin-right: 15px;
-    };
 `
 
 export const LogoText = styled.div`
@@ -32,16 +44,29 @@ export const LogoText = styled.div`
     };
 `
 
-export const MenuContainer = styled.div`
+export const DesktopMenuContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
 
     transition: var(--transition-media-query);
-    @media (max-width: ${breakpoint.small}) {
-        gap: 0px;
+    @media (max-width: ${breakpoint.xsmall}) {
+        display: none;
     };
+`
+
+export const MobileMenuContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+
+    transition: var(--transition--media-query);
+    @media (min-width: ${breakpoint.xsmall}) {
+        display: none;
+    }
 `
 
 export const MenuText = styled.div`
@@ -54,16 +79,12 @@ export const MenuText = styled.div`
     color: ${({$isSelected}) => $isSelected ? "var(--color-text-primary)" : "var(--color-text-default)"};
     background-color: ${({$isSelected}) => $isSelected ? "var(--color-bg-subtle)" : ""};
     white-space: nowrap;
-
-    @media (max-width: ${breakpoint.xsmall}) {
-        width: 50px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    };
+    text-align: left;
 `
 
 export const SearchArea = styled.div`
-    width: 180px;
+    max-width: 180px;
+    width: 100%;
     height: 30px;
     padding: 8 10px;
     display: flex;
@@ -101,6 +122,7 @@ export const ProfileArea = styled.div`
     gap: 12px;
     cursor: pointer;
 `
+
 export const Nickname = styled.div`
     transition: var(--transition-media-query);
     @media (max-width: ${breakpoint.small}) {
