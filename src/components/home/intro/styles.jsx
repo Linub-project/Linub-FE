@@ -29,6 +29,7 @@ export const SearchInput = styled.input.attrs({
     outline: none;
     background: transparent;
     color: var(--color-text-primary);
+    width: 100%;
 
     &::placeholder {
         color: var(--neutral-500);

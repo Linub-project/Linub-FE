@@ -6,14 +6,14 @@ export const Container = styled.div`
     flex-direction: column;
     max-width: 1200px;
     width: 100%;
-    margin: 50px 120px 50px 120px;
+    margin: 50px 120px;
 `
 
 export const MainArea = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-start;    
     width: 100%;
     padding: 24px;
 

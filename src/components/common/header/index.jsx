@@ -46,13 +46,42 @@ const Header = () => {
 
     return (
         <S.Container>
-            <div style={{display: "flex"}}>
-                <S.LogoContainer onClick={() => handleMenuSelect(MENU[0].key, MENU[0].path)}>
-                    <img src={logo} width={"32px"}/>
-                    <S.LogoText className="typo-heading-1">Linub</S.LogoText>
-                </S.LogoContainer>
-                <S.MenuContainer>
-                    {MENU.map((menu) => {
+            <S.SubContainer>
+                <S.LeftArea>
+                    <S.LogoContainer onClick={() => handleMenuSelect(MENU[0].key, MENU[0].path)}>
+                        <img src={logo} width={"32px"}/>
+                        <S.LogoText className="typo-heading-1">Linub</S.LogoText>
+                    </S.LogoContainer>
+                    <S.DesktopMenuContainer>
+                        {MENU.map((menu) => {
+                            const isSelected = selectedMenu === menu.key;
+                            return (
+                                <S.MenuText
+                                    key={menu.key}
+                                    className={isSelected ? "typo-title-1" : "typo-content-1"}
+                                    $isSelected={isSelected}
+                                    onClick={() => handleMenuSelect(menu.key, menu.path)}
+                                >
+                                    {menu.label}
+                                </S.MenuText>
+                            );
+                        })}
+                    </S.DesktopMenuContainer>
+                </S.LeftArea>
+                <S.RightArea>
+                    <S.SearchArea className="search-area">
+                        <img src={magnify} />
+                        <S.SearchInput />
+                    </S.SearchArea>
+                    <IconButton icon={bell_active} />
+                    <S.ProfileArea>
+                        <ProfileImage user={userDummy} size={30}/>
+                        <S.Nickname className="typo-title-1">{userDummy.name}</S.Nickname>
+                    </S.ProfileArea>
+                </S.RightArea>
+            </S.SubContainer>
+            <S.MobileMenuContainer>
+                {MENU.map((menu) => {
                         const isSelected = selectedMenu === menu.key;
                         return (
                             <S.MenuText
@@ -65,19 +94,11 @@ const Header = () => {
                             </S.MenuText>
                         );
                     })}
-                </S.MenuContainer>
-            </div>
-            <div style={{display: "flex", gap: "16px"}}>
-                <S.SearchArea>
-                    <img src={magnify} />
-                    <S.SearchInput />
-                </S.SearchArea>
-                <IconButton icon={bell_active} />
-                <S.ProfileArea>
-                    <ProfileImage user={userDummy} size={30}/>
-                    <S.Nickname className="typo-title-1">{userDummy.name}</S.Nickname>
-                </S.ProfileArea>
-            </div>
+                    <S.SearchArea>
+                        <img src={magnify} />
+                        <S.SearchInput />
+                    </S.SearchArea>
+            </S.MobileMenuContainer>
         </S.Container>
     );
 }
