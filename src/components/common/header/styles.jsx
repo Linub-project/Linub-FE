@@ -5,28 +5,35 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: space-between;
     width: 100%;
-    min-height: 60px;
     border-bottom: 1px solid var(--color-border);
     padding: 0 24px;
 `
 
 export const SubContainer = styled.div`
-    display: "flex";
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    height: 60px;
 `
 
 export const LeftArea = styled.div`
     display: flex;
     align-items: center;
     gap: 50px;
-    
-    transition: var(--transition-media-query);
-    @media (max-width: ${breakpoint.small}) {
-        gap: 15px;
-        width: 100%;
-    };
+`
+
+export const RightArea = styled.div`
+    display: flex;
+    gap: 16px;
+
+    .search-area {
+        transition: var(--transition-media-query);
+        @media (max-width: ${breakpoint.medium}) {
+            display: none;
+        };
+    }
 `
 
 export const LogoContainer = styled.div`
@@ -51,6 +58,9 @@ export const DesktopMenuContainer = styled.div`
     gap: 10px;
 
     transition: var(--transition-media-query);
+    @media (max-width: ${breakpoint.small}) {
+        gap: 3px;
+    };
     @media (max-width: ${breakpoint.xsmall}) {
         display: none;
     };
@@ -62,6 +72,8 @@ export const MobileMenuContainer = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     width: 100%;
+    gap: 5px;
+    margin-bottom: 14px;
 
     transition: var(--transition--media-query);
     @media (min-width: ${breakpoint.xsmall}) {
@@ -80,11 +92,15 @@ export const MenuText = styled.div`
     background-color: ${({$isSelected}) => $isSelected ? "var(--color-bg-subtle)" : ""};
     white-space: nowrap;
     text-align: left;
+
+    transition: var(--transition--media-query);
+    @media (max-width: ${breakpoint.xsmall}) {
+        width: 100%;
+    }
 `
 
 export const SearchArea = styled.div`
-    max-width: 180px;
-    width: 100%;
+    width: 180px;
     height: 30px;
     padding: 8 10px;
     display: flex;
@@ -92,10 +108,10 @@ export const SearchArea = styled.div`
     gap: 8px;
     background-color: var(--color-bg-subtle);
 
-    transition: var(--transition-media-query);
-    @media (max-width: ${breakpoint.medium}) {
-        display: none;
-    };
+    transition: var(--transition--media-query);
+    @media (max-width: ${breakpoint.xsmall}) {
+        width: 100%;
+    }
 `
 
 export const SearchInput = styled.input.attrs({

@@ -127,7 +127,7 @@ export const DUMMY_DICTIONARY = [
     {
         id: 1,
         type: "CONCEPT",
-        title: "파일 권한",
+        title: "파일 권한파일 권한파일 권한파일 권한",
         description: "Linux 파일과 디렉터리에 적용되는 읽기, 쓰기, 실행 권한을 설명한다.",
         tags: ["파일", "권한", "보안"],
     },

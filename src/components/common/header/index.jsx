@@ -68,8 +68,8 @@ const Header = () => {
                         })}
                     </S.DesktopMenuContainer>
                 </S.LeftArea>
-                <div style={{display: "flex", gap: "16px", justifyContent: "flex-end"}}>
-                    <S.SearchArea>
+                <S.RightArea>
+                    <S.SearchArea className="search-area">
                         <img src={magnify} />
                         <S.SearchInput />
                     </S.SearchArea>
@@ -78,7 +78,7 @@ const Header = () => {
                         <ProfileImage user={userDummy} size={30}/>
                         <S.Nickname className="typo-title-1">{userDummy.name}</S.Nickname>
                     </S.ProfileArea>
-                </div>
+                </S.RightArea>
             </S.SubContainer>
             <S.MobileMenuContainer>
                 {MENU.map((menu) => {
@@ -94,6 +94,10 @@ const Header = () => {
                             </S.MenuText>
                         );
                     })}
+                    <S.SearchArea>
+                        <img src={magnify} />
+                        <S.SearchInput />
+                    </S.SearchArea>
             </S.MobileMenuContainer>
         </S.Container>
     );

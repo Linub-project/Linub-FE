@@ -86,4 +86,5 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
+    white-space: normal;
 `

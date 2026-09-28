@@ -119,9 +119,9 @@ const DictionaryList = ({ category }) => {
                         }}
                     >
                         <colgroup>
-                            <col style={{ width: "15%" }} />
-                            <col style={{ width: "70%" }} />
-                            <col style={{ width: "10%" }} />
+                            <col style={{ width: "120px" }} />
+                            <col />
+                            <col style={{ width: "100px" }} />
                         </colgroup>
                         <tbody>
                             {
@@ -132,7 +132,7 @@ const DictionaryList = ({ category }) => {
                                                 className="typo-title-1"
                                                 style={{
                                                     color: "var(--color-primary)",
-                                                    whiteSpace: "break-spaces"
+                                                    whiteSpace: "normal"
                                                 }}
                                             >{item.title}</td>
                                             <td>
