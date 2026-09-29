@@ -72,10 +72,16 @@ export const StyledButton = styled.button`
       }
     `}
 
+  ${({ $variant }) =>
+    $variant === "quaternary" &&
+    css`
+      background-color: var(--secondary-900);
+      color: var(--white);
 
-  &:disabled {
-    cursor: not-allowed;
-  }
+      &:hover {
+        background-color: var(--neutral-900);
+      }
+    `}
 `;
 
 const spin = keyframes`
