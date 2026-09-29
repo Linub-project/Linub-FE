@@ -11,7 +11,7 @@ const ProfileImage = ({user, size}) => {
                 borderRadius: "50%",
                 cursor: "pointer"
             }}
-            onClick={() => navigate(`/mymenu`)}
+            onClick={() => navigate(`/mypage`)}
         />
     );
 }

@@ -2,19 +2,21 @@ import profile1 from "@/assets/default/profile/profile1.png";
 import bell_active from "@/assets/icon/icon_bell_active.svg";
 import magnify from "@/assets/icon/icon_magnify.svg";
 import logo from "@/assets/logo.svg";
+import Button from "@/components/common/button/default";
 import IconButton from "@/components/common/button/icon";
 import ProfileImage from "@/components/common/profile";
 import { MENU } from "@/constants/menu.js";
+import { useAuth } from "@/contexts/authContext";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
-const userDummy = {
-    name: "용감한 다람쥐",
-    profileImage: profile1
-}
-
 const Header = () => {
+    const {
+        user,
+        isAuthenticated,
+        isAuthReady
+    } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const [selectedMenu, setSelectedMenu] = useState("HOME");
@@ -43,6 +45,11 @@ const Header = () => {
 
         fetchSelectedMenu();
     }, [location.pathname]);
+
+    const profileUser = {
+        name: user?.nickname,
+        profileImage: user?.profileImage ?? profile1
+    };
 
     return (
         <S.Container>
@@ -73,11 +80,42 @@ const Header = () => {
                         <img src={magnify} />
                         <S.SearchInput />
                     </S.SearchArea>
-                    <IconButton icon={bell_active} />
-                    <S.ProfileArea>
-                        <ProfileImage user={userDummy} size={30}/>
-                        <S.Nickname className="typo-title-1">{userDummy.name}</S.Nickname>
-                    </S.ProfileArea>
+                    {
+                        isAuthReady  && isAuthenticated && <IconButton icon={bell_active} />
+                    }
+                    {isAuthReady && (
+                        isAuthenticated ? (
+                            <S.ProfileArea>
+                                <ProfileImage
+                                    user={profileUser}
+                                    size={30}
+                                />
+
+                                <S.Nickname className="typo-title-1">
+                                    {user?.nickname}
+                                </S.Nickname>
+                            </S.ProfileArea>
+                        ) : (
+                            <S.ProfileArea>
+                                <Button
+                                    size="small"
+                                    text="로그인"
+                                    variant="secondary"
+                                    onClick={() =>
+                                        navigate("/login")
+                                    }
+                                />
+
+                                <Button
+                                    size="small"
+                                    text="회원가입"
+                                    onClick={() =>
+                                        navigate("/signup")
+                                    }
+                                />
+                            </S.ProfileArea>
+                        )
+                    )}
                 </S.RightArea>
             </S.SubContainer>
             <S.MobileMenuContainer>

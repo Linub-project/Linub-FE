@@ -10,13 +10,16 @@ import '@/styles/typography.css';
 import '@/styles/global.css';
 import { CompareQueueProvider } from "@/contexts/compareQueueContext";
 import { ToastProvider } from "@/contexts/toastContext";
+import { AuthProvider } from "@/contexts/authContext.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ToastProvider>
-      <CompareQueueProvider>
+    <AuthProvider>
+      <ToastProvider>
+        <CompareQueueProvider>
           <App />
-      </CompareQueueProvider>
-    </ToastProvider>
+        </CompareQueueProvider>
+      </ToastProvider>
+    </AuthProvider>
   </StrictMode>
 );
