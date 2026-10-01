@@ -1,5 +1,7 @@
+import AdminLayout from "@/layouts/adminLayout";
 import AuthenticationLayout from "@/layouts/authenticationLayout";
 import MainLayout from "@/layouts/mainLayout";
+import AdminPage from "@/pages/admin";
 import LoginPage from "@/pages/authentication/login";
 import SignupPage from "@/pages/authentication/signup";
 import DictionaryPage from "@/pages/dictionary";
@@ -35,8 +37,8 @@ export const RouterList = () => [
         element: <DictionaryComparePage />
       },
       {
-          path: "/dictionary",
-          element: <Navigate to="/dictionary/ARCHIVE" replace />,
+        path: "/dictionary",
+        element: <Navigate to="/dictionary/ARCHIVE" replace />,
       },
       {
         path: "/dictionary/:category",
@@ -50,6 +52,23 @@ export const RouterList = () => [
         path: "*",
         element: <WrongPage />
       }
+    ]
+  },
+  {
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "/admin",
+        element: <Navigate to="/admin/dashboard" replace />,
+      },
+      {
+        path: "/admin/:category",
+        element: <AdminPage />
+      },
+      {
+          path: "/admin/:category/:action",
+          element: <AdminPage />
+      },
     ]
   },
 ];
