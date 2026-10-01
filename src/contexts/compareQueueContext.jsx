@@ -14,7 +14,7 @@ export const CompareQueueProvider = ({ children }) => {
         }
 
         if (queue.length > 0) {
-            if (item.title === queue[0].title) {
+            if (item.topic === queue[0].topic) {
                 showToast("이미 추가된 항목입니다.");
                 return;
             }
@@ -33,12 +33,17 @@ export const CompareQueueProvider = ({ children }) => {
         );
     };
 
+    const removeAll = () => {
+        setQueue([]);
+    };
+
     return (
         <CompareQueueContext.Provider
             value={{
                 queue,
                 add,
-                remove
+                remove,
+                removeAll
             }}
         >
             {children}

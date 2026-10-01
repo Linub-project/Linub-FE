@@ -36,30 +36,6 @@ export const TypeCard = styled.span`
     transition: var(--transition-default);
 `
 
-export const SearchArea = styled.div`
-    display: flex;
-    width: 100%;
-    padding: 8px 16px;
-    align-items: center;
-    border: 1px solid var(--color-border);
-    gap: 8px;
-    background-color: var(--white);
-`
-
-export const SearchInput = styled.input.attrs({
-    placeholder: "현재 리스트 내 검색.."
-})`
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: var(--color-text-primary);
-
-    &::placeholder {
-        color: var(--neutral-500);
-    }
-`;
-
 export const Comapre = styled.img`
     opacity: 0;
     visibility: hidden;

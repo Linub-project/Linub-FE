@@ -23,7 +23,7 @@ const RelatedFileSection = ({ id, item }) => {
                 }}
             >
                 {
-                    item.relatedFiles.map((c) => (
+                    item.relations.filter(a => a.type === "FILE").map((c) => (
                         <TopicChip
                             key={c.id}
                             $color={"var(--color-warning)"}

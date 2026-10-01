@@ -1,10 +1,9 @@
-import bookmark from "@/assets/icon/icon_bookmark.svg";
 import compare from "@/assets/icon/icon_compare_neutral.svg";
 import { useCompareQueue } from "@/contexts/compareQueueContext";
+import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
 import { getLegendStyle } from "@/utils/legendStyler";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
-import { formatDate, DATE_FORMAT } from "@/utils/dateFormatter";
 
 const HeaderSection = ({ id, item }) => {
     const legendStyle = getLegendStyle(item.type);
@@ -28,7 +27,7 @@ const HeaderSection = ({ id, item }) => {
                         padding: "12px 16px",
                         cursor: "pointer"
                     }}
-                    onClick={() => navigate(`/dictionary/${item.dictionaryCategory}`)}
+                    onClick={() => navigate(`/dictionary`)}
                 >← 목록으로</span>
                 <span
                     className="typo-content-4"
@@ -61,16 +60,6 @@ const HeaderSection = ({ id, item }) => {
                 >{item.type}</span>
 
                 <div style={{flex: "1"}} />
-
-                <S.ButtonArea>
-                    <img src={bookmark} />
-                    <span
-                        className="typo-content-4"
-                        style={{
-                            color: "var(--color-text-default)",
-                        }}
-                    >북마크</span>
-                </S.ButtonArea>
                 <S.ButtonArea
                     onClick={() => add(item)}
                 >

@@ -23,7 +23,7 @@ const RelatedCommandSection = ({ id, item }) => {
                 }}
             >
                 {
-                    item.relatedCommands.map((c) => (
+                    item.relations.filter(a => a.type === "COMMAND").map((c) => (
                         <TopicChip
                             key={c.id}
                             $color={"var(--color-primary)"}

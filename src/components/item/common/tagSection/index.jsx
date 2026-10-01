@@ -20,7 +20,7 @@ const TagSection = ({ id, item }) => {
                 }}
             >
                 {
-                    item.relatedTags.map((c) => (
+                    item.tags.map((c) => (
                         <TopicChip
                             key={c.id}
                             $color={"var(--color-text-default)"}
