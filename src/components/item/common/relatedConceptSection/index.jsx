@@ -23,7 +23,7 @@ const RelatedConceptSection = ({ id, item }) => {
                 }}
             >
                 {
-                    item.relatedConcepts.map((c) => (
+                    item.relations.filter(a => a.type === "CONCEPT").map((c) => (
                         <TopicChip
                             key={c.id}
                             $color={"var(--color-secondary)"}

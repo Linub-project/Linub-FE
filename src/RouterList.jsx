@@ -3,10 +3,11 @@ import MainLayout from "@/layouts/mainLayout";
 import LoginPage from "@/pages/authentication/login";
 import SignupPage from "@/pages/authentication/signup";
 import DictionaryPage from "@/pages/dictionary";
+import DictionaryComparePage from "@/pages/dictionaryCompare";
 import HomePage from "@/pages/home";
 import ItemPage from "@/pages/item";
-import { createBrowserRouter, Navigate } from "react-router-dom";
 import WrongPage from "@/pages/wrong";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 export const RouterList = () => [
   {
@@ -28,6 +29,10 @@ export const RouterList = () => [
       {
         path: "",
         element: <HomePage />,
+      },
+      {
+        path: "/dictionary/compare",
+        element: <DictionaryComparePage />
       },
       {
           path: "/dictionary",

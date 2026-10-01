@@ -9,6 +9,10 @@ const ContentSection = ({ id, item }) => {
                 style={{marginBottom: "6px"}}
             >인자</p>
             <Hr marginBottom="12px" />
+            <p
+                className="typo-content-3"
+                style={{color: "var(--color-text-default)", marginBottom: "6px"}}
+            >특정 옵션이나 서브커맨드에 종속되지 않은 인자 목록입니다.</p>
 
             <div
                 style={{
@@ -31,7 +35,7 @@ const ContentSection = ({ id, item }) => {
                     </colgroup>
                     <tbody>
                         {
-                            item.arguments.map((a) => {
+                            item?.data.arguments.map((a) => {
                                 return (
                                     <tr key={a.id}>
                                         <td
@@ -55,9 +59,9 @@ const ContentSection = ({ id, item }) => {
                                                 }}>{a.name}</div>
                                             <div
                                                 className="typo-content-1"
-                                                style={{color: "var(--color-text-default)"}}
+                                                style={{color: "var(--color-text-default)", whiteSpace: "normal"}}
                                             >{a.description}</div>
-                                            {a.valueType === "REFERENCE" && a.referenceGroup?.values?.length > 0 && (
+                                            {a.reference && (
                                                 <div
                                                     className="typo-content-3"
                                                     style={{
@@ -83,18 +87,32 @@ const ContentSection = ({ id, item }) => {
                                                             width: "100%",
                                                         }}
                                                     >
-                                                        {a.referenceGroup.values.map((v) => (
-                                                            <span
-                                                                key={v}
+                                                        {a.reference && (
+                                                            <div
+                                                                className="typo-content-3"
                                                                 style={{
-                                                                    padding: "2px 4px",
-                                                                    border: "1px solid var(--color-border)",
-                                                                    color: "var(--color-text-default)",
+                                                                    display: "flex",
+                                                                    gap: "4px",
+                                                                    flexWrap: "wrap",
+                                                                    marginTop: "12px"
                                                                 }}
                                                             >
-                                                                {v}
-                                                            </span>
-                                                        ))}
+                                                                {a.reference.values?.map((v) => (
+                                                                    <div
+                                                                        key={v.id}
+                                                                        style={{
+                                                                            backgroundColor: "var(--color-bg-subtle)",
+                                                                            padding: "2px 6px",
+                                                                            border: "1px solid var(--color-border)",
+                                                                            color: "var(--color-warning)"
+                                                                        }}
+                                                                        title={v.description}
+                                                                    >
+                                                                        {v.value}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </div>
                                             )}

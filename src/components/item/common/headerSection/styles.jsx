@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "@/styles/breakpoint";
 
 export const Container = styled.div`
     display: flex;
@@ -16,4 +17,10 @@ export const ButtonArea = styled.div`
     padding: 6px 12px;
     border: 1px solid var(--color-border);
     cursor: pointer;
+
+    span {
+        @media (max-width: ${breakpoint.xsmall}) {
+            display: none;
+        }
+    }
 `

@@ -10,7 +10,22 @@ const SyntaxSection = ({ id, item }) => {
                 style={{marginBottom: "6px"}}
             >문법</p>
             <Hr marginBottom="12px" />
-            <TerminalBG content={item.syntax} />
+            <div
+                style={{
+                    display: "flex",
+                    width: "100%",
+                    flexDirection: "column",
+                    gap: "8px"
+                }}
+            >
+                {
+                    item?.data.syntax.map((s) => {
+                        return (
+                            <TerminalBG key={s.id} content={s.syntax}></TerminalBG>
+                        );
+                    })
+                }
+            </div>
         </S.Container>
     );
 }

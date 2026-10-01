@@ -23,15 +23,9 @@ const WrongComponent = () => {
                     <span
                         className="typo-content-1 terminal"
                         style={{
-                            color: "var(--color-primary)"
-                        }}
-                    >$ </span>
-                    <span
-                        className="typo-content-1 terminal"
-                        style={{
                             color: "var(--white)"
                         }}
-                    >find / --name </span>
+                    >$ find / --name </span>
                     <span
                         className="typo-content-1 terminal"
                         style={{

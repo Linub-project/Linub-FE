@@ -15,7 +15,7 @@ const ExampleSection = ({ id, item }) => {
                     width: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    gap: "12px"
+                    gap: "8px"
                 }}
             >
                 {
@@ -29,7 +29,7 @@ const ExampleSection = ({ id, item }) => {
                                     gap: "2px"
                                 }}
                             >
-                                <TerminalBG content={e.content} language="TEXT" />
+                                <TerminalBG content={e.content} language={item.type === "COMMAND" ? "SHELL" : "TEXT"} />
                                 <p
                                     className="typo-content-1"
                                     style={{

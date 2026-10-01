@@ -46,8 +46,6 @@ export const Bottom = styled.div`
     border-radius: 6px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-
-    display: ${({$isOpen}) => $isOpen ? "flex" : "none"};
 `
 
 export const Arrow = styled.img.attrs({

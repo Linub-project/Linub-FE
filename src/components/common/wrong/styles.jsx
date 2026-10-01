@@ -5,7 +5,6 @@ export const Container = styled.div`
     justify-content: center;
     width: 100%;
     background-color: var(--color-bg-subtle);
-    border-bottom: 1px solid var(--color-border);
 `
 
 export const SubContainer = styled.div`

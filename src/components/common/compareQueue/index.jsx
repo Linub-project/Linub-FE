@@ -2,16 +2,23 @@ import down from "@/assets/icon/icon_down.svg";
 import Button from "@/components/common/button/default";
 import Hr from "@/components/common/layout/hr";
 import { useCompareQueue } from "@/contexts/compareQueueContext";
-import { useState } from "react";
-import * as S from "./styles";
 import { getLegendStyle } from "@/utils/legendStyler";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import * as S from "./styles";
 
 const CompareQueue = () => {
+    const navigate = useNavigate();
     const [isQueueOpen, setIsQueueOpen] = useState(false);
-    const { queue, remove } = useCompareQueue();
+    const { queue, remove, removeAll } = useCompareQueue();
 
     if(queue.length < 1) {
         return null;
+    }
+
+    const handleCompareButtonClick = () => {
+        removeAll();
+        navigate(`/dictionary/compare?left=${queue[0].id}&right=${queue[1].id}`);
     }
 
     return (
@@ -79,6 +86,7 @@ const CompareQueue = () => {
                                     text={"비교 시작"}
                                     width={"100%"}
                                     disabled={queue.length < 2}
+                                    onClick={() => handleCompareButtonClick()}
                                 />
                             </div>
                         </S.OpenContainer>
