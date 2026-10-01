@@ -1,14 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     width: 220px;
-    min-height: 100vh;
+    height: 100vh;
+
     background-color: var(--white);
     border-right: 1px solid var(--color-border);
-`
+
+    box-sizing: border-box;
+    overflow-y: auto;
+`;
 
 export const MenuArea = styled.div`
     display: flex;

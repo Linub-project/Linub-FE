@@ -65,6 +65,10 @@ export const RouterList = () => [
         path: "/admin/:category",
         element: <AdminPage />
       },
+      {
+          path: "/admin/:category/:action",
+          element: <AdminPage />
+      },
     ]
   },
 ];
