@@ -23,6 +23,8 @@ const AddConcept = () => {
     const [commands, setCommands] = useState([]);
     const [files, setFiles] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [isSend, setIsSend] = useState(false);
+    const [buttonText, setButtonText] = useState("등록");
 
     const fetchCategories = async () => {
         try {
@@ -50,13 +52,19 @@ const AddConcept = () => {
     }, []);
 
     const handleSubmit = async () => {
+        setIsSend(true);
         try {
             const request = createRequest();
 
             await A.createDictionary(request);
-
+            setTimeout(() => setButtonText("등록 완료"), 3000);
+            resetForm();
+            fetchAllDictionary();
         } catch (error) {
             showToast(getErrorMessage(error));
+        } finally {
+            setButtonText("등록");
+            setIsSend(false);
         }
     };
 
@@ -416,8 +424,9 @@ const AddConcept = () => {
             </S.InputArea>
             <Button
                 onClick={handleSubmit}
-                text="등록"
+                text={buttonText}
                 width="100%"
+                loading={isSend}
             />
         </S.Container>
     );
