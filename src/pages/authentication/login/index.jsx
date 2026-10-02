@@ -76,6 +76,7 @@ const LoginPage = () => {
                         placeholder="linub@example.com"
                         minHeight="40px"
                         onChange={(e) => setEmail(e.target.value)}
+                        autofocus={true}
                     />
                 </div>
                 <div

@@ -8,6 +8,7 @@ export const TextArea = styled.textarea`
   box-shadow: var(--shadow-default);
   resize: vertical;
   outline: none;
+  height: ${({$h}) => $h};
 
   &:focus {
     border: 1px solid var(--color-primary);
