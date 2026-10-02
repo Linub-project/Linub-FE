@@ -33,7 +33,7 @@ const createSubcommand = () => ({
 
 const createFileFormatDescription = () => ({
     name: "",
-    longName: ""
+    description: ""
 });
 
 
