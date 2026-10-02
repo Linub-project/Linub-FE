@@ -59,6 +59,7 @@ const AddFile = () => {
             await A.createDictionary(request);
             setTimeout(() => setButtonText("등록 완료"), 3000);
             resetForm();
+            fetchAllDictionary();
         } catch (error) {
             showToast(getErrorMessage(error));
         } finally {
