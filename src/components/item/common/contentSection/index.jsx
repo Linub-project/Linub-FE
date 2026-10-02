@@ -11,7 +11,7 @@ const ContentSection = ({ id, item }) => {
             <Hr marginBottom="12px" />
             <p
                 className="typo-content-1"
-                style={{color: "var(--color-text-primary)"}}
+                style={{color: "var(--color-text-primary)", whiteSpace: "preserve"}}
             >{item.content}</p>
         </S.Container>
     );

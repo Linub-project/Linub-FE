@@ -1,5 +1,37 @@
 export const DICTIONARY_CATEGORY = [
     {
+        key: "OVERVIEW",
+        label: "Overview",
+        description: "리눅스의 기본 개념, 역사, 배포판, 라이선스 및 설치 환경과 관련된 항목",
+        subCategory: [
+            {
+                key: "OVERVIEW_HISTORY",
+                label: "History",
+                description: "리눅스의 탄생과 발전 과정 및 주요 역사와 관련된 항목"
+            },
+            {
+                key: "OVERVIEW_DISTRIBUTION",
+                label: "Distribution",
+                description: "리눅스 배포판의 종류, 특징 및 계열과 관련된 항목"
+            },
+            {
+                key: "OVERVIEW_LICENSE",
+                label: "License",
+                description: "리눅스 및 오픈소스 소프트웨어의 라이선스와 관련된 항목"
+            },
+            {
+                key: "OVERVIEW_INSTALLATION",
+                label: "Installation",
+                description: "리눅스 설치 방식, 설치 유형 및 기본 설치 과정과 관련된 항목"
+            },
+            {
+                key: "OVERVIEW_WSL",
+                label: "WSL",
+                description: "Windows Subsystem for Linux의 구조, 설치 및 사용과 관련된 항목"
+            },
+        ]
+    },
+    {
         key: "ARCHIVE",
         label: "Archive",
         description: "파일 및 디렉터리의 압축, 해제, 묶음과 관련된 항목",
@@ -88,9 +120,19 @@ export const DICTIONARY_CATEGORY = [
         description: "파일 시스템의 생성, 검사, 관리 및 사용과 관련된 항목",
         subCategory: [
             {
-                key: "FILESYSTEM_LVM",
-                label: "LVM",
-                description: "논리 볼륨 생성 및 관리와 관련된 항목"
+                key: "FILESYSTEM_INODE",
+                label: "Inode",
+                description: "파일 시스템의 inode 구조와 파일 메타데이터 관리에 관련된 항목",
+            },
+            {
+                key: "FILESYSTEM_JOURNALING",
+                label: "Journaling",
+                description: "저널링 파일 시스템의 동작 방식과 데이터 복구에 관련된 항목",
+            },
+            {
+                key: "FILESYSTEM_LINK",
+                label: "Link",
+                description: "하드 링크와 심볼릭 링크의 구조 및 사용과 관련된 항목",
             },
             {
                 key: "FILESYSTEM_MOUNT",
@@ -168,7 +210,23 @@ export const DICTIONARY_CATEGORY = [
         key: "SHELL",
         label: "Shell",
         description: "셸의 동작, 환경 설정, 변수 및 스크립트와 관련된 항목",
-        subCategory: []
+        subCategory: [
+            {
+                key: "SHELL_VARIABLE",
+                label: "Variable",
+                description: "셸 변수와 환경 변수의 정의, 사용 및 관리와 관련된 항목",
+            },
+            {
+                key: "SHELL_IO",
+                label: "I/O",
+                description: "표준 입력·출력·에러, 리다이렉션 및 파이프와 관련된 항목",
+            },
+            {
+                key: "SHELL_SCRIPT",
+                label: "Script",
+                description: "셸 스크립트 작성, 실행 및 셸 프로그래밍과 관련된 항목",
+            },
+        ]
     },
     {
         key: "SYSTEM",
@@ -184,6 +242,11 @@ export const DICTIONARY_CATEGORY = [
                 key: "SYSTEM_HARDWARE",
                 label: "Hardware",
                 description: "CPU, RAM, PCI, 시스템 전체 하드웨어 정보와 관련된 항목"
+            },
+            {
+                key: "SYSTEM_LIBRARY",
+                label: "Library",
+                description: "공유 라이브러리, 동적 라이브러리 및 시스템 라이브러리 관리와 관련된 항목",
             },
             {
                 key: "SYSTEM_LOG",
@@ -221,7 +284,28 @@ export const DICTIONARY_CATEGORY = [
         key: "STORAGE",
         label: "Storage",
         description: "디스크, 파티션 및 저장 장치의 조회와 관리에 관련된 항목",
-        subCategory: []
+        subCategory: [
+            {
+                key: "STORAGE_PARTITION",
+                label: "Partition",
+                description: "디스크 파티션의 생성, 구성 및 관리와 관련된 항목",
+            },
+            {
+                key: "STORAGE_SWAP",
+                label: "Swap",
+                description: "스왑 영역의 구조, 생성 및 메모리 보조 공간 관리와 관련된 항목",
+            },
+            {
+                key: "STORAGE_LVM",
+                label: "LVM",
+                description: "Physical Volume, Volume Group, Logical Volume 등 논리 볼륨 관리와 관련된 항목",
+            },
+            {
+                key: "STORAGE_RAID",
+                label: "RAID",
+                description: "RAID 구성 방식, 레벨 및 디스크 이중화와 관련된 항목",
+            },
+        ]
     },
     {
         key: "USER",
@@ -249,5 +333,17 @@ export const DICTIONARY_CATEGORY = [
                 description: "로그인 사용자 및 사용자 세션 관리와 관련된 항목"
             },
         ]
+    },
+    {
+        key: "VIRTUALIZATION",
+        label: "Virtualization",
+        description: "가상화 기술, 가상 환경 및 컨테이너 기반 실행 환경과 관련된 항목",
+        subCategory: []
+    },
+    {
+        key: "XWINDOW",
+        label: "X Window",
+        description: "리눅스 그래픽 환경의 기반이 되는 X Window System과 관련된 항목",
+        subCategory: []
     },
 ];

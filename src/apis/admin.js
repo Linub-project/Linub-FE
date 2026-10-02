@@ -7,3 +7,7 @@ export const getAllDictionary = () => {
 export const createDictionary = (form) => {
     return api.post("/api/v1/admin/dictionaries", form);
 }
+
+export const getAllCategories = () => {
+    return api.get("/api/v1/admin/categories/all");
+}
