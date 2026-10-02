@@ -22,6 +22,16 @@ const AddConcept = () => {
     const [concepts, setConcepts] = useState([]);
     const [commands, setCommands] = useState([]);
     const [files, setFiles] = useState([]);
+    const [categories, setCategories] = useState([]);
+
+    const fetchCategories = async () => {
+        try {
+            const response = await A.getAllCategories();
+            setCategories(response.data);
+        } catch (error) {
+
+        }
+    }
 
     const fetchAllDictionary = async () => {
         try {
@@ -35,6 +45,7 @@ const AddConcept = () => {
     }
 
     useEffect(() => {
+        fetchCategories();
         fetchAllDictionary();
     }, []);
 
@@ -201,6 +212,39 @@ const AddConcept = () => {
                     className="typo-title-1"
                     style={{ color: "var(--color-text-default)" }}
                 >relation</p>
+                <p
+                    className="typo-title-2"
+                    style={{ color: "var(--color-text-default)" }}
+                >categories</p>
+                <div
+                    style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "6px"
+                    }}
+                >
+                    {categories.map(cate => {
+                        const isSelected = values.categories.includes(cate.id);
+                        return (
+                            <button
+                                key={cate.id}
+                                type="button"
+                                onClick={() =>
+                                    handlers.handleCategoryToggle(
+                                        cate.id
+                                    )
+                                }
+                                style={{
+                                    padding: "4px 8px",
+                                    border: "1px solid var(--color-border)",
+                                    cursor: "pointer",
+                                    backgroundColor: isSelected ? "var(--color-primary-bg)" : "var(--white)",
+                                    color: isSelected ? "var(--color-primary)" : "var(--color-text-default)"
+                                }}
+                            >{cate.code}</button>
+                        );
+                    })}
+                </div>
                 <p
                     className="typo-title-2"
                     style={{ color: "var(--color-text-default)" }}
