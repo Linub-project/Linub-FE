@@ -154,7 +154,7 @@ const AddConcept = () => {
                                 className="typo-title-2"
                                 style={{color: "var(--color-text-default)"}}
                             >content</p>
-                            <Input
+                            <TextArea
                                 value={example.content}
                                 onChange={(e) =>
                                     handlers.handleExampleChange(
