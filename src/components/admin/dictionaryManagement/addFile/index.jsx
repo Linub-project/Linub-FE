@@ -5,9 +5,9 @@ import Input from "@/components/common/input/default";
 import { TextArea } from "@/components/common/input/textarea/styles";
 import { useToast } from "@/contexts/toastContext";
 import useDictionaryForm from "@/hooks/useDictionaryForm";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
-import { useEffect, useState } from "react";
 
 const AddFile = () => {
     const {
@@ -23,6 +23,8 @@ const AddFile = () => {
     const [commands, setCommands] = useState([]);
     const [files, setFiles] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [isSend, setIsSend] = useState(false);
+    const [buttonText, setButtonText] = useState("등록");
     
     const fetchCategories = async () => {
         try {
@@ -50,13 +52,18 @@ const AddFile = () => {
     }, []);
 
     const handleSubmit = async () => {
+        setIsSend(true);
         try {
             const request = createRequest();
 
             await A.createDictionary(request);
-
+            setTimeout(() => setButtonText("등록 완료"), 3000);
+            resetForm();
         } catch (error) {
             showToast(getErrorMessage(error));
+        } finally {
+            setButtonText("등록");
+            setIsSend(false);
         }
     };
 
@@ -154,7 +161,7 @@ const AddFile = () => {
                                 className="typo-title-2"
                                 style={{color: "var(--color-text-default)"}}
                             >content</p>
-                            <Input
+                            <TextArea
                                 value={example.content}
                                 onChange={(e) =>
                                     handlers.handleExampleChange(
@@ -529,8 +536,9 @@ const AddFile = () => {
             </S.InputArea>
             <Button
                 onClick={handleSubmit}
-                text="등록"
+                text={buttonText}
                 width="100%"
+                loading={isSend}
             />
         </S.Container>
     );
