@@ -297,13 +297,13 @@ const AddFile = () => {
                                 style={{
                                     color: "var(--color-text-default)"
                                 }}
-                            >longName</p>
+                            >description</p>
                             <Input
-                                value={description.longName}
+                                value={description.description}
                                 onChange={(e) =>
                                     handlers.handleFileFormatDescriptionChange(
                                         index,
-                                        "longName",
+                                        "description",
                                         e.target.value
                                     )
                                 }
