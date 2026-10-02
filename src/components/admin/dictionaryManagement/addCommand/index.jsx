@@ -1002,6 +1002,7 @@ const AddCommand = () => {
                         const isSelected = values.categories.includes(cate.id);
                         return (
                             <button
+                                className="typo-content-3"
                                 key={cate.id}
                                 type="button"
                                 onClick={() =>

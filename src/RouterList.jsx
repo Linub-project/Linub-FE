@@ -38,7 +38,7 @@ export const RouterList = () => [
       },
       {
         path: "/dictionary",
-        element: <Navigate to="/dictionary/ARCHIVE" replace />,
+        element: <Navigate to="/dictionary/OVERVIEW" replace />,
       },
       {
         path: "/dictionary/:category",

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import * as S from "./styles";
 
 const Dictionary = () => {
-    const { category = "ARCHIVE" } = useParams();
+    const { category = "OVERVIEW" } = useParams();
 
     return (
         <S.Container>
