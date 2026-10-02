@@ -133,6 +133,7 @@ const SignupPage = () => {
                             minHeight="40px"
                             onChange={(e) => setEmail(e.target.value)}
                             readOnly={isVerified}
+                            autofocus={true}
                         />
                         <Button 
                             text={sendButtonText}

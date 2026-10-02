@@ -8,6 +8,7 @@ const Input = ({
     minHeight,
     onKeyDown,
     disabled,
+    autofocus,
     ...props
 }) => {
     return (
@@ -19,6 +20,7 @@ const Input = ({
             type={type}
             onKeyDown={onKeyDown}
             disabled={disabled}
+            autoFocus={autofocus}
             {...props}
         />
     );

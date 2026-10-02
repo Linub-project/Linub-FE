@@ -82,6 +82,29 @@ export const StyledButton = styled.button`
         background-color: var(--neutral-900);
       }
     `}
+
+  ${({ $variant }) =>
+    $variant === "quinary" &&
+    css`
+      background-color: var(--color-danger);
+      color: var(--white);
+
+      &:hover {
+        background-color: var(--color-danger-hover);
+      }
+    `}
+
+  ${({ $variant }) =>
+    $variant === "senary" &&
+    css`
+      background-color: var(--color-bg-subtle);
+      color: var(--color-text-default);
+      padding: 0;
+
+      &:hover {
+        background-color: var(--color-bg-hover);
+      }
+    `}
 `;
 
 const spin = keyframes`
