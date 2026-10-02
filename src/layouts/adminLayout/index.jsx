@@ -1,6 +1,6 @@
 import Sidebar from "@/components/admin/sidebar";
 import { useAuth } from "@/contexts/authContext";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import * as S from "./styles";
 
 const AdminLayout = () => {

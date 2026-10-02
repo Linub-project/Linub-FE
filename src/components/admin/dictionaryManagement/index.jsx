@@ -2,8 +2,8 @@ import * as A from "@/apis/admin";
 import Button from "@/components/common/button/default";
 import { TopicChip } from "@/components/common/cardchip/CardChip";
 import { useEffect, useState } from "react";
-import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
+import * as S from "./styles";
 
 const AdminDictionaryManagement = ({menu}) => {
     const navigate = useNavigate();
@@ -21,6 +21,11 @@ const AdminDictionaryManagement = ({menu}) => {
     useEffect(() => {
         fetchAllDictionary();
     }, []);
+
+    const handleDictionaryButtonClick = (id) => {
+        setItemId(id)
+        setOpenModal(true);
+    }
 
     return (
         <S.Container>
@@ -67,6 +72,7 @@ const AdminDictionaryManagement = ({menu}) => {
                     {
                         dictionaries.filter(item => item.type === "CONCEPT").map((item) => (
                             <TopicChip key={item.id} $color="var(--color-secondary)"
+                                onClick={() => handleDictionaryButtonClick(item.id)}
                             >{item.topic}</TopicChip>
                         ))
                     }
@@ -87,6 +93,7 @@ const AdminDictionaryManagement = ({menu}) => {
                     {
                         dictionaries.filter(item => item.type === "COMMAND").map((item) => (
                             <TopicChip key={item.id} $color="var(--color-primary)"
+                                onClick={() => handleDictionaryButtonClick(item.id)}
                             >{item.topic}</TopicChip>
                         ))
                     }
@@ -107,6 +114,7 @@ const AdminDictionaryManagement = ({menu}) => {
                     {
                         dictionaries.filter(item => item.type === "FILE").map((item) => (
                             <TopicChip key={item.id} $color="var(--color-warning)"
+                                onClick={() => handleDictionaryButtonClick(item.id)}
                             >{item.topic}</TopicChip>
                         ))
                     }

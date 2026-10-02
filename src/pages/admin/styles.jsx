@@ -6,7 +6,7 @@ export const Container = styled.div`
     min-width: 0;
     min-height: 100vh;
 
-    padding: 40px 24px;
+    padding: 40px 24px 200px 24px;
     box-sizing: border-box;
 
     background-color: var(--color-bg-subtle);
