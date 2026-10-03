@@ -207,7 +207,16 @@ const SubcommandSection = ({ id, item }) => {
                                                                             >
                                                                                 {argument.description}
                                                                             </div>
-
+                                                                            <div
+                                                                                className="typo-content-3"
+                                                                                style={{
+                                                                                    color: "var(--color-warning-text)", 
+                                                                                    whiteSpace: "normal", 
+                                                                                    backgroundColor: "var(--color-warning-bg)",
+                                                                                    width: "fit-content",
+                                                                                    padding: "2px 6px"
+                                                                                }}
+                                                                            >{a.constraints}</div>
                                                                             {argument.reference && (
                                                                                 <div
                                                                                     className="typo-content-3"

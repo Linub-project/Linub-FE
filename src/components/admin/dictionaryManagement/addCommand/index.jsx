@@ -2,7 +2,9 @@ import * as A from "@/apis/admin";
 import { getErrorMessage } from "@/apis/error";
 import Button from "@/components/common/button/default";
 import Input from "@/components/common/input/default";
+import Select from "@/components/common/input/select";
 import { TextArea } from "@/components/common/input/textarea/styles";
+import { ARGUMENT_VALUE_TYPE } from "@/constants/argumentValuetype";
 import { useToast } from "@/contexts/toastContext";
 import useDictionaryForm from "@/hooks/useDictionaryForm";
 import { useEffect, useState } from "react";
@@ -373,13 +375,16 @@ const AddCommand = () => {
                     style={{color: "var(--color-text-default)"}}
                 >argument</p>
                 {values.commandArguments.map((argument, index) => (
-                    <div key={index}
+                    <div
+                        key={index}
                         style={{
                             display: "flex",
                             flexDirection: "column",
-                            gap: "4px"
+                            gap: "8px",
+                            width: "100%"
                         }}
                     >
+                        {/* name */}
                         <div
                             style={{
                                 display: "flex",
@@ -390,8 +395,11 @@ const AddCommand = () => {
                         >
                             <p
                                 className="typo-title-2"
-                                style={{color: "var(--color-text-default)"}}
-                            >name</p>
+                                style={{ color: "var(--color-text-default)" }}
+                            >
+                                name
+                            </p>
+
                             <Input
                                 value={argument.name}
                                 onChange={(e) =>
@@ -403,6 +411,125 @@ const AddCommand = () => {
                                 }
                             />
                         </div>
+
+                        {/* description */}
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                gap: "8px"
+                            }}
+                        >
+                            <p
+                                className="typo-title-2"
+                                style={{ color: "var(--color-text-default)" }}
+                            >
+                                description
+                            </p>
+
+                            <Input
+                                value={argument.description}
+                                onChange={(e) =>
+                                    handlers.handleArgumentChange(
+                                        index,
+                                        "description",
+                                        e.target.value
+                                    )
+                                }
+                            />
+                        </div>
+
+                        {/* constraints */}
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                gap: "8px"
+                            }}
+                        >
+                            <p
+                                className="typo-title-2"
+                                style={{ color: "var(--color-text-default)" }}
+                            >
+                                constraints
+                            </p>
+
+                            <Input
+                                value={argument.constraints}
+                                onChange={(e) =>
+                                    handlers.handleArgumentChange(
+                                        index,
+                                        "constraints",
+                                        e.target.value
+                                    )
+                                }
+                            />
+                        </div>
+
+                        {/* valueType */}
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                gap: "8px"
+                            }}
+                        >
+                            <p
+                                className="typo-title-2"
+                                style={{ color: "var(--color-text-default)" }}
+                            >valueType</p>
+
+                            <Select
+                                style={{ flex: "1" }}
+                                value={argument.valueType}
+                                options={ARGUMENT_VALUE_TYPE}
+                                onChange={(e) =>
+                                    handlers.handleArgumentChange(
+                                        index,
+                                        "valueType",
+                                        e.target.value
+                                    )
+                                }
+                            />
+                        </div>
+
+                        {/* referenceId */}
+                        {
+                            argument.valueType === "REFERENCE" &&
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "space-between",
+                                        gap: "8px"
+                                    }}
+                                >
+                                    <p
+                                        className="typo-title-2"
+                                        style={{ color: "var(--color-text-default)" }}
+                                    >referenceId</p>
+                                    <Input
+                                        type="number"
+                                        value={argument.referenceId ?? ""}
+                                        onChange={(e) =>
+                                            handlers.handleArgumentChange(
+                                                index,
+                                                "referenceId",
+                                                e.target.value === ""
+                                                    ? null
+                                                    : Number(e.target.value)
+                                            )
+                                        }
+                                    />
+                                </div>
+                        }
+                        <p
+                            className="typo-content-3"
+                            style={{ color: "var(--color-text-default)" }}
+                        >sequence: {argument.sequence}</p>
                         <Button
                             onClick={() =>
                                 handlers.handleArgumentRemove(index)
@@ -425,9 +552,7 @@ const AddCommand = () => {
                 <p
                     className="typo-title-1"
                     style={{ color: "var(--color-text-default)" }}
-                >
-                    subcommand
-                </p>
+                >subcommand</p>
                 {values.subcommands.map((subcommand, subcommandIndex) => (
                     <div
                         key={subcommandIndex}
@@ -453,10 +578,7 @@ const AddCommand = () => {
                             <p
                                 className="typo-title-2"
                                 style={{ color: "var(--color-text-default)" }}
-                            >
-                                name
-                            </p>
-
+                            >name</p>
                             <Input
                                 value={subcommand.name}
                                 onChange={(e) =>
@@ -468,7 +590,6 @@ const AddCommand = () => {
                                 }
                             />
                         </div>
-
                         {/* description */}
                         <div
                             style={{
@@ -481,10 +602,7 @@ const AddCommand = () => {
                             <p
                                 className="typo-title-2"
                                 style={{ color: "var(--color-text-default)" }}
-                            >
-                                description
-                            </p>
-
+                            >description</p>
                             <Input
                                 value={subcommand.description}
                                 onChange={(e) =>
@@ -496,7 +614,6 @@ const AddCommand = () => {
                                 }
                             />
                         </div>
-
                         {/* syntax */}
                         <div
                             style={{
@@ -509,10 +626,7 @@ const AddCommand = () => {
                             <p
                                 className="typo-title-2"
                                 style={{ color: "var(--color-text-default)" }}
-                            >
-                                syntax
-                            </p>
-
+                            >syntax</p>
                             <Input
                                 value={subcommand.syntax}
                                 onChange={(e) =>
@@ -524,8 +638,6 @@ const AddCommand = () => {
                                 }
                             />
                         </div>
-
-
                         {/* 서브커맨드 옵션 */}
                         <div
                             style={{
@@ -540,10 +652,7 @@ const AddCommand = () => {
                             <p
                                 className="typo-title-2"
                                 style={{ color: "var(--color-text-default)" }}
-                            >
-                                option
-                            </p>
-
+                            >option</p>
                             {subcommand.subcommandOptions.map(
                                 (option, optionIndex) => (
                                     <div
@@ -568,10 +677,7 @@ const AddCommand = () => {
                                                 style={{
                                                     color: "var(--color-text-default)"
                                                 }}
-                                            >
-                                                name
-                                            </p>
-
+                                            >name</p>
                                             <Input
                                                 value={option.name}
                                                 onChange={(e) =>
@@ -584,7 +690,6 @@ const AddCommand = () => {
                                                 }
                                             />
                                         </div>
-
                                         <div
                                             style={{
                                                 display: "flex",
@@ -598,10 +703,7 @@ const AddCommand = () => {
                                                 style={{
                                                     color: "var(--color-text-default)"
                                                 }}
-                                            >
-                                                longName
-                                            </p>
-
+                                            >longName</p>
                                             <Input
                                                 value={option.longName}
                                                 onChange={(e) =>
@@ -614,7 +716,6 @@ const AddCommand = () => {
                                                 }
                                             />
                                         </div>
-
                                         <div
                                             style={{
                                                 display: "flex",
@@ -628,10 +729,7 @@ const AddCommand = () => {
                                                 style={{
                                                     color: "var(--color-text-default)"
                                                 }}
-                                            >
-                                                description
-                                            </p>
-
+                                            >description</p>
                                             <Input
                                                 value={option.description}
                                                 onChange={(e) =>
@@ -644,7 +742,6 @@ const AddCommand = () => {
                                                 }
                                             />
                                         </div>
-
                                         <div
                                             style={{
                                                 display: "flex",
@@ -658,9 +755,7 @@ const AddCommand = () => {
                                                 style={{
                                                     color: "var(--color-text-default)"
                                                 }}
-                                            >
-                                                referenceId
-                                            </p>
+                                            >referenceId</p>
 
                                             <Input
                                                 value={option.referenceId ?? ""}
@@ -702,8 +797,6 @@ const AddCommand = () => {
                                 width="fit-content"
                             />
                         </div>
-
-
                         {/* 서브커맨드 인자 */}
                         <div
                             style={{
@@ -717,11 +810,10 @@ const AddCommand = () => {
                         >
                             <p
                                 className="typo-title-2"
-                                style={{ color: "var(--color-text-default)" }}
-                            >
-                                argument
-                            </p>
-
+                                style={{
+                                    color: "var(--color-text-default)"
+                                }}
+                            >argument</p>
                             {subcommand.subcommandArguments.map(
                                 (argument, argumentIndex) => (
                                     <div
@@ -733,6 +825,7 @@ const AddCommand = () => {
                                             width: "100%"
                                         }}
                                     >
+                                        {/* name */}
                                         <div
                                             style={{
                                                 display: "flex",
@@ -746,9 +839,7 @@ const AddCommand = () => {
                                                 style={{
                                                     color: "var(--color-text-default)"
                                                 }}
-                                            >
-                                                name
-                                            </p>
+                                            >name</p>
 
                                             <Input
                                                 value={argument.name}
@@ -762,7 +853,7 @@ const AddCommand = () => {
                                                 }
                                             />
                                         </div>
-
+                                        {/* description */}
                                         <div
                                             style={{
                                                 display: "flex",
@@ -776,9 +867,7 @@ const AddCommand = () => {
                                                 style={{
                                                     color: "var(--color-text-default)"
                                                 }}
-                                            >
-                                                description
-                                            </p>
+                                            >description</p>
 
                                             <Input
                                                 value={argument.description}
@@ -792,7 +881,7 @@ const AddCommand = () => {
                                                 }
                                             />
                                         </div>
-
+                                        {/* constraints */}
                                         <div
                                             style={{
                                                 display: "flex",
@@ -806,9 +895,7 @@ const AddCommand = () => {
                                                 style={{
                                                     color: "var(--color-text-default)"
                                                 }}
-                                            >
-                                                constraints
-                                            </p>
+                                            >constraints</p>
 
                                             <Input
                                                 value={argument.constraints}
@@ -823,6 +910,7 @@ const AddCommand = () => {
                                             />
                                         </div>
 
+                                        {/* valueType */}
                                         <div
                                             style={{
                                                 display: "flex",
@@ -836,12 +924,13 @@ const AddCommand = () => {
                                                 style={{
                                                     color: "var(--color-text-default)"
                                                 }}
-                                            >
-                                                valueType
-                                            </p>
-
-                                            <Input
+                                            >valueType</p>
+                                            <Select
+                                                style={{
+                                                    flex: "1"
+                                                }}
                                                 value={argument.valueType}
+                                                options={VALUE_TYPE_OPTIONS}
                                                 onChange={(e) =>
                                                     handlers.handleSubcommandArgumentChange(
                                                         subcommandIndex,
@@ -852,7 +941,7 @@ const AddCommand = () => {
                                                 }
                                             />
                                         </div>
-
+                                        {/* referenceId */}
                                         <div
                                             style={{
                                                 display: "flex",
@@ -866,79 +955,22 @@ const AddCommand = () => {
                                                 style={{
                                                     color: "var(--color-text-default)"
                                                 }}
-                                            >
-                                                referenceId
-                                            </p>
-
+                                            >referenceId</p>
                                             <Input
+                                                type="number"
                                                 value={argument.referenceId ?? ""}
                                                 onChange={(e) =>
                                                     handlers.handleSubcommandArgumentChange(
                                                         subcommandIndex,
                                                         argumentIndex,
                                                         "referenceId",
-                                                        e.target.value
+                                                        e.target.value === ""
+                                                            ? null
+                                                            : Number(e.target.value)
                                                     )
                                                 }
                                             />
                                         </div>
-
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                gap: "16px",
-                                                alignItems: "center"
-                                            }}
-                                        >
-                                            <label
-                                                className="typo-content-2"
-                                                style={{
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    gap: "4px",
-                                                    color: "var(--color-text-default)"
-                                                }}
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    checked={argument.required}
-                                                    onChange={(e) =>
-                                                        handlers.handleSubcommandArgumentChange(
-                                                            subcommandIndex,
-                                                            argumentIndex,
-                                                            "required",
-                                                            e.target.checked
-                                                        )
-                                                    }
-                                                />
-                                                required
-                                            </label>
-
-                                            <label
-                                                className="typo-content-2"
-                                                style={{
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    gap: "4px",
-                                                    color: "var(--color-text-default)"
-                                                }}
-                                            >
-                                                <input
-                                                    type="checkbox"
-                                                    checked={argument.repeatable}
-                                                    onChange={(e) =>
-                                                        handlers.handleSubcommandArgumentChange(
-                                                            subcommandIndex,
-                                                            argumentIndex,
-                                                            "repeatable",
-                                                            e.target.checked
-                                                        )
-                                                    }
-                                                />
-                                                repeatable
-                                            </label>
-                                        </div>
-
                                         <Button
                                             onClick={() =>
                                                 handlers.handleSubcommandArgumentRemove(
@@ -954,7 +986,6 @@ const AddCommand = () => {
                                     </div>
                                 )
                             )}
-
                             <Button
                                 onClick={() =>
                                     handlers.handleSubcommandArgumentAdd(
@@ -966,8 +997,6 @@ const AddCommand = () => {
                                 width="fit-content"
                             />
                         </div>
-
-
                         <Button
                             onClick={() =>
                                 handlers.handleSubcommandRemove(
@@ -981,7 +1010,6 @@ const AddCommand = () => {
                         />
                     </div>
                 ))}
-
                 <Button
                     onClick={handlers.handleSubcommandAdd}
                     text="서브커맨드 추가"
