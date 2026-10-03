@@ -58,7 +58,6 @@ const AddCommand = () => {
 
             await A.createDictionary(request);
             setTimeout(() => setButtonText("등록 완료"), 3000);
-            resetForm();
             fetchAllDictionary();
         } catch (error) {
             showToast(getErrorMessage(error));
@@ -141,6 +140,59 @@ const AddCommand = () => {
                 <p
                     className="typo-title-1"
                     style={{color: "var(--color-text-default)"}}
+                >syntax</p>
+                {values.commandSyntax.map((syntax, index) => (
+                    <div key={index}
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "4px"
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                gap: "8px"
+                            }}
+                        >
+                            <p
+                                className="typo-title-2"
+                                style={{color: "var(--color-text-default)"}}
+                            >syntax</p>
+                            <Input
+                                value={syntax}
+                                onChange={(e) =>
+                                    handlers.handleSyntaxChange(
+                                        index,
+                                        e.target.value
+                                    )
+                                }
+                            />
+                        </div>
+                        <Button
+                            onClick={() =>
+                                handlers.handleSyntaxRemove(index)
+                            }
+                            text="제거"
+                            variant="quinary"
+                            size="small"
+                            width="fit-content"
+                        />
+                    </div>
+                ))}
+                <Button
+                    onClick={handlers.handleSyntaxAdd}
+                    text="문법 추가"
+                    width="fit-content"
+                    size="small"
+                />
+            </S.InputArea>
+            <S.InputArea>
+                <p
+                    className="typo-title-1"
+                    style={{color: "var(--color-text-default)"}}
                 >example</p>
                 {values.examples.map((example, index) => (
                     <div key={index}
@@ -211,59 +263,6 @@ const AddCommand = () => {
                 <Button
                     onClick={handlers.handleExampleAdd}
                     text="예시 추가"
-                    width="fit-content"
-                    size="small"
-                />
-            </S.InputArea>
-            <S.InputArea>
-                <p
-                    className="typo-title-1"
-                    style={{color: "var(--color-text-default)"}}
-                >syntax</p>
-                {values.commandSyntax.map((syntax, index) => (
-                    <div key={index}
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "4px"
-                        }}
-                    >
-                        <div
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                                gap: "8px"
-                            }}
-                        >
-                            <p
-                                className="typo-title-2"
-                                style={{color: "var(--color-text-default)"}}
-                            >syntax</p>
-                            <Input
-                                value={syntax}
-                                onChange={(e) =>
-                                    handlers.handleSyntaxChange(
-                                        index,
-                                        e.target.value
-                                    )
-                                }
-                            />
-                        </div>
-                        <Button
-                            onClick={() =>
-                                handlers.handleSyntaxRemove(index)
-                            }
-                            text="제거"
-                            variant="quinary"
-                            size="small"
-                            width="fit-content"
-                        />
-                    </div>
-                ))}
-                <Button
-                    onClick={handlers.handleSyntaxAdd}
-                    text="문법 추가"
                     width="fit-content"
                     size="small"
                 />
