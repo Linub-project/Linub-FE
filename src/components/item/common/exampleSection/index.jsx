@@ -34,7 +34,8 @@ const ExampleSection = ({ id, item }) => {
                                     className="typo-content-1"
                                     style={{
                                         padding: "2px 6px",
-                                        color: "var(--color-text-primary)"
+                                        color: "var(--color-text-primary)",
+                                        whiteSpace: "normal"
                                     }}
                                 >{e.description}</p>
                             </div>

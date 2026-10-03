@@ -61,6 +61,16 @@ const ContentSection = ({ id, item }) => {
                                                 className="typo-content-1"
                                                 style={{color: "var(--color-text-default)", whiteSpace: "normal"}}
                                             >{a.description}</div>
+                                            <div
+                                                className="typo-content-3"
+                                                style={{
+                                                    color: "var(--color-warning-text)", 
+                                                    whiteSpace: "normal", 
+                                                    backgroundColor: "var(--color-warning-bg)",
+                                                    width: "fit-content",
+                                                    padding: "2px 6px"
+                                                }}
+                                            >{a.constraints}</div>
                                             {a.reference && (
                                                 <div
                                                     className="typo-content-3"
