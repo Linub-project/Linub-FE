@@ -20,7 +20,7 @@ const PathSection = ({ id, item }) => {
                     color: "var(--color-text-default)"
                 }}
             >
-                {item.path}                
+                {item.data.path}                
             </div>
         </S.Container>
     );

@@ -11,7 +11,7 @@ const FormatSection = ({ id, item }) => {
             >파일 형식</p>
             <Hr marginBottom="12px" />
 
-            <TerminalBG content={item.format} language="TEXT" />
+            <TerminalBG content={item.data.format} language="TEXT" />
 
             <div
                 style={{
@@ -34,7 +34,7 @@ const FormatSection = ({ id, item }) => {
                     </colgroup>
                     <tbody>
                         {
-                            item.formatList.map((a) => {
+                            item.data.fileFormatDescriptionResponses.map((a) => {
                                 return (
                                     <tr key={a.id}>
                                         <td

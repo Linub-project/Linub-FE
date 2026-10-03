@@ -5,7 +5,13 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: var(--color-bg-subtle);
     width: 100%;
-    gap: 24px;
+    gap: 32px;
+`
+
+export const ListArea = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 12px;
 `

@@ -64,6 +64,7 @@
   --color-bg: var(--white);
   --color-bg-subtle: var(--neutral-50);
   --color-bg-hover: #F9F9F9;
+  --color-bg-modal: rgba(0, 0, 0, 0.3);
 
   /* Semantic - Border */
   --color-border: var(--neutral-100);

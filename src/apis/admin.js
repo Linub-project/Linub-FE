@@ -11,3 +11,11 @@ export const createDictionary = (form) => {
 export const getAllCategories = () => {
     return api.get("/api/v1/admin/categories/all");
 }
+
+export const getAllRelatedInfo = (id) => {
+    return api.get(`/api/v1/admin/dictionaries/${id}/relatedInfo`);
+}
+
+export const putRelatedInfo = (id, form) => {
+    return api.put(`/api/v1/admin/dictionaries/${id}/relations`, form);
+}
