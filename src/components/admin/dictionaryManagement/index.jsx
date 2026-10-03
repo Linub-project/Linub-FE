@@ -1,6 +1,8 @@
 import * as A from "@/apis/admin";
+import DictionaryReconciliation from "@/components/admin/dictionaryManagement/dictionaryReconciliation";
 import Button from "@/components/common/button/default";
 import { TopicChip } from "@/components/common/cardchip/CardChip";
+import Modal from "@/components/common/modal";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
@@ -8,6 +10,8 @@ import * as S from "./styles";
 const AdminDictionaryManagement = ({menu}) => {
     const navigate = useNavigate();
     const [dictionaries, setDictionaries] = useState([]);
+    const [openModal, setOpenModal] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
     
     const fetchAllDictionary = async () => {
         try {
@@ -22,13 +26,30 @@ const AdminDictionaryManagement = ({menu}) => {
         fetchAllDictionary();
     }, []);
 
-    const handleDictionaryButtonClick = (id) => {
-        setItemId(id)
+    const handleDictionaryButtonClick = (item) => {
         setOpenModal(true);
+        setSelectedItem(item);
+    }
+
+    const handleOpenModal = (value) => {
+        setOpenModal(value);
+        fetchAllDictionary();
     }
 
     return (
         <S.Container>
+            {
+                openModal && <Modal
+                    title={`Reconciliation - ${selectedItem.topic}`}
+                    width="100%"
+                    onClick={() => handleOpenModal(false)}
+                >
+                    <DictionaryReconciliation
+                        item={selectedItem}
+                        onSuccess={() => handleOpenModal(false)}
+                    />
+                </Modal>
+            }
             <span
                 className="typo-heading-3"
                 style={{color: "var(--color-text-primary)"}}
@@ -72,7 +93,7 @@ const AdminDictionaryManagement = ({menu}) => {
                     {
                         dictionaries.filter(item => item.type === "CONCEPT").map((item) => (
                             <TopicChip key={item.id} $color="var(--color-secondary)"
-                                onClick={() => handleDictionaryButtonClick(item.id)}
+                                onClick={() => handleDictionaryButtonClick(item)}
                             >{item.topic}</TopicChip>
                         ))
                     }
@@ -93,7 +114,7 @@ const AdminDictionaryManagement = ({menu}) => {
                     {
                         dictionaries.filter(item => item.type === "COMMAND").map((item) => (
                             <TopicChip key={item.id} $color="var(--color-primary)"
-                                onClick={() => handleDictionaryButtonClick(item.id)}
+                                onClick={() => handleDictionaryButtonClick(item)}
                             >{item.topic}</TopicChip>
                         ))
                     }
@@ -114,7 +135,7 @@ const AdminDictionaryManagement = ({menu}) => {
                     {
                         dictionaries.filter(item => item.type === "FILE").map((item) => (
                             <TopicChip key={item.id} $color="var(--color-warning)"
-                                onClick={() => handleDictionaryButtonClick(item.id)}
+                                onClick={() => handleDictionaryButtonClick(item)}
                             >{item.topic}</TopicChip>
                         ))
                     }
