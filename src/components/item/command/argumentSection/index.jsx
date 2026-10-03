@@ -47,30 +47,50 @@ const ContentSection = ({ id, item }) => {
                                             }}
                                         >
                                             <div
-                                                className="typo-title-2"
                                                 style={{
-                                                    color: "var(--color-primary)",
-                                                    backgroundColor: "var(--color-bg-subtle)",
-                                                    padding: "2px 4px",
-                                                    border: "1px solid var(--color-border)",
-                                                    whiteSpace: "normal",
-                                                    wordBreak: "break-all",
-                                                    width: "fit-content"
+                                                    display: "flex",
+                                                    gap: "4px",
+                                                    alignItems: "center"
+                                                }}
+                                            >
+                                                <div
+                                                    className="typo-title-2"
+                                                    style={{
+                                                        color: "var(--color-primary)",
+                                                        backgroundColor: "var(--color-bg-subtle)",
+                                                        padding: "2px 4px",
+                                                        border: "1px solid var(--color-border)",
+                                                        whiteSpace: "normal",
+                                                        wordBreak: "break-all",
+                                                        width: "fit-content"
                                                 }}>{a.name}</div>
+                                                <div
+                                                    className="typo-title-2"
+                                                    style={{
+                                                        padding: "2px 6px",
+                                                        color: "var(--color-text-default)",
+                                                        border: "1px solid var(--color-border)"
+                                                    }}
+                                                >{a.valueType}</div>
+                                            </div>
                                             <div
                                                 className="typo-content-1"
                                                 style={{color: "var(--color-text-default)", whiteSpace: "normal"}}
                                             >{a.description}</div>
-                                            <div
-                                                className="typo-content-3"
-                                                style={{
-                                                    color: "var(--color-warning-text)", 
-                                                    whiteSpace: "normal", 
-                                                    backgroundColor: "var(--color-warning-bg)",
-                                                    width: "fit-content",
-                                                    padding: "2px 6px"
-                                                }}
-                                            >{a.constraints}</div>
+                                            {
+                                                a.constraints &&
+                                                <div
+                                                    className="typo-content-3"
+                                                    style={{
+                                                        color: "var(--color-warning-text)", 
+                                                        whiteSpace: "normal", 
+                                                        backgroundColor: "var(--color-warning-bg)",
+                                                        width: "fit-content",
+                                                        padding: "2px 6px"
+                                                    }}
+                                                >{a.constraints}</div>
+                                            }
+                                            
                                             {a.reference && (
                                                 <div
                                                     className="typo-content-3"
