@@ -930,7 +930,7 @@ const AddCommand = () => {
                                                     flex: "1"
                                                 }}
                                                 value={argument.valueType}
-                                                options={VALUE_TYPE_OPTIONS}
+                                                options={ARGUMENT_VALUE_TYPE}
                                                 onChange={(e) =>
                                                     handlers.handleSubcommandArgumentChange(
                                                         subcommandIndex,
