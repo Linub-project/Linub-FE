@@ -28,8 +28,20 @@ export const Card = styled.div`
     display: flex;
     flex-direction: column;
     background-color: var(--white);
-    width: 100%;
+    flex: 1;
+    min-width: 180px;
     padding: 16px;
     border: 1px solid var(--color-border);
+    gap: 20px;
+`
+
+export const AttentionCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    flex: 1;
+    min-width: 200px;
+    padding: 16px;
+    border: 1px solid var(--color-warning);
     gap: 20px;
 `

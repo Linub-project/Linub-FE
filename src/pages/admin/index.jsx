@@ -2,6 +2,7 @@ import AdminCertificationManagement from "@/components/admin/certificationManage
 import AdminDashboard from "@/components/admin/dashboard";
 import AdminDictionaryManagement from "@/components/admin/dictionaryManagement";
 import AddCommand from "@/components/admin/dictionaryManagement/addCommand";
+import AddComparison from "@/components/admin/dictionaryManagement/addComparison";
 import AddConcept from "@/components/admin/dictionaryManagement/addConcept";
 import AddFile from "@/components/admin/dictionaryManagement/addFile";
 import AdminProblemManagement from "@/components/admin/problemManagement";
@@ -39,6 +40,10 @@ const AdminPage = () => {
 
             if (action === "addFile") {
                 return <AddFile menu={currentMenu} />;
+            }
+
+            if (action === "addComparison") {
+                return <AddComparison menu={currentMenu} />;
             }
 
             return <AdminDictionaryManagement menu={currentMenu} />;

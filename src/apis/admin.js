@@ -27,3 +27,11 @@ export const refreshStatistics = () => {
 export const getDashboardStatistics = () => {
     return api.get("/api/v1/admin/statistics/all");
 }
+
+export const createDictionaryComparison = (form) => {
+    return api.post("/api/v1/admin/dictionaries/comparison", form);
+}
+
+export const getAllDictionaryComparison = () => {
+    return api.get("/api/v1/admin/dictionaries/comparison/all");
+}
