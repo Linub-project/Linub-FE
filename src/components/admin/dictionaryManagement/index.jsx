@@ -10,8 +10,18 @@ import * as S from "./styles";
 const AdminDictionaryManagement = ({menu}) => {
     const navigate = useNavigate();
     const [dictionaries, setDictionaries] = useState([]);
+    const [dictionaryComparisons, setDictionaryComparisons] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
+
+    const fetchAllDictionaryComparison = async () => {
+        try {
+            const response = await A.getAllDictionaryComparison();
+            setDictionaryComparisons(response.data);
+        } catch (erorr) {
+
+        }
+    }
     
     const fetchAllDictionary = async () => {
         try {
@@ -24,6 +34,7 @@ const AdminDictionaryManagement = ({menu}) => {
 
     useEffect(() => {
         fetchAllDictionary();
+        fetchAllDictionaryComparison();
     }, []);
 
     const handleDictionaryButtonClick = (item) => {
@@ -75,6 +86,11 @@ const AdminDictionaryManagement = ({menu}) => {
                     text="+ File"
                     size="small"
                     onClick={() => navigate("/admin/dictionary/addFile")}
+                />
+                <Button
+                    text="+ Comparison"
+                    size="small"
+                    onClick={() => navigate("/admin/dictionary/addComparison")}
                 />
             </div>
 
@@ -137,6 +153,27 @@ const AdminDictionaryManagement = ({menu}) => {
                             <TopicChip key={item.id} $color="var(--color-warning)"
                                 onClick={() => handleDictionaryButtonClick(item)}
                             >{item.topic}</TopicChip>
+                        ))
+                    }
+                </div>
+            </div>
+            <div>
+                <p
+                    className="typo-title-1"
+                    style={{color: "var(--color-text-default)", marginBottom: "8px"}}
+                >사전 비교 목록</p>
+                <div
+                    style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "4px"
+                    }}
+                >
+                    {
+                        dictionaryComparisons.map((item) => (
+                            <TopicChip key={item.id} $color="var(--color-text-default)"
+                                onClick={() => handleDictionaryButtonClick(item)}
+                            >{item.first.topic} vs {item.second.topic}</TopicChip>
                         ))
                     }
                 </div>

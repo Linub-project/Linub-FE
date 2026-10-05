@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import ItemSection from "../item/itemSection";
 import * as D from "@/apis/dictionary";
-import * as S from "./styles";
-import Hr from "../common/layout/hr";
+import { useEffect, useState } from "react";
 import EmptyStateGlobal from "../common/emptyState/global";
+import Hr from "../common/layout/hr";
+import ItemSection from "../item/itemSection";
+import * as S from "./styles";
 
 const DictionaryCompare = ({ leftId, rightId }) => {
     const [leftItem, setLeftItem] = useState(null);
@@ -25,7 +25,7 @@ const DictionaryCompare = ({ leftId, rightId }) => {
 
             setLeftItem(leftResponse.data);
             setRightItem(rightResponse.data);
-            if(compareDescriptionResponse.data) setCompareDescription(compareDescriptionResponse.data);
+            if(compareDescriptionResponse.data) setCompareDescription(compareDescriptionResponse.data.content);
         } catch (error) {
             console.error(error);
         }
@@ -83,12 +83,13 @@ const DictionaryCompare = ({ leftId, rightId }) => {
                                 color: "var(--color-primary)"
                             }}
                         >비교 설명</p>
-                        <span
+                        <div
                             className="typo-content-1"
                             style={{
-                                color: "var(--color-text-default)"
+                                color: "var(--color-text-default)",
+                                whiteSpace: "preserve"
                             }}
-                        >{compareDescription}</span>
+                        >{compareDescription}</div>
                     </S.ComparisonArea>
                 </S.SubContainer>
             </div>

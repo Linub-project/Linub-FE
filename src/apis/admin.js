@@ -19,3 +19,19 @@ export const getAllRelatedInfo = (id) => {
 export const putRelatedInfo = (id, form) => {
     return api.put(`/api/v1/admin/dictionaries/${id}/relations`, form);
 }
+
+export const refreshStatistics = () => {
+    return api.post("/api/v1/admin/statistics/refresh");
+}
+
+export const getDashboardStatistics = () => {
+    return api.get("/api/v1/admin/statistics/all");
+}
+
+export const createDictionaryComparison = (form) => {
+    return api.post("/api/v1/admin/dictionaries/comparison", form);
+}
+
+export const getAllDictionaryComparison = () => {
+    return api.get("/api/v1/admin/dictionaries/comparison/all");
+}
