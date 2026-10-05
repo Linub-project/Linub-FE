@@ -23,3 +23,7 @@ export const putRelatedInfo = (id, form) => {
 export const refreshStatistics = () => {
     return api.post("/api/v1/admin/statistics/refresh");
 }
+
+export const getDashboardStatistics = () => {
+    return api.get("/api/v1/admin/statistics/all");
+}
