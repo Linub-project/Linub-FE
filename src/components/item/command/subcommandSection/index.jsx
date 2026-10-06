@@ -6,6 +6,7 @@ import TerminalBG from "@/components/common/terminal";
 import { useToast } from "@/contexts/toastContext";
 import { useState } from "react";
 import * as S from "./styles";
+import Tooltip from "@/components/common/tooltip";
 
 const SubcommandSection = ({ id, item }) => {
     const [selectedSubcommand, setSelectedSubcommand] = useState(null);
@@ -231,18 +232,19 @@ const SubcommandSection = ({ id, item }) => {
                                                                                     }}
                                                                                 >
                                                                                     {argument.reference.values?.map((v) => (
-                                                                                        <div
-                                                                                            key={v.id}
-                                                                                            style={{
-                                                                                                backgroundColor: "var(--color-bg-subtle)",
-                                                                                                padding: "2px 6px",
-                                                                                                border: "1px solid var(--color-border)",
-                                                                                                color: "var(--color-warning)"
-                                                                                            }}
-                                                                                            title={v.description}
-                                                                                        >
-                                                                                            {v.value}
-                                                                                        </div>
+                                                                                        <Tooltip text={v.description}>
+                                                                                            <div
+                                                                                                key={v.id}
+                                                                                                style={{
+                                                                                                    backgroundColor: "var(--color-bg-subtle)",
+                                                                                                    padding: "2px 6px",
+                                                                                                    border: "1px solid var(--color-border)",
+                                                                                                    color: "var(--color-warning)"
+                                                                                                }}
+                                                                                            >
+                                                                                                {v.value}
+                                                                                            </div>
+                                                                                        </Tooltip>
                                                                                     ))}
                                                                                 </div>
                                                                             )}
