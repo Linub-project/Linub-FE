@@ -9,6 +9,7 @@ import { DICTIONARY_CATEGORY } from "@/constants/dictionaryCategory";
 import { DICTIONARY_TYPE } from "@/constants/dictionaryType";
 import { useCompareQueue } from "@/contexts/compareQueueContext";
 import { useToast } from "@/contexts/toastContext";
+import { getLegendStyle } from "@/utils/legendStyler";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "./styles";
@@ -168,7 +169,7 @@ const DictionaryList = ({ category }) => {
                                                 <td
                                                     className="typo-title-1"
                                                     style={{
-                                                        color: "var(--color-primary)",
+                                                        color: `var(${getLegendStyle(item.type).text})`,
                                                         whiteSpace: "normal"
                                                     }}
                                                 >{item.topic}</td>
