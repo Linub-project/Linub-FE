@@ -12,6 +12,7 @@ import WrongComponent from "@/components/common/wrong";
 import { AMDIN_SIDEBAR } from "@/constants/adminSidebar";
 import { useParams } from "react-router-dom";
 import * as S from "./styles";
+import AddProblem from "@/components/admin/problemManagement/addProblem";
 
 const AdminPage = () => {
     const { category, action } = useParams();
@@ -49,6 +50,10 @@ const AdminPage = () => {
             return <AdminDictionaryManagement menu={currentMenu} />;
         }
         if (category === "problem") {
+            if (action === "addProblem") {
+                return <AddProblem menu={currentMenu} />;
+            }
+
             return <AdminProblemManagement menu={currentMenu} />;
         }
         if (category === "certification") {

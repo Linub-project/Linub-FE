@@ -2,7 +2,8 @@ const Checkbox = ({
     id,
     label,
     checked,
-    onChange
+    onChange,
+    ...props
 }) => {
     return (
         <label
@@ -13,6 +14,7 @@ const Checkbox = ({
                 cursor: "pointer",
                 userSelect: "none",
             }}
+            {...props}
         >
             <input
                 type="checkbox"
@@ -26,6 +28,8 @@ const Checkbox = ({
                 className={checked ? "typo-title-1" : "typo-content-1"}
                 style={{
                     color: checked ? "var(--color-primary)" : "var(--color-text-default)",
+                    whiteSpace: "nowrap",
+                    userSelect: "none"
                 }}
             >{label}</span>
         </label>
