@@ -17,6 +17,7 @@ export const Time = styled.td`
 export const Keyword = styled.td`
     color: var(--color-primary);
     text-align: center;
+    white-space: preserve;
 `
 
 export const Tag = styled.td`
@@ -27,8 +28,4 @@ export const Tag = styled.td`
 export const Description = styled.td`
     font-size: 14px;
     color: var(--color-text-default);
-
-    @media (max-width: ${breakpoint.medium}) {
-        display: none;
-    }
 `
