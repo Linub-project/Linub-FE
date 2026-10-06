@@ -1,6 +1,7 @@
 import Hr from "@/components/common/layout/hr";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
+import remarkGfm from "remark-gfm";
 import * as S from "./styles";
 
 const ContentSection = ({ id, item }) => {
@@ -12,7 +13,7 @@ const ContentSection = ({ id, item }) => {
             >개요</p>
             <Hr marginBottom="12px" />
             <S.ContentArea className="typo-content-1">
-                <ReactMarkdown remarkPlugins={[remarkBreaks]}>{item.content}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkBreaks, remarkGfm]}>{item.content}</ReactMarkdown>
             </S.ContentArea>
         </S.Container>
     );
