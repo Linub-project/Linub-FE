@@ -1,5 +1,7 @@
-import * as S from "./styles";
 import Hr from "@/components/common/layout/hr";
+import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
+import * as S from "./styles";
 
 const ContentSection = ({ id, item }) => {
     return (
@@ -9,10 +11,9 @@ const ContentSection = ({ id, item }) => {
                 style={{marginBottom: "6px"}}
             >개요</p>
             <Hr marginBottom="12px" />
-            <p
-                className="typo-content-1"
-                style={{color: "var(--color-text-primary)", whiteSpace: "preserve"}}
-            >{item.content}</p>
+            <S.ContentArea className="typo-content-1">
+                <ReactMarkdown remarkPlugins={[remarkBreaks]}>{item.content}</ReactMarkdown>
+            </S.ContentArea>
         </S.Container>
     );
 }
