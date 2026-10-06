@@ -12,16 +12,27 @@ export const Container = styled.div`
 export const ContentArea = styled.section`
     width: 100%;
     color: var(--color-text-default);
+    white-space: normal;
+
+    p {
+        margin: 0 0 10px 0;
+        line-height: 1.6;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
 
     ul {
         padding-left: 0;
-        margin-left: 0;
+        margin: 8px 0;
         list-style: none;
     }
 
     ul > li {
         position: relative;
         padding-left: 14px;
+        line-height: 1.6;
     }
 
     ul > li::before {
