@@ -35,3 +35,7 @@ export const createDictionaryComparison = (form) => {
 export const getAllDictionaryComparison = () => {
     return api.get("/api/v1/admin/dictionaries/comparison/all");
 }
+
+export const createProblem = (form) => {
+    return api.post("/api/v1/admin/problems", form);
+}
