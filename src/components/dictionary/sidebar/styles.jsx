@@ -6,7 +6,7 @@ export const Container = styled.aside`
     flex-direction: column;
     width: 220px;
 
-    @media (max-width: ${breakpoint.xsmall}) {
+    @media (max-width: ${breakpoint.small}) {
         width: 100%;
     }
 `;

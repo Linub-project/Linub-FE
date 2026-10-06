@@ -3,13 +3,14 @@ import { getErrorMessage } from "@/apis/error";
 import compare from "@/assets/icon/icon_compare.svg";
 import { TagChip } from "@/components/common/cardchip/CardChip";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
+import Pagination from "@/components/common/pagination";
 import WrongComponent from "@/components/common/wrong";
 import { DICTIONARY_CATEGORY } from "@/constants/dictionaryCategory";
 import { DICTIONARY_TYPE } from "@/constants/dictionaryType";
 import { useCompareQueue } from "@/contexts/compareQueueContext";
 import { useToast } from "@/contexts/toastContext";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "./styles";
 
 const DictionaryList = ({ category }) => {
@@ -22,12 +23,14 @@ const DictionaryList = ({ category }) => {
     const { add } = useCompareQueue();
     const [dictionaries, setDictionaries] = useState(null);
     const { showToast } = useToast();
-    const [pageable, setPageable] = useState({
-        page: 0,
-        size: 100,
+    const [searchParams, setSearchParams] = useSearchParams();
+    const page = Math.max(Number(searchParams.get("page") ?? 1) - 1, 0);
+    const pageable = {
+        page,
+        size: 20,
         sort: "dictionary.topic",
         direction: "asc"
-    });
+    };
 
     if(!categoryInfo) return <WrongComponent />
 
@@ -51,7 +54,19 @@ const DictionaryList = ({ category }) => {
 
     useEffect(() => {
         fetchDictionaries();
-    }, [category, selectedType, pageable]);
+    }, [category, selectedType, page]);
+
+    const handlePageChange = (page) => {
+        const params = new URLSearchParams(searchParams);
+
+        if (page === 0) {
+            params.delete("page");
+        } else {
+            params.set("page", String(page + 1));
+        }
+
+        setSearchParams(params);
+    };
 
     const handleDictionaryAddToQueue = (item) => {
         add(item);
@@ -122,7 +137,7 @@ const DictionaryList = ({ category }) => {
                         style={{
                             color: "var(--color-text-default)"
                         }}
-                    >{dictionaries?.numberOfElements}개 항목</span>
+                    >{dictionaries?.totalElements}개 항목</span>
                     <div
                         style={{
                             backgroundColor: "var(--white)",
@@ -200,6 +215,11 @@ const DictionaryList = ({ category }) => {
                     </div>
                 </div>
             }
+
+            <Pagination
+                page={dictionaries}
+                onChange={handlePageChange}
+            />
         </S.Container>
     );
 }

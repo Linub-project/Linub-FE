@@ -18,7 +18,7 @@ export const SubContainer = styled.div`
     gap: 64px;
     padding: 40px 24px;
 
-    @media (max-width: ${breakpoint.xsmall}) {
+    @media (max-width: ${breakpoint.small}) {
         flex-direction: column;
     }
 `
