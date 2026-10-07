@@ -209,7 +209,7 @@ const SubcommandSection = ({ id, item }) => {
                                                                                 {argument.description}
                                                                             </div>
                                                                             {
-                                                                                a.constraints &&
+                                                                                argument.constraints &&
                                                                                 <div
                                                                                     className="typo-content-3"
                                                                                     style={{
@@ -219,7 +219,7 @@ const SubcommandSection = ({ id, item }) => {
                                                                                         width: "fit-content",
                                                                                         padding: "2px 6px"
                                                                                     }}
-                                                                                >{a.constraints}</div>
+                                                                                >{argument.constraints}</div>
                                                                             }
                                                                             {argument.reference && (
                                                                                 <div
