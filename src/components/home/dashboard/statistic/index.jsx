@@ -51,7 +51,7 @@ const Statistic = () => {
                                     <S.Value>{stat.command.value}</S.Value>
                                 </tr>
                                 <tr style={{cursor: "default"}}>
-                                    <S.Category>등록된 파일 설명</S.Category>
+                                    <S.Category>등록된 파일</S.Category>
                                     <S.Value>{stat.file.value}</S.Value>
                                 </tr>
                                 <tr style={{cursor: "default"}}>
