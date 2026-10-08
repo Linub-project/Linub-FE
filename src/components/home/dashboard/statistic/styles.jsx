@@ -17,6 +17,7 @@ export const TableArea = styled.div`
 export const Category = styled.td`
     font-size: 14px;
     color: var(--color-text-default);
+    text-align: left;
 `
 
 export const Value = styled.td`

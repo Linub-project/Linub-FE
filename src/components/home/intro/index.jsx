@@ -76,7 +76,9 @@ const HomeIntro = () => {
                         {
                             randomCommand.map((com, idx) => {
                                 return (
-                                    <Chip key={idx}>{com}</Chip>
+                                    <Chip key={idx}
+                                        onClick={() => setSearchText(com)}
+                                    >{com}</Chip>
                                 )
                             })
                         }
