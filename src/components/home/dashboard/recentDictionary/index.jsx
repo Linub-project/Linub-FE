@@ -23,13 +23,7 @@ const RecentDictionary = () => {
                     overflow: "hidden"
                 }}
             >
-                <table>
-                    <colgroup>
-                        <col style={{ width: "20%" }} />
-                        <col style={{ width: "20%" }} />
-                        <col style={{ width: "50%" }} />
-                        <col style={{ width: "10%" }} />
-                    </colgroup>
+                <S.Table>
                     <tbody>
                         {
                             DUMMY_RECENT_DICTIONARY.map((item) => {
@@ -64,7 +58,7 @@ const RecentDictionary = () => {
                             })
                         }
                     </tbody>
-                </table>
+                </S.Table>
             </div>
             <span
                 className="typo-content-3"

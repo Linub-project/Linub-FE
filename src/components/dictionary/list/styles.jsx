@@ -59,6 +59,7 @@ export const Tr = styled.tr`
 `
 
 export const Content = styled.div`
+    text-align: left;
     display: flex;
     flex-direction: column;
     gap: 8px;

@@ -13,6 +13,18 @@ table {
     table-layout: fixed;
 }
 
+th {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-subtle);
+}
+
 tr {
     cursor: pointer;
     &:not(:last-child) {
@@ -29,6 +41,7 @@ td {
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 12px 16px;
+    text-align: center;
 }
 
 a {

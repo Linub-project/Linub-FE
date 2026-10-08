@@ -39,3 +39,21 @@ export const getAllDictionaryComparison = () => {
 export const createProblem = (form) => {
     return api.post("/api/v1/admin/problems", form);
 }
+
+export const getAllProblems = (pageable) => {
+    return api.get("/api/v1/admin/problems/all", {
+        params: {
+            page: pageable.page,
+            size: pageable.size,
+            sort: `${pageable.sort},${pageable.direction}`
+        }
+    });
+}
+
+export const getProblemDetail = (id) => {
+    return api.get(`/api/v1/admin/problems/${id}`);
+}
+
+export const updateProblem = (id, form) => {
+    return api.put(`/api/v1/admin/problems/${id}`, form);
+}

@@ -41,6 +41,7 @@ const ContentSection = ({ id, item }) => {
                                     <tr key={a.id}>
                                         <td
                                             style={{
+                                                textAlign: "left",
                                                 display: "flex",
                                                 flexDirection: "column",
                                                 width: "100%",
@@ -129,9 +130,8 @@ const ContentSection = ({ id, item }) => {
                                                                 }}
                                                             >
                                                                 {a.reference.values?.map((v) => (
-                                                                    <Tooltip text={v.description}>
+                                                                    <Tooltip text={v.description} key={v.id}>
                                                                         <div
-                                                                            key={v.id}
                                                                             style={{
                                                                                 backgroundColor: "var(--color-bg-subtle)",
                                                                                 padding: "2px 6px",
