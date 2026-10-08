@@ -19,4 +19,5 @@ export const Tag = styled.td`
 
 export const Title = styled.td`
     color: var(--neutral-600);
+    text-align: left;
 `

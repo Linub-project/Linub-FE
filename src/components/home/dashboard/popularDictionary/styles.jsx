@@ -44,11 +44,11 @@ export const Keyword = styled.td`
 export const Tag = styled.td`
     width: 20%;
     color: var(--color-text-default);
-    text-align: center;
 `
 
 export const Description = styled.td`
     width: 50%;
     font-size: 14px;
     color: var(--color-text-default);
+    text-align: left;
 `
