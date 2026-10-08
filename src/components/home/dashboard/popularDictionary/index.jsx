@@ -23,18 +23,12 @@ const PopularDictionary = () => {
                     overflow: "hidden"
                 }}
             >
-                <table
+                <S.Table
                     style={{
                         borderCollapse: "collapse",
                         width: "100%"
                     }}
                 >
-                    <colgroup>
-                        <col style={{ width: "10%" }} />
-                        <col style={{ width: "20%" }} />
-                        <col style={{ width: "20%" }} />
-                        <col style={{ width: "50%" }} />
-                    </colgroup>
                     <tbody>
                         {
                             DUMMY_POPULAR_DICTIONARY.map((item) => {
@@ -69,7 +63,7 @@ const PopularDictionary = () => {
                             })
                         }
                     </tbody>
-                </table>
+                </S.Table>
             </div>
             <span
                 className="typo-content-3"

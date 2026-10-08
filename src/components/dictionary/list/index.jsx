@@ -157,7 +157,7 @@ const DictionaryList = ({ category }) => {
                             <colgroup>
                                 <col style={{ width: "120px" }} />
                                 <col />
-                                <col style={{ width: "100px" }} />
+                                <col style={{ width: "60px" }} />
                             </colgroup>
                             <tbody>
                                 {

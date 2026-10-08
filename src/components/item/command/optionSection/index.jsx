@@ -70,6 +70,7 @@ const OptionSection = ({ id, item }) => {
 
                                     <td
                                         style={{
+                                            textAlign: "left",
                                             whiteSpace: "normal",
                                             wordBreak: "break-all",
                                         }}

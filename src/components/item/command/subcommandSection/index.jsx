@@ -202,6 +202,7 @@ const SubcommandSection = ({ id, item }) => {
                                                                             <div
                                                                                 className="typo-content-1"
                                                                                 style={{
+                                                                                    textAlign: "left",
                                                                                     color: "var(--color-text-default)",
                                                                                     whiteSpace: "normal"
                                                                                 }}
@@ -232,9 +233,8 @@ const SubcommandSection = ({ id, item }) => {
                                                                                     }}
                                                                                 >
                                                                                     {argument.reference.values?.map((v) => (
-                                                                                        <Tooltip text={v.description}>
+                                                                                        <Tooltip text={v.description} key={v.id}>
                                                                                             <div
-                                                                                                key={v.id}
                                                                                                 style={{
                                                                                                     backgroundColor: "var(--color-bg-subtle)",
                                                                                                     padding: "2px 6px",

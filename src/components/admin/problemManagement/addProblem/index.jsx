@@ -22,7 +22,7 @@ const AddProblem = () => {
     const [question, setQuestion] = useState("");
     const [image, setImage] = useState(null);
     const [sourceCode, setSourceCode] = useState("");
-    const [selectedLanguage, setSelectedLanguage] = useState(PROBLEM_LANGUAGE[0].key);
+    const [selectedLanguage, setSelectedLanguage] = useState(PROBLEM_LANGUAGE[0].value);
     const [options, setOptions] = useState([
         {content: "", isAnswer: false},
         {content: "", isAnswer: false},
@@ -131,36 +131,86 @@ const AddProblem = () => {
     };
 
     const createProblemForm = () => {
-        return {
-            question,
-            file: image,
-            sourceCode,
-            language: selectedLanguage,
-            type: problemType,
-            explanation: explanation,
-            examSubjectIds: selectedSubject,
-            tags,
+        const formData = new FormData();
 
-            ...(problemType === "MULTIPLE" && {
-                options
-            }),
+        // 기본 정보
+        formData.append("type", problemType);
+        formData.append("question", question);
+        formData.append("explanation", explanation);
+        formData.append("sourceCode", sourceCode);
+        formData.append("language", selectedLanguage);
 
-            ...(problemType === "SHORT" && {
-                shorts
-            })
-        };
+        // 이미지
+        if (image) {
+            formData.append("file", image);
+        }
+
+        // 시험 과목
+        selectedSubject.forEach((id, index) => {
+            formData.append(`examSubjectIds[${index}]`, String(id));
+        });
+
+        // 태그
+        tags.forEach((tag, index) => {
+            formData.append(`tags[${index}]`, tag);
+        });
+
+        // 객관식
+        if (problemType === "MULTIPLE") {
+            options.forEach((option, index) => {
+                formData.append(
+                    `options[${index}].content`,
+                    option.content
+                );
+
+                formData.append(
+                    `options[${index}].isAnswer`,
+                    String(option.isAnswer)
+                );
+            });
+        }
+
+        // 주관식
+        if (problemType === "SHORT") {
+            shorts.forEach((short, index) => {
+                formData.append(
+                    `shorts[${index}].answer`,
+                    short.answer
+                );
+
+                formData.append(
+                    `shorts[${index}].ignoreCase`,
+                    String(short.ignoreCase)
+                );
+
+                formData.append(
+                    `shorts[${index}].type`,
+                    short.type
+                );
+            });
+        }
+
+        return formData;
     };
 
     const handleSubmit = async () => {
+        if (isSend) return;
+
         setIsSend(true);
+        setButtonText("등록 중");
+
         try {
-            const form = createProblemForm();
-            await A.createProblem(form);
-            setTimeout(() => setButtonText("등록 완료"), 3000);
+            const formData = createProblemForm();
+
+            await A.createProblem(formData);
+
+            showToast("문제가 등록되었습니다.");
+            setButtonText("등록 완료");
+
         } catch (error) {
             showToast(getErrorMessage(error));
-        } finally {
             setButtonText("등록");
+        } finally {
             setIsSend(false);
         }
     };
@@ -236,7 +286,7 @@ const AddProblem = () => {
                     className="typo-title-1"
                     style={{color: "var(--color-text-default)"}}
                 >source code</p>
-                <Input
+                <TextArea
                     value={sourceCode}
                     onChange={(e) => setSourceCode(e.target.value)}
                 />
