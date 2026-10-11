@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "@/styles/breakpoint";
 
 export const Container = styled.div`
     position: fixed;
@@ -16,6 +17,13 @@ export const Container = styled.div`
     border-right: 1px solid var(--color-border);
 
     overflow-y: auto;
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        position: static;
+        height: fit-content;
+        border-right: 0;
+        width: 100%;
+    }
 `;
 
 export const MenuArea = styled.div`
@@ -37,6 +45,10 @@ export const Menu = styled.div`
     border-radius: 0;
     white-space: nowrap;
     text-align: left;
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        border-right: none;
+    }
 `
 
 export const BackButton = styled.div`
