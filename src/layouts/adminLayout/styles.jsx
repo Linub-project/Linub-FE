@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "@/styles/breakpoint";
 
 export const Container = styled.div`
     display: flex;
@@ -6,4 +7,8 @@ export const Container = styled.div`
     align-items: center;
     min-height: 100vh;
     width: 100%;
+    
+    @media (max-width: ${breakpoint.xsmall}) {
+        flex-direction: column;
+    }
 `
