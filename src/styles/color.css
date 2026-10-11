@@ -52,12 +52,14 @@
   --color-primary-hover: var(--primary-600);
   --color-primary-pressed: var(--primary-700);
   --color-primary-disabled: var(--primary-150);
+  --color-primary-border: var(--primary-300);
   --color-secondary: var(--secondary-500);
   --color-secondary-bg: var(--secondary-100);
 
   /* Semantic - Text */
   --color-text-primary: var(--neutral-800);
   --color-text-default: var(--neutral-500);
+  --color-text-label: var(--neutral-300);
   --color-text-disabled: var(--neutral-100);
 
   /* Semantic - Background */

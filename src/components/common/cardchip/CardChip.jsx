@@ -37,3 +37,10 @@ export const TopicChip = styled.span`
         background-color: var(--color-bg-subtle);
     }
 `;
+
+export const LevelChip = styled.div`
+    padding: 2px 8px;
+    background-color: ${({$level}) => $level === "1급" ? "var(--neutral-900)" : "var(--neutral-100)"};
+    color: ${({$level}) => $level === "1급" ? "var(--white)" : "var(--neutral-500)"};
+    text-align: center;
+`

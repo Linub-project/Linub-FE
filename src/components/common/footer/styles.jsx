@@ -55,7 +55,7 @@ export const SubmenuArea = styled.div`
 `
 
 export const MenuText = styled.span`
-    color: var(--neutral-700);
+    color: var(--neutral-500);
     cursor: pointer;
     
     &:hover {

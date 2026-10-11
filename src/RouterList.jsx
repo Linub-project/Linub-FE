@@ -6,6 +6,9 @@ import LoginPage from "@/pages/authentication/login";
 import SignupPage from "@/pages/authentication/signup";
 import DictionaryPage from "@/pages/dictionary";
 import DictionaryComparePage from "@/pages/dictionaryCompare";
+import ExamEntryPage from "@/pages/exam/entry";
+import ExamProcessPage from "@/pages/exam/process";
+import ExamResultPage from "@/pages/exam/result";
 import HomePage from "@/pages/home";
 import ItemPage from "@/pages/item";
 import WrongPage from "@/pages/wrong";
@@ -32,6 +35,7 @@ export const RouterList = () => [
         path: "",
         element: <HomePage />,
       },
+
       {
         path: "/dictionary/compare",
         element: <DictionaryComparePage />
@@ -48,10 +52,28 @@ export const RouterList = () => [
         path: "/dictionary/item/:itemId",
         element: <ItemPage />,
       },
+
+      {
+        path: "/exam",
+        element: <Navigate to="/exam/entry" replace />
+      },
+      {
+        path: "/exam/entry",
+        element: <ExamEntryPage />
+      },
+      {
+        path: "/exam/process/:examSessionId",
+        element: <ExamProcessPage />
+      },
+      {
+        path: "/exam/result/:examSessionId",
+        element: <ExamResultPage />
+      },
+
       {
         path: "*",
         element: <WrongPage />
-      }
+      },
     ]
   },
   {
