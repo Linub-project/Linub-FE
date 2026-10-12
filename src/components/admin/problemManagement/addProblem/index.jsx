@@ -130,6 +130,19 @@ const AddProblem = () => {
         setTags(prev => prev.filter(value => value !== tag));
     };
 
+    const handleResetForm = () => {
+        setSelectedSubject([]);
+        setQuestion("");
+        setProblemType("MULTIPLE");
+        setImage(null);
+        setSourceCode("");
+        setSelectedLanguage(PROBLEM_LANGUAGE[0].value);
+        setShorts({answer: "", ignoreCase: true, type: SHORT_ANSWER_TYPE[0].value});
+        setExplanation("");
+        setTags([]);
+        setTagText("");
+    }
+
     const createProblemForm = () => {
         const formData = new FormData();
 
@@ -206,7 +219,7 @@ const AddProblem = () => {
 
             showToast("문제가 등록되었습니다.");
             setButtonText("등록 완료");
-
+            handleResetForm();
         } catch (error) {
             showToast(getErrorMessage(error));
             setButtonText("등록");

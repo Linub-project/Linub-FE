@@ -11,3 +11,15 @@ export const getAllExams = () => {
 export const getAllExamsWithSubjects = () => {
     return api.get("/api/v1/exams/all/subjects/all");
 }
+
+export const freeExam = (form) => {
+    return api.post("/api/v1/exams/sessions/free", form);
+}
+
+export const mockExam = (examId) => {
+    return api.post(`/api/v1/exams/sessions/mock`, examId);
+}
+
+export const getExamSessionProblems = (id) => {
+    return api.get(`/api/v1/exams/sessions/${id}`);
+}
