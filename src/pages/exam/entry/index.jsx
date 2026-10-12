@@ -1,6 +1,7 @@
 import Footer from "@/components/common/footer";
 import ExamEntry from "@/components/examEntry";
 import { useAuth } from "@/contexts/authContext";
+import { Navigate } from "react-router-dom";
 import * as S from "./styles";
 
 const ExamEntryPage = () => {
