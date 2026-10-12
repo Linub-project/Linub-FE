@@ -1,3 +1,4 @@
+import * as E from "@/apis/exam";
 import Button from "@/components/common/button/default";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,11 +23,22 @@ const SummarySection = ({
     }
 
     const handleSubmit = async () => {
+        setIsSend(true);
         try {
-            setIsSend(true);
-            // const response = await E.startExam();
-            setButtonText("준비 완료");
-            navigate(`/exam/process/$`);
+            if(mode === "FREE") {
+                const request = {
+                    scope: scope,
+                    ids: selectedSubjectIds,
+                    count: count
+                }
+                const response = await E.freeExam(request);
+                setButtonText("준비 완료");
+                navigate(`/exam/process/free`);
+            } else if(mode === "MOCK") {
+                const response = await E.mockExam(exam.getId);
+                setButtonText("준비 완료");
+                navigate(`/exam/process/mock/${response.data}`);
+            }
         } catch (error) {
 
         }
