@@ -84,6 +84,25 @@ const AddProblem = () => {
         );
     };
 
+    const handleOptionPaste = (e) => {
+        const text = e.clipboardData.getData("text");
+        const lines = text
+            .split(/\r?\n/)
+            .map(line => line.trim())
+            .filter(line => line.length > 0);
+
+        if (lines.length <= 1) return;
+
+        e.preventDefault();
+
+        setOptions(prev =>
+            prev.map((option, index) => ({
+                ...option,
+                content: lines[index] ?? ""
+            }))
+        );
+    };
+
     const handleAnswerChange = (index) => {
         setOptions(prev =>
             prev.map((option, idx) => ({
@@ -141,6 +160,12 @@ const AddProblem = () => {
         setExplanation("");
         setTags([]);
         setTagText("");
+            setOptions([
+            { content: "", isAnswer: false },
+            { content: "", isAnswer: false },
+            { content: "", isAnswer: false },
+            { content: "", isAnswer: false }
+        ]);
     }
 
     const createProblemForm = () => {
@@ -339,6 +364,7 @@ const AddProblem = () => {
                                     <Input
                                         value={item.content}
                                         onChange={(e) =>handleOptionContentChange(idx, e.target.value)}
+                                        onPaste={idx === 0 ? handleOptionPaste : undefined}
                                     />
                                 </S.OptionArea>
                             ))}
