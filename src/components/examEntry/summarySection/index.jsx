@@ -18,16 +18,6 @@ const SummarySection = ({
     const [isSend, setIsSend] = useState(false);
     const { setProblems } = useExamFree();
 
-    const handleStartExam = async () => {
-        try {
-            const response = await E.createFreeExam(config);
-            setProblems(response.data);
-            navigate("/exam/free");
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
     if(mode === "FREE" && (!scope || selectedSubjectIds.length === 0)) {
         return;
     } else if(mode === "MOCK" && !exam.id) {
@@ -49,9 +39,9 @@ const SummarySection = ({
                 setProblems(response.data);
                 navigate("/exam/free");
             } else if(mode === "MOCK") {
-                const response = await E.mockExam(exam.getId);
+                const response = await E.mockExam(exam.id);
                 setButtonText("준비 완료");
-                navigate(`/exam/process/mock/${response.data}`);
+                navigate(`/exam/mock/${response.data}`);
             }
         } catch (error) {
 
