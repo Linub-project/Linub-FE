@@ -10,6 +10,7 @@ const Button = ({
     loadingText = "저장 중",
     type = "button",
     onClick,
+    ...props
 }) => {
     return (
         <S.StyledButton
@@ -19,6 +20,7 @@ const Button = ({
             type={type}
             onClick={onClick}
             $width={width}
+            {...props}
         >
             {loading ? (
                 <>

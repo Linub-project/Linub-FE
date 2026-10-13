@@ -1,9 +1,8 @@
-import Footer from "@/components/common/footer";
 import { useAuth } from "@/contexts/authContext";
 import { Navigate } from "react-router-dom";
 import * as S from "./styles";
 
-const ExamProcessPage = () => {
+const ExamMockPage = () => {
     const {
         isAuthenticated,
         isAuthReady
@@ -19,9 +18,9 @@ const ExamProcessPage = () => {
 
     return (
         <S.Container>
-            <Footer />
+            
         </S.Container>
     );
 }
 
-export default ExamProcessPage;
+export default ExamMockPage;
