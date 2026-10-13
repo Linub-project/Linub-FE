@@ -40,6 +40,10 @@ export const createProblem = (form) => {
     return api.post("/api/v1/admin/problems", form);
 }
 
+export const createProblemWithFile = (form) => {
+    return api.post("/api/v1/admin/problems/file", form);
+}
+
 export const getAllProblems = (pageable) => {
     return api.get("/api/v1/admin/problems/all", {
         params: {

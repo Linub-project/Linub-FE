@@ -10,6 +10,11 @@ export const DATE_FORMAT = {
   KOREAN_DATE_HOUR: "KOREAN_DATE_HOUR",
 };
 
+export const TIME_FORMAT = {
+  SECOND_TO_MINSEC: "SECOND_TO_MINSEC",
+  SECOND_TO_HMINSEC: "SECOND_TO_HMINSEC"
+};
+
 export const formatDate = (dateString, formatType = DATE_FORMAT.KOREAN_DATE) => {
   if (!dateString) return "";
 
@@ -83,3 +88,16 @@ export const toJavaLocalDateTime = (date = new Date()) => {
     pad(date.getSeconds()),
   ].join("");
 };
+
+export const formatTime = (number, formatType = TIME_FORMAT.SECOND_TO_MINSEC) => {
+  const hours = Math.floor(number / 3600);
+  const minutes = Math.floor(number / 60);
+  const seconds = number % 60;
+
+  switch(formatType) {
+    case TIME_FORMAT.SECOND_TO_MINSEC:
+      return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    case TIME_FORMAT.SECOND_TO_HMINSEC:
+      return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }
+}

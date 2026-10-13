@@ -105,6 +105,18 @@ export const StyledButton = styled.button`
         background-color: var(--color-bg-hover);
       }
     `}
+
+  ${({ $variant }) =>
+    $variant === "septenary" &&
+    css`
+      color: var(--primary-300);
+      border: 1px solid var(--color-primary-border);
+      background-color: var(--neutral-900);
+
+      &:hover {
+        background-color: var(--neutral-800);
+      }
+    `}
 `;
 
 const spin = keyframes`

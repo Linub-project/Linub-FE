@@ -7,7 +7,8 @@ import SignupPage from "@/pages/authentication/signup";
 import DictionaryPage from "@/pages/dictionary";
 import DictionaryComparePage from "@/pages/dictionaryCompare";
 import ExamEntryPage from "@/pages/exam/entry";
-import ExamProcessPage from "@/pages/exam/process";
+import ExamFreePage from "@/pages/exam/free";
+import ExamMockPage from "@/pages/exam/mock";
 import ExamResultPage from "@/pages/exam/result";
 import HomePage from "@/pages/home";
 import ItemPage from "@/pages/item";
@@ -62,8 +63,12 @@ export const RouterList = () => [
         element: <ExamEntryPage />
       },
       {
-        path: "/exam/process/:examSessionId",
-        element: <ExamProcessPage />
+        path: "/exam/free",
+        element: <ExamFreePage />
+      },
+      {
+        path: "/exam/mock/:sessionId",
+        element: <ExamMockPage />
       },
       {
         path: "/exam/result/:examSessionId",
