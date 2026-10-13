@@ -1,18 +1,24 @@
 import clock from "@/assets/icon/icon_clock_white.svg";
 import Button from "@/components/common/button/default";
+import { useExamFree } from "@/contexts/examFreeContext";
 import { formatTime, TIME_FORMAT } from "@/utils/dateFormatter";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const ExamFreeHeader = ({
-    problems
+    problems,
+    showAnswer,
+    setShowAnswer
 }) => {
-    const [answerViewToggle, setAnswerViewToggle] = useState(false);
     const [lasting, setLasting] = useState(0);
+    const { clearProblems } = useExamFree();
+    const navigate = useNavigate();
 
-    const handleAnswerViewToggleClick = () => {
-        setAnswerViewToggle(!answerViewToggle);
-    }
+    const handleExit = () => {
+        clearProblems();
+        navigate("/exam/entry", { replace: true });
+    };
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -57,10 +63,10 @@ const ExamFreeHeader = ({
                         >{formatTime(lasting, TIME_FORMAT.SECOND_TO_HMINSEC)}</span>
                     </div>
                     <Button
-                        text={`정답 · 해설 ${answerViewToggle ? "켜짐" : "꺼짐"}`}
+                        text={`정답 · 해설 ${showAnswer ? "켜짐" : "꺼짐"}`}
                         size="small"
                         variant="septenary"
-                        onClick={handleAnswerViewToggleClick}
+                        onClick={() => setShowAnswer(!showAnswer)}
                         style={{fontSize: "12px"}}
                     />
                     <Button
@@ -68,6 +74,7 @@ const ExamFreeHeader = ({
                         size="small"
                         variant="quinary"
                         style={{fontSize: "12px"}}
+                        onClick={handleExit}
                     />
                 </S.RightArea>
             </S.SubContainer>

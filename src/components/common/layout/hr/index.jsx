@@ -1,11 +1,12 @@
 const Hr = ({
     marginTop = "0",
-    marginBottom = "0"
+    marginBottom = "0",
+    bg = "var(--neutral-100)"
 }) => {
     return (
         <hr
             style={{
-                backgroundColor: "var(--neutral-100)",
+                backgroundColor: bg,
                 height: "1px",
                 border: "none",
                 width: "100%",

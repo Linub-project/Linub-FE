@@ -18,4 +18,14 @@ export const SubContainer = styled.div`
     max-width: 1200px;
     padding: 40px 24px;
     flex: 1;
+    gap: 32px;
+`
+
+export const SSubContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1;
+    gap: 32px;
 `

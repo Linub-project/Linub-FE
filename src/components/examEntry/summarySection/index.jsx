@@ -1,5 +1,6 @@
 import * as E from "@/apis/exam";
 import Button from "@/components/common/button/default";
+import { useExamFree } from "@/contexts/examFreeContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
@@ -15,6 +16,17 @@ const SummarySection = ({
     const navigate = useNavigate();
     const [buttonText, setButtonText] = useState("시험 시작");
     const [isSend, setIsSend] = useState(false);
+    const { setProblems } = useExamFree();
+
+    const handleStartExam = async () => {
+        try {
+            const response = await E.createFreeExam(config);
+            setProblems(response.data);
+            navigate("/exam/free");
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     if(mode === "FREE" && (!scope || selectedSubjectIds.length === 0)) {
         return;
@@ -28,12 +40,14 @@ const SummarySection = ({
             if(mode === "FREE") {
                 const request = {
                     scope: scope,
+                    type: "MULTIPLE",
                     ids: selectedSubjectIds,
                     count: count
                 }
                 const response = await E.freeExam(request);
                 setButtonText("준비 완료");
-                navigate(`/exam/process/free`);
+                setProblems(response.data);
+                navigate("/exam/free");
             } else if(mode === "MOCK") {
                 const response = await E.mockExam(exam.getId);
                 setButtonText("준비 완료");
