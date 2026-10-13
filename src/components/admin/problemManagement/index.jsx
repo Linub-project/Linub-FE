@@ -74,6 +74,11 @@ const AdminProblemManagement = ({menu}) => {
                     size="small"
                     onClick={() => navigate("/admin/problem/addProblem")}
                 />
+                <Button
+                    text="+ Problem(File)"
+                    size="small"
+                    onClick={() => navigate("/admin/problem/addProblemWithFile")}
+                />
             </div>
             <div
                 style={{

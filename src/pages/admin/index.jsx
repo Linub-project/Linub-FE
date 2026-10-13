@@ -13,6 +13,7 @@ import { AMDIN_SIDEBAR } from "@/constants/adminSidebar";
 import { useParams } from "react-router-dom";
 import * as S from "./styles";
 import AddProblem from "@/components/admin/problemManagement/addProblem";
+import AddProblemWithFile from "@/components/admin/problemManagement/addProblemWithFile";
 
 const AdminPage = () => {
     const { category, action } = useParams();
@@ -52,6 +53,10 @@ const AdminPage = () => {
         if (category === "problem") {
             if (action === "addProblem") {
                 return <AddProblem menu={currentMenu} />;
+            }
+
+            if(action === "addProblemWithFile") {
+                return <AddProblemWithFile menu={currentMenu} />
             }
 
             return <AdminProblemManagement menu={currentMenu} />;
