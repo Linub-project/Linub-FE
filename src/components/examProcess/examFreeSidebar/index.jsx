@@ -104,6 +104,7 @@ const ExamFreeSidebar = ({
                     size="small"
                     width="100%"
                     onClick={handleExit}
+                    variant="quinary"
                 />
             </div>
         </S.Container>

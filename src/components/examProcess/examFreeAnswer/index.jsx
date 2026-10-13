@@ -52,7 +52,7 @@ const ExamFreeAnswer = ({
                         color: "var(--color-primary)"
                     }}
                 >해설</span>
-                <p className="typo-content-1">
+                <p className="typo-content-1" style={{color: "var(--color-text-primary)"}}>
                     {problem.explanation || "등록된 해설이 없습니다."}
                 </p>
             </div>

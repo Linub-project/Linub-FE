@@ -9,6 +9,10 @@ export const Container = styled.div`
     width: fit-content;
     background-color: var(--white);
     border: 1px solid var(--color-border);
+
+    @media (max-width: ${breakpoint.small}) {
+        width: 100%;
+    }
 `
 
 export const ProblemArea = styled.div`
@@ -16,6 +20,15 @@ export const ProblemArea = styled.div`
     grid-template-columns: repeat(5, 1fr);
     padding: 12px 16px;
     gap: 8px;
+    width: 100%;
+    
+    @media (max-width: ${breakpoint.small}) {
+        grid-template-columns: repeat(10, 1fr);
+    }
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        grid-template-columns: repeat(5, 1fr);
+    }
 `
 
 export const ProblemItem = styled.button`
