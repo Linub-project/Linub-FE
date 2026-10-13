@@ -6,6 +6,10 @@ const TerminalBG = ({
 }) => {
     const { showToast } = useToast();
 
+    const displayContent = language === "SHELL"
+        ? content.split("\n").map(line => `$ ${line}`).join("\n")
+        : content;
+
     const handleCopyToClipBoard = () => {
         navigator.clipboard.writeText(content);
         showToast("클립보드에 복사 완료");
@@ -21,12 +25,12 @@ const TerminalBG = ({
                 backgroundColor: "var(--color-terminal-bg)",
                 borderRadius: "6px",
                 cursor: "pointer",
-                whiteSpace: "normal",
+                whiteSpace: "pre-wrap",
                 wordBreak: "break-all"
             }}
             title="클릭하여 복사"
             onClick={() => handleCopyToClipBoard()}
-        >{language === "SHELL" ? "$ " : ""}{content}</div>
+        >{displayContent}</div>
     );
 }
 

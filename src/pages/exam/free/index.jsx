@@ -1,7 +1,11 @@
+import ExamFreeAnswer from "@/components/examProcess/examFreeAnswer";
 import ExamFreeHeader from "@/components/examProcess/examFreeHeader";
-import problems from "@/constants/linub_notes_100.json";
+import ExamFreeProblem from "@/components/examProcess/examFreeProblem";
+import ExamFreeSidebar from "@/components/examProcess/examFreeSidebar";
 import { useAuth } from "@/contexts/authContext";
-import { Navigate, useLocation } from "react-router-dom";
+import { useExamFree } from "@/contexts/examFreeContext";
+import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import * as S from "./styles";
 
 const ExamFreePage = () => {
@@ -9,8 +13,24 @@ const ExamFreePage = () => {
         isAuthenticated,
         isAuthReady
     } = useAuth();
-    const { state } = useLocation();
+    const { problems } = useExamFree();
+    const [selectedAnswers, setSelectedAnswers] = useState({});
+    const [selectedProblem, setSelectedProblem] = useState(0);
+    const [showAnswer, setShowAnswer] = useState(false);
 
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = "";
+        };
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, []);
+    
     if (!isAuthReady) {
         return null;
     }
@@ -19,15 +39,40 @@ const ExamFreePage = () => {
         return <Navigate to="/login" replace />;
     }
 
-    // if (!state) {
-    //     return <Navigate to="/exam/entry" replace />;
-    // }
+    if (problems.length === 0) {
+        return <Navigate to="/exam/entry" replace />;
+    }
 
     return (
         <S.Container>
-            <ExamFreeHeader problems={problems.problems} />
+            <ExamFreeHeader
+                problems={problems} 
+                showAnswer={showAnswer}
+                setShowAnswer={setShowAnswer}
+            />
             <S.SubContainer>
-                asdf
+                <S.SSubContainer>
+                    <ExamFreeProblem
+                        problems={problems}
+                        selectedProblem={selectedProblem}
+                        setSelectedProblem={setSelectedProblem}
+                        selectedAnswers={selectedAnswers}
+                        setSelectedAnswers={setSelectedAnswers}
+                    />
+                    {
+                        showAnswer &&
+                            <ExamFreeAnswer
+                                problems={problems}
+                                selectedProblem={selectedProblem}
+                            />
+                    }
+                </S.SSubContainer>
+                <ExamFreeSidebar
+                    problems={problems}
+                    selectedProblem={selectedProblem}
+                    setSelectedProblem={setSelectedProblem}
+                    selectedAnswers={selectedAnswers}
+                />
             </S.SubContainer>
         </S.Container>
     );
