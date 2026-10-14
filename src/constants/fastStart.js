@@ -11,14 +11,14 @@ export const FastStartMenu = [
         title: "문제 풀기",
         description: "자유 학습 모드",
         color: "secondary",
-        path: "/exam?type=free"
+        path: "/exam/entry"
     },
     {
         icon: "📝",
         title: "모의시험",
         description: "리눅스마스터 모의 시험",
         color: "neutral",
-        path: "/exam?type=mock"
+        path: "/exam/entry?mode=mock"
     },
     {
         icon: "⌨️",

@@ -17,9 +17,23 @@ export const freeExam = (form) => {
 }
 
 export const mockExam = (examId) => {
-    return api.post(`/api/v1/exams/sessions/mock`, examId);
+    return api.post(`/api/v1/exams/sessions/mock`, JSON.stringify(examId), {headers: {"Content-Type": "application/json"}});
 }
 
 export const getExamSessionProblems = (id) => {
+    return api.get(`/api/v1/exams/sessions/problems/${id}`);
+}
+
+export const getExamSession = (id) => {
     return api.get(`/api/v1/exams/sessions/${id}`);
 }
+
+export const updateExamSession = (id, form) => {
+    return api.patch(`/api/v1/exams/sessions/${id}`, form);
+}
+
+export const updateExamSessionProblems = (id, problemId, optionId) => {
+    return api.patch(
+        `/api/v1/exams/sessions/${id}/problems/${problemId}`, null, {params: {optionId: optionId}}
+    );
+};
