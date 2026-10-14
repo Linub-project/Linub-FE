@@ -31,7 +31,7 @@ const ExamMockHeader = ({
 
             await E.updateExamSession(examSession.id, request);
             setButtonText("제출 완료");
-            navigate(`/exam/result/${examSession.id}`, { replace: true });
+            navigate(`/mypage/exam/result/${examSession.id}`, { replace: true });
         } catch (error) {
 
         } finally {

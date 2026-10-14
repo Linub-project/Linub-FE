@@ -14,18 +14,22 @@ const ModeSection = ({ mode, setMode }) => {
                     className={mode === "MOCK" ? "typo-title-1" : "typo-content-1"}
                 >시험 모드</S.ModeItem>
             </S.ModeArea>
-            <div>
-                {
-                    descriptions.map((item, idx) => (
-                        <S.Description key={idx}
-                            className="typo-content-2"
-                            style={{color: "var(--color-text-default)"}}
-                        >
+            <S.DescriptionArea>
+                <S.DescriptionTitle className="typo-content-2">
+                    시험 시작 전!
+                </S.DescriptionTitle>
+                {descriptions.map((item, idx) => (
+                    <S.Description key={idx}>
+                        <S.DescriptionNumber>
+                            {String(idx + 1).padStart(2, "0")}
+                        </S.DescriptionNumber>
+
+                        <span className="typo-content-2">
                             {item}
-                        </S.Description>
-                    ))
-                }
-            </div>
+                        </span>
+                    </S.Description>
+                ))}
+            </S.DescriptionArea>
         </S.Container>
     );
 }

@@ -2,6 +2,7 @@ import * as E from "@/apis/exam";
 import Button from "@/components/common/button/default";
 import Hr from "@/components/common/layout/hr";
 import { useExamFree } from "@/contexts/examFreeContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 

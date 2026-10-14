@@ -14,7 +14,8 @@ import Image from "@/components/common/image";
 import Hr from "@/components/common/layout/hr";
 import TerminalBG from "@/components/common/terminal";
 import { useToast } from "@/contexts/toastContext";
-import { useState } from "react";
+import { shuffleArray } from "@/utils/shuffle";
+import { useMemo, useState } from "react";
 import * as S from "./styles";
 
 const OPTION_ICON = [
@@ -104,6 +105,10 @@ const ExamMockProblem = ({
         }
     };
 
+    const shuffledOption = useMemo(() => {
+        return shuffleArray([...problem.options]);
+    }, [problem.id]);
+
     return (
         <S.Container>
             <S.TopArea>
@@ -159,7 +164,7 @@ const ExamMockProblem = ({
                         <TerminalBG content={problem.sourceCode} language={problem.language}/>
                 }
                 <S.OptionArea>
-                    {problem.options.map((option, idx) => {
+                    {shuffledOption.map((option, idx) => {
                         const isSelected = selectedAnswers[problem.id] === option.id;
                         return (
                             <S.OptionItem
