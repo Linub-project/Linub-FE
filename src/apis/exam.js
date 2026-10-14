@@ -27,3 +27,13 @@ export const getExamSessionProblems = (id) => {
 export const getExamSession = (id) => {
     return api.get(`/api/v1/exams/sessions/${id}`);
 }
+
+export const updateExamSession = (id, form) => {
+    return api.patch(`/api/v1/exams/sessions/${id}`, form);
+}
+
+export const updateExamSessionProblems = (id, problemId, optionId) => {
+    return api.patch(
+        `/api/v1/exams/sessions/${id}/problems/${problemId}`, null, {params: {optionId: optionId}}
+    );
+};
