@@ -4,7 +4,8 @@ import ExamFreeProblem from "@/components/examProcess/examFreeProblem";
 import ExamFreeSidebar from "@/components/examProcess/examFreeSidebar";
 import { useAuth } from "@/contexts/authContext";
 import { useExamFree } from "@/contexts/examFreeContext";
-import { useEffect, useState } from "react";
+import { shuffleArray } from "@/utils/shuffle";
+import { useEffect, useMemo, useState } from "react";
 import { Navigate } from "react-router-dom";
 import * as S from "./styles";
 
@@ -43,17 +44,24 @@ const ExamFreePage = () => {
         return <Navigate to="/exam/entry" replace />;
     }
 
+    const shuffledProblems = useMemo(() => {
+        return problems.map(problem => ({
+            ...problem,
+            options: shuffleArray(problem.options)
+        }));
+    }, [problems]);
+
     return (
         <S.Container>
             <ExamFreeHeader
-                problems={problems} 
+                problems={shuffledProblems}
                 showAnswer={showAnswer}
                 setShowAnswer={setShowAnswer}
             />
             <S.SubContainer>
                 <S.SSubContainer>
                     <ExamFreeProblem
-                        problems={problems}
+                        problems={shuffledProblems}
                         selectedProblem={selectedProblem}
                         setSelectedProblem={setSelectedProblem}
                         selectedAnswers={selectedAnswers}
@@ -62,13 +70,13 @@ const ExamFreePage = () => {
                     {
                         showAnswer &&
                             <ExamFreeAnswer
-                                problems={problems}
+                                problems={shuffledProblems}
                                 selectedProblem={selectedProblem}
                             />
                     }
                 </S.SSubContainer>
                 <ExamFreeSidebar
-                    problems={problems}
+                    problems={shuffledProblems}
                     selectedProblem={selectedProblem}
                     setSelectedProblem={setSelectedProblem}
                     selectedAnswers={selectedAnswers}

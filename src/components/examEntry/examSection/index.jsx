@@ -63,6 +63,9 @@ const ExamSection = ({
                             disabled={!e.isEligible}
                             onClick={() => handleExamItemClick(e)}
                             $isSelected={isSelected}
+                            style={{
+                                cursor: e.isEligible ? "pointer" : "not-allowed"
+                            }}
                         >
                             <LevelChip $level={getLevel(e.title)}
                                 className="typo-content-4"

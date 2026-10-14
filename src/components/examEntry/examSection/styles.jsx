@@ -38,7 +38,6 @@ export const ExamItem = styled.button`
     padding: 20px;
     border: 1px solid ${({$isSelected}) => $isSelected ? "var(--color-primary-border)" : "var(--color-border)"};
     background-color: ${({$isSelected}) => $isSelected ? "var(--color-primary-bg)" : "var(--white)"};
-    cursor: pointer;
 
     &:hover {
 
