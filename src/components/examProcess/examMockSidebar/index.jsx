@@ -1,3 +1,4 @@
+import * as E from "@/apis/exam";
 import Button from "@/components/common/button/default";
 import Hr from "@/components/common/layout/hr";
 import { useExamFree } from "@/contexts/examFreeContext";
@@ -12,10 +13,27 @@ const ExamMockSidebar = ({
 }) => {
     const navigate = useNavigate();
     const { clearProblems } = useExamFree();
+    const [buttonText, setButtonText] = useState("제출");
+    const [isSend, setIsSend] = useState(false);
 
-    const handleExit = () => {
+    const handleSubmit = async () => {
         clearProblems();
-        navigate("/exam/entry", { replace: true });
+        setIsSend(true);
+        try {
+            setButtonText("제출 중")
+            const request = {
+                status: "COMPLETE",
+                amount: lasting-firstLasting
+            };
+
+            await E.updateExamSession(examSession.id, request);
+            setButtonText("제출 완료");
+            navigate(`/exam/result/${examSession.id}`, { replace: true });
+        } catch (error) {
+
+        } finally {
+            isSend(false);
+        }
     };
 
     return (
@@ -100,10 +118,11 @@ const ExamMockSidebar = ({
                 }}
             >
                 <Button
-                    text="제출"
+                    text={buttonText}
                     size="small"
                     width="100%"
-                    onClick={handleExit}
+                    onClick={handleSubmit}
+                    loading={isSend}
                 />
             </div>
         </S.Container>
