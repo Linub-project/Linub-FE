@@ -85,12 +85,11 @@ const Header = () => {
                     }
                     {isAuthReady && (
                         isAuthenticated ? (
-                            <S.ProfileArea>
+                            <S.ProfileArea onClick={() => navigate("/mypage")}>
                                 <ProfileImage
                                     user={profileUser}
                                     size={30}
                                 />
-
                                 <S.Nickname className="typo-title-1">
                                     {user?.nickname}
                                 </S.Nickname>
