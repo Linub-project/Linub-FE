@@ -1,16 +1,15 @@
+import Aggregation from "@/components/my/aggregation";
+import Profile from "@/components/my/profile";
+import Record from "@/components/my/record";
 import * as S from "./styles";
 
 const My = ({user}) => {
     return (
         <S.Container>
             <S.SubContainer>
-                <S.ProfileArea />
-                <S.RecordArea />
-
-                <S.AggregationArea />
-                <S.AggregationArea />
-                <S.AggregationArea />
-                <S.AggregationArea />
+                <Profile user={user} />
+                <Record user={user} />
+                <Aggregation user={user} />
             </S.SubContainer>
         </S.Container>
     );
