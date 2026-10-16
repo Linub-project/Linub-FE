@@ -1,9 +1,9 @@
-import Aggregation from "@/components/my/aggregation";
-import Profile from "@/components/my/profile";
-import Record from "@/components/my/record";
+import Aggregation from "@/components/my/intro/aggregation";
+import Profile from "@/components/my/intro/profile";
+import Record from "@/components/my/intro/record";
 import * as S from "./styles";
 
-const My = ({user}) => {
+const Intro = ({user}) => {
     return (
         <S.Container>
             <S.SubContainer>
@@ -15,4 +15,4 @@ const My = ({user}) => {
     );
 }
 
-export default My;
+export default Intro;

@@ -23,13 +23,9 @@ const ExamMockHeader = ({
         clearProblems();
         setIsSend(true);
         try {
-            setButtonText("제출 중")
-            const request = {
-                status: "COMPLETE",
-                amount: lasting-firstLasting
-            };
+            setButtonText("제출 중");
 
-            await E.updateExamSession(examSession.id, request);
+            await E.submitExamSession(examSession.id);
             setButtonText("제출 완료");
             navigate(`/mypage/exam/result/${examSession.id}`, { replace: true });
         } catch (error) {
@@ -107,7 +103,7 @@ const ExamMockHeader = ({
                         style={{fontSize: "12px"}}
                         onClick={handleStop}
                         loading={isSend}
-                        />
+                    />
                     <Button
                         text={buttonText}
                         size="small"

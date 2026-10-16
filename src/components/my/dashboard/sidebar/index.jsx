@@ -15,6 +15,7 @@ const MyDashboardSidebar = ({user, selectedMenu}) => {
                     const isSelected = selectedMenu === m.id;
                     return (
                         <S.Category key={idx}
+                            className="typo-content-1"
                             $isSelected={isSelected}
                             onClick={() => navigate(`/mypage/${m.path}`)}
                         >{m.label}</S.Category>

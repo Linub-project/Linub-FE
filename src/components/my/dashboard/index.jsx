@@ -1,11 +1,11 @@
-import Bookmark from "@/components/myDashboard/bookmark";
-import Intro from "@/components/myDashboard/intro";
-import MyDashboardSidebar from "@/components/myDashboard/sidebar";
+import Bookmark from "@/components/my/dashboard/bookmark";
+import Intro from "@/components/my/dashboard/intro";
+import MyDashboardSidebar from "@/components/my/dashboard/sidebar";
 import { MYPAGE_SIDEBAR } from "@/constants/mypageSidebar";
 import { Navigate, useParams } from "react-router-dom";
 import * as S from "./styles";
 
-const MyDashboard = ({user}) => {
+const Dashboard = ({user}) => {
     const { menu = "intro" } = useParams();
     
     const selectedMenu = MYPAGE_SIDEBAR.find(m => m.path === menu)?.id;
@@ -48,4 +48,4 @@ const MyDashboard = ({user}) => {
     );
 }
 
-export default MyDashboard;
+export default Dashboard;

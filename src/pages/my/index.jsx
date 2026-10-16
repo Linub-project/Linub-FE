@@ -1,6 +1,6 @@
 import Footer from "@/components/common/footer";
-import My from "@/components/my";
-import MyDashboard from "@/components/myDashboard";
+import Intro from "@/components/my/intro";
+import Dashboard from "@/components/my/dashboard";
 import { useAuth } from "@/contexts/authContext";
 import { Navigate } from "react-router-dom";
 import * as S from "./styles";
@@ -22,8 +22,8 @@ const MyPage = () => {
 
     return (
         <S.Container>
-            <My user={user} />
-            <MyDashboard user={user} />
+            <Intro user={user} />
+            <Dashboard user={user} />
             <Footer />
         </S.Container>
     );
