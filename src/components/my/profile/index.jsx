@@ -1,6 +1,7 @@
+import certified from "@/assets/icon/icon_certified.svg";
+import Button from "@/components/common/button/default";
 import ProfileImage from "@/components/common/profile";
 import * as S from "./styles";
-import Button from "@/components/common/button/default";
 
 const Profile = ({user}) => {
     return (
@@ -31,9 +32,67 @@ const Profile = ({user}) => {
                 <p
                     className="typo-content-3"
                     style={{
-                        color: "var(--color-text-default)"
+                        color: "var(--color-text-default)",
+                        marginBottom: "16px"
                     }}
-                >2026.02.12 가입</p>
+                >가입일 2026.02.12</p>
+                { // api 호출 필요
+                    !user.isCertified &&
+                        <div
+                            style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                width: "100%",
+                                gap: "8px"
+                            }}
+                        >
+                            <S.CertificationItem>
+                                <img src={certified} width="16px" height="16px" />
+                                <span
+                                    className="typo-title-2"
+                                    style={{
+                                        color: "var(--color-primary)"
+                                    }}
+                                >리눅스마스터 1급</span>
+                            </S.CertificationItem>
+                            <S.CertificationItem>
+                                <img src={certified} width="16px" height="16px" />
+                                <span
+                                    className="typo-title-2"
+                                    style={{
+                                        color: "var(--color-primary)"
+                                    }}
+                                >리눅스마스터 2급</span>
+                            </S.CertificationItem>
+                            <S.CertificationItem>
+                                <img src={certified} width="16px" height="16px" />
+                                <span
+                                    className="typo-title-2"
+                                    style={{
+                                        color: "var(--color-primary)"
+                                    }}
+                                >RHCSA</span>
+                            </S.CertificationItem>
+                            <S.CertificationItem>
+                                <img src={certified} width="16px" height="16px" />
+                                <span
+                                    className="typo-title-2"
+                                    style={{
+                                        color: "var(--color-primary)"
+                                    }}
+                                >LPIC1</span>
+                            </S.CertificationItem>
+                            <S.CertificationItem>
+                                <img src={certified} width="16px" height="16px" />
+                                <span
+                                    className="typo-title-2"
+                                    style={{
+                                        color: "var(--color-primary)"
+                                    }}
+                                >LPIC2</span>
+                            </S.CertificationItem>
+                        </div>
+                }
             </S.InformationArea>
             <Button
                 text="프로필 수정"

@@ -8,7 +8,7 @@ export const Container = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 20px;
+    gap: 24px;
     width: 100%;
 
     background-image:
@@ -36,4 +36,17 @@ export const InformationArea = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    flex: 1;
+`
+
+export const CertificationItem = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--color-primary-border);
+    background-color: var(--color-primary-bg);
+    padding: 4px 12px;
+    color: var(--color-primary);
+    gap: 8px;
+    border-radius: 24px;
 `

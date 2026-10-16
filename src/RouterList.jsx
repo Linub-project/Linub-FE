@@ -78,6 +78,10 @@ export const RouterList = () => [
 
       {
         path: "/mypage",
+        element: <Navigate to="/mypage/intro" replace />
+      },
+      {
+        path: "/mypage/:menu",
         element: <MyPage />
       },
 

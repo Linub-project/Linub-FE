@@ -20,4 +20,9 @@ export const AggregationItem = styled.div`
     padding: 16px;
     width: 100%;
     background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
 `
