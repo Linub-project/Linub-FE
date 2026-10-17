@@ -41,3 +41,7 @@ export const updateExamSessionProblems = (id, problemId, optionId) => {
 export const submitExamSession = (id) => {
     return api.patch(`/api/v1/exams/sessions/${id}`);
 }
+
+export const getExamSessions = () => {
+    return api.get(`/api/v1/exams/sessions`);
+}

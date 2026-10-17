@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import * as S from "./styles";
 import * as ST from "@/apis/statistic";
 import { SkeletonBox } from "@/components/common/skeleton/style";
+import { useEffect, useState } from "react";
+import * as S from "./styles";
 
 const Statistic = () => {
     const [stat, setStat] = useState({});

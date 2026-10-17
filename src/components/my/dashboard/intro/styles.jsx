@@ -52,7 +52,7 @@ export const LatestExamList = styled.div`
     background-color: var(--white);
     border: 1px solid var(--color-border);
     
-    div {
+    & > * {
         border-bottom: 1px solid var(--color-border);
     }
     
@@ -63,5 +63,8 @@ export const LatestExamList = styled.div`
 
 export const LatestExamItem = styled.div`
     display: flex;
-    padding: 12px 16px
+    padding: 16px 24px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 `
