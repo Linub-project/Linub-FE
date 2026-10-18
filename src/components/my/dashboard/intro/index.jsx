@@ -1,4 +1,5 @@
 import * as E from "@/apis/exam";
+import * as P from "@/apis/problem";
 import * as U from "@/apis/user";
 import SessionStatusChip from "@/components/common/cardchip";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
@@ -6,13 +7,13 @@ import NavigateText from "@/components/common/text/navigate";
 import ScoreText from "@/components/common/text/score";
 import Tooltip from "@/components/common/tooltip";
 import { INTRO_AGGREGATION } from "@/constants/introAggregation";
+import { useProblemReview } from "@/contexts/problemReviewContext";
 import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
 import { calculate } from "@/utils/scoreCalculator";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
-import * as P from "@/apis/problem";
-import { useProblemReview } from "@/contexts/problemReviewContext";
+import * as PR from "@/apis/problemRequest";
 
 const Intro = () => {
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ const Intro = () => {
     const [recommendProblems, setRecommendProblems] = useState([]);
     const { setProblems } = useProblemReview();
     const [loading, setLoading] = useState(false);
+    const [requests, setRequests] = useState([]);
 
     const fetchStatistics = async () => {
         try {
@@ -62,10 +64,27 @@ const Intro = () => {
         }
     }
 
+    const fetchProblemRequests = async () => {
+        try {
+            const pageable = {
+                page: 0,
+                size: 3,
+                sort: "createdAt",
+                direction: "DESC"
+            };
+            const response = await PR.getProblemRequest(pageable);
+            setRequests(response.data);
+            console.log(requests)
+        } catch (error) {
+
+        }
+    }
+
     useEffect(() => {
         fetchStatistics();
         fetchLatestExamSession();
         fetchRecommendProblem();
+        fetchProblemRequests();
     }, []);
 
     const handleWrongProblemSelect = async (id) => {
@@ -117,7 +136,10 @@ const Intro = () => {
                                         style={{
                                             cursor: item.status === "STOPPED" || item.status === "IN_PROGRESS" ? "pointer" : "default"
                                         }}
-                                        onClick={() => navigate(`/exam/mock/${item.id}`, {replace: true})}
+                                        onClick={() => {
+                                            if(item.status === "COMPLETED" || item.status === "ABORTED") return;
+                                            navigate(`/exam/mock/${item.id}`, {replace: true})
+                                        }}
                                     >
                                         <div
                                             style={{
@@ -202,7 +224,7 @@ const Intro = () => {
                                         <span
                                             className="typo-title-1"
                                             style={{color: "var(--color-text-primary)"}}
-                                        >Q{idx+1}. {item.question}</span>
+                                        >Q. {item.question}</span>
                                     </S.RecommendProblemItem>
                                 ))
                             }
@@ -225,13 +247,31 @@ const Intro = () => {
                 <p
                     className="typo-title-1"
                     style={{color: "var(--color-text-primary)"}}
-                >심사 진행 중인 내 문제</p>
-            </S.ContentArea>
-            <S.ContentArea>
-                <p
-                    className="typo-title-1"
-                    style={{color: "var(--color-text-primary)"}}
-                >문제 심사</p>
+                >심사 중인 내 문제</p>
+                {
+                    requests.length > 0 ?
+                        <S.ProblemRequestList>
+                            {
+                                requests.map((item) => (
+                                    <S.ProblemRequestItem key={item.id}>
+                                        // 컴포넌트 및 디자인 나중에 구현
+                                    </S.ProblemRequestItem>
+                                ))
+                            }
+                        </S.ProblemRequestList>
+                        :
+                        <EmptyStateGlobal
+                            title="심사 중인 문제가 없습니다."
+                            description="내가 만든 리눅스 문제를 다른 사람들과 공유해보세요."
+                            bg="var(--white)"
+                            border="1px solid var(--color-border)"
+                            minHeight="180px"
+                        />
+                }
+                <NavigateText
+                    text="내가 요청한 문제 전체"
+                    path="/mypage/problem-requests"
+                />
             </S.ContentArea>
         </S.Container>
     );

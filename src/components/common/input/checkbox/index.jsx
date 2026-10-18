@@ -28,7 +28,7 @@ const Checkbox = ({
                 className={checked ? "typo-title-1" : "typo-content-1"}
                 style={{
                     color: checked ? "var(--color-primary)" : "var(--color-text-default)",
-                    whiteSpace: "nowrap",
+                    whiteSpace: "normal",
                     userSelect: "none"
                 }}
             >{label}</span>

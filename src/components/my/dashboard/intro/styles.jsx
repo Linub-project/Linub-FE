@@ -70,6 +70,7 @@ export const LatestExamItem = styled.div`
 
     @media (max-width: ${breakpoint.xsmall}) {
         flex-direction: column;
+        align-items: flex-start;
         gap: 12px;
     }
 
@@ -94,6 +95,35 @@ export const RecommendProblemList = styled.div`
 `
 
 export const RecommendProblemItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 24px;
+    width: 100%;
+    gap: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-bg-hover);
+    }
+`
+
+export const ProblemRequestList = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border: 1px solid var(--color-border);
+    
+    & > * {
+        border-bottom: 1px solid var(--color-border);
+    }
+    
+    :last-child {
+        border-bottom: none;
+    }
+`
+
+export const ProblemRequestItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
