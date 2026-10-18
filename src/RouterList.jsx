@@ -12,6 +12,8 @@ import ExamMockPage from "@/pages/exam/mock";
 import ExamResultPage from "@/pages/exam/result";
 import HomePage from "@/pages/home";
 import ItemPage from "@/pages/item";
+import MyPage from "@/pages/my";
+import ProblemReviewPage from "@/pages/problem/review";
 import WrongPage from "@/pages/wrong";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
@@ -73,6 +75,20 @@ export const RouterList = () => [
       {
         path: "/exam/result/:examSessionId",
         element: <ExamResultPage />
+      },
+
+      {
+        path: "/problem/review",
+        element: <ProblemReviewPage />
+      },
+
+      {
+        path: "/mypage",
+        element: <Navigate to="/mypage/intro" replace />
+      },
+      {
+        path: "/mypage/:menu",
+        element: <MyPage />
       },
 
       {

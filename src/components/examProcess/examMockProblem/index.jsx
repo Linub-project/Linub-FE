@@ -126,7 +126,7 @@ const ExamMockProblem = ({
                     <span
                         className="typo-content-3"
                         style={{color: "var(--color-text-default)"}}
-                    >{Object.keys(selectedAnswers).length}/{problems.length} 답안 작성</span>
+                    >{Object.keys(selectedAnswers).length} / {problems.length} 답안 작성</span>
                 </div>
                 <Button
                     text={buttonText}
@@ -205,7 +205,7 @@ const ExamMockProblem = ({
                 <span className="typo-content-1"
                     style={{color: "var(--color-text-default)"}}
                 >
-                    {selectedProblem + 1}/{problems.length}
+                    {selectedProblem + 1} / {problems.length}
                 </span>
 
                 <div>

@@ -37,13 +37,16 @@ const Range = ({
                 </datalist>
             )}
 
-            <S.LabelArea>
-                {values.map(item => (
-                    <span key={item} className="typo-content-3">
-                        {item}
-                    </span>
-                ))}
-            </S.LabelArea>
+            {
+                list &&
+                    <S.LabelArea>
+                        {values.map(item => (
+                            <span key={item} className="typo-content-3">
+                                {item}
+                            </span>
+                        ))}
+                    </S.LabelArea>
+            }
         </S.Container>
     );
 };

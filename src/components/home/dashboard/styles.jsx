@@ -15,7 +15,7 @@ export const SubContainer = styled.div`
     justify-content: space-between;
     max-width: 1200px;
     width: 100%;
-    gap: 30px;
+    gap: 32px;
     padding: 40px 24px;
 
     @media (max-width: ${breakpoint.small}) {

@@ -37,3 +37,19 @@ export const updateExamSessionProblems = (id, problemId, optionId) => {
         `/api/v1/exams/sessions/${id}/problems/${problemId}`, null, {params: {optionId: optionId}}
     );
 };
+
+export const submitExamSession = (id) => {
+    return api.patch(`/api/v1/exams/sessions/${id}`);
+}
+
+export const getExamSessions = (pageable) => {
+    return api.get(`/api/v1/exams/sessions`,
+        {
+            params: {
+                page: pageable.page,
+                size: pageable.size,
+                sort: `${pageable.sort},${pageable.direction}`
+            }
+        }
+    );
+}

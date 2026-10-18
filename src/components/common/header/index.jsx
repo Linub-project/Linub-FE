@@ -1,4 +1,3 @@
-import profile1 from "@/assets/default/profile/profile1.png";
 import bell_active from "@/assets/icon/icon_bell_active.svg";
 import magnify from "@/assets/icon/icon_magnify.svg";
 import logo from "@/assets/logo.svg";
@@ -46,11 +45,6 @@ const Header = () => {
         fetchSelectedMenu();
     }, [location.pathname]);
 
-    const profileUser = {
-        name: user?.nickname,
-        profileImage: user?.profileImage ?? profile1
-    };
-
     return (
         <S.Container>
             <S.SubContainer>
@@ -85,12 +79,11 @@ const Header = () => {
                     }
                     {isAuthReady && (
                         isAuthenticated ? (
-                            <S.ProfileArea>
+                            <S.ProfileArea onClick={() => navigate("/mypage")}>
                                 <ProfileImage
-                                    user={profileUser}
+                                    user={user}
                                     size={30}
                                 />
-
                                 <S.Nickname className="typo-title-1">
                                     {user?.nickname}
                                 </S.Nickname>

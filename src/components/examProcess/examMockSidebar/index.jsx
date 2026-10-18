@@ -21,13 +21,9 @@ const ExamMockSidebar = ({
         clearProblems();
         setIsSend(true);
         try {
-            setButtonText("제출 중")
-            const request = {
-                status: "COMPLETE",
-                amount: lasting-firstLasting
-            };
-
-            await E.updateExamSession(examSession.id, request);
+            setButtonText("제출 중");
+            
+            await E.submitExamSession(examSession.id);
             setButtonText("제출 완료");
             navigate(`/exam/result/${examSession.id}`, { replace: true });
         } catch (error) {

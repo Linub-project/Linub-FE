@@ -1,10 +1,8 @@
+import NavigateText from "@/components/common/text/navigate";
 import { DUMMY_COMMUNITY } from "@/constants/dummy";
-import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const RecentCommunity = () => {
-    const navigate = useNavigate();
-
     return (
         <S.Container>
             <span
@@ -50,14 +48,10 @@ const RecentCommunity = () => {
                     </tbody>
                 </table>
             </S.TableArea>
-            <span
-                className="typo-content-3"
-                style={{
-                    color: "var(--color-primary)",
-                    cursor: "pointer"
-                }}
-                onClick={() => navigate("/community")}
-            >커뮤니티 이동 →</span>
+            <NavigateText
+                text="커뮤니티로 이동"
+                path="/community"
+            />
         </S.Container>
     );
 }

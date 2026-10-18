@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import NavigateText from "@/components/common/text/navigate";
 import * as S from "./styles";
 
 const StudyFlow = () => {
-    const navigate = useNavigate();
-
     return (
         <S.Container>
             <span
@@ -23,16 +21,10 @@ const StudyFlow = () => {
                     style={{color: "var(--color-text-default)", marginBottom: "6px"}}>
                     시험에서 틀린 문제는 사전으로 다시 학습하고, 배운 명령어는 Linux Lab에서 바로 실행할 수 있습니다. Linub에서는 학습, 확인, 실습이 서로 연결됩니다.
                 </div>
-                <div>
-                    <span
-                        className="typo-content-3"
-                        style={{
-                            color: "var(--color-primary)",
-                            cursor: "pointer"
-                        }}
-                        onClick={() => navigate("/guide")}
-                    >학습 가이드 보기 →</span>
-                </div>
+                <NavigateText
+                    text="학습 가이드 보기"
+                    path="/guide"
+                />
             </div>
         </S.Container>
     );
