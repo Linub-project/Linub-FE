@@ -4,9 +4,10 @@ import MyDashboardSidebar from "@/components/my/dashboard/sidebar";
 import { MYPAGE_SIDEBAR } from "@/constants/mypageSidebar";
 import { Navigate, useParams } from "react-router-dom";
 import * as S from "./styles";
+import ProblemBookmarkDetail from "./detail";
 
 const Dashboard = ({user}) => {
-    const { menu = "intro" } = useParams();
+    const { menu = "intro", id } = useParams();
     
     const selectedMenu = MYPAGE_SIDEBAR.find(m => m.path === menu)?.id;
 
@@ -18,7 +19,7 @@ const Dashboard = ({user}) => {
         if(menu === MYPAGE_SIDEBAR[0].path) {
             return <Intro />
         } else if(menu === MYPAGE_SIDEBAR[1].path) {
-            return <Bookmark />
+            return id ? <ProblemBookmarkDetail /> : <Bookmark />
         } else if(menu === MYPAGE_SIDEBAR[2].path) {
             return <Bookmark />
         } else if(menu === MYPAGE_SIDEBAR[3].path) {

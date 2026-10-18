@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const MyDashboardSidebar = ({user, selectedMenu}) => {
     const navigate = useNavigate();
     const menus = MYPAGE_SIDEBAR.filter(
-        m => !m.auth || user.isCertified
+        m => !m.auth || user.certificated
     );
 
     return (

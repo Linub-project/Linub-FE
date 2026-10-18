@@ -1,7 +1,7 @@
 export const INTRO_AGGREGATION = [
     {
         id: 1,
-        title: "푼 문제",
+        title: "북마크한 문제",
         key: "solveCnt",
     },
     {
