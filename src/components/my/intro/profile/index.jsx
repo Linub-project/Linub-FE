@@ -82,15 +82,6 @@ const Profile = ({user}) => {
                                     }}
                                 >LPIC1</span>
                             </S.CertificationItem>
-                            <S.CertificationItem>
-                                <img src={certified} width="16px" height="16px" />
-                                <span
-                                    className="typo-title-2"
-                                    style={{
-                                        color: "var(--color-primary)"
-                                    }}
-                                >LPIC2</span>
-                            </S.CertificationItem>
                         </div>
                 }
             </S.InformationArea>

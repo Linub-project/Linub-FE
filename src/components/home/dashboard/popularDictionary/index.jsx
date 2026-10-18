@@ -1,10 +1,9 @@
+import NavigateText from "@/components/common/text/navigate";
 import { DUMMY_POPULAR_DICTIONARY } from "@/constants/dummy";
 import { getLegendStyle } from "@/utils/legendStyler";
-import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const PopularDictionary = () => {
-    const navigate = useNavigate();
     
     return (
         <S.Container>
@@ -65,14 +64,10 @@ const PopularDictionary = () => {
                     </tbody>
                 </S.Table>
             </div>
-            <span
-                className="typo-content-3"
-                style={{
-                    color: "var(--color-primary)",
-                    cursor: "pointer"
-                }}
-                onClick={() => navigate("/dictionary")}
-            >전체 사전 보기 →</span>
+            <NavigateText
+                text="전체 사전 보기"
+                path="/dictionary"
+            />
         </S.Container>
     );
 }

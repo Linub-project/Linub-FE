@@ -39,6 +39,7 @@
   /* Red */
   --red-600: #C73D59;
   --red-500: #E24666;
+  --red-300: #ffcece;
   --red-100: #FFEBEB;
 
   /* Yellow */
@@ -76,11 +77,12 @@
   --color-warning-bg: var(--yellow-100);
   --color-warning-text: var(--yellow-900);
   --color-red-disabled: var(--red-100);
-
+  
   /* Semantic - Danger */
   --color-danger: var(--red-500);
   --color-danger-bg: var(--red-100);
   --color-danger-hover: var(--red-600);
+  --color-danger-border: var(--red-300);
   --color-danger-disabled: var(--red-100);
 
   /* Semantic - Terminal */

@@ -1,10 +1,10 @@
 import Hr from "@/components/common/layout/hr";
+import Progressbar from "@/components/common/progressbar";
 import * as S from "./styles";
 
 const Record = ({user}) => {
     const target = 100;
     const curr = 22;
-    const rate = curr/target*100;
 
     return (
         <S.Container>
@@ -74,23 +74,11 @@ const Record = ({user}) => {
                         {curr} / {target} 문제
                     </p>
                 </div>
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        width: "100%",
-                        height: "6px",
-                        backgroundColor: "var(--color-border)"
-                    }}
-                >
-                    <div
-                        style={{
-                            height: "100%",
-                            width: `${rate}%`,
-                            backgroundColor: "var(--color-primary)"
-                        }}
-                    />
-                </div>
+                <Progressbar
+                    min={0}
+                    max={target}
+                    value={curr}
+                />
             </div>
         </S.Container>
     );

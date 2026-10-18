@@ -1,6 +1,7 @@
 import { AuthProvider } from "@/contexts/authContext.jsx";
 import { CompareQueueProvider } from "@/contexts/compareQueueContext";
 import { ExamFreeProvider } from '@/contexts/examFreeContext.jsx';
+import { ProblemReviewProvider } from "@/contexts/problemReviewContext.jsx";
 import { ToastProvider } from "@/contexts/toastContext";
 import '@/styles/color.css';
 import '@/styles/font.css';
@@ -18,7 +19,9 @@ createRoot(document.getElementById('root')).render(
       <ToastProvider>
         <CompareQueueProvider>
           <ExamFreeProvider>
-            <App />
+            <ProblemReviewProvider>
+              <App />
+            </ProblemReviewProvider>
           </ExamFreeProvider>
         </CompareQueueProvider>
       </ToastProvider>

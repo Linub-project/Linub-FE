@@ -2,7 +2,8 @@ const EmptyStateGlobal = ({
     title = "등록된 항목이 없습니다.",
     description = "새로운 항목이 추가되면 여기에 표시됩니다.",
     border = "none",
-    bg
+    bg,
+    minHeight = "240px"
 }) => {
     return (
         <div
@@ -13,7 +14,7 @@ const EmptyStateGlobal = ({
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "12px",
-                minHeight: "240px",
+                minHeight: minHeight,
                 border: border,
                 backgroundColor: bg
             }}

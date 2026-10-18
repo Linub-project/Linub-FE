@@ -42,6 +42,14 @@ export const submitExamSession = (id) => {
     return api.patch(`/api/v1/exams/sessions/${id}`);
 }
 
-export const getExamSessions = () => {
-    return api.get(`/api/v1/exams/sessions`);
+export const getExamSessions = (pageable) => {
+    return api.get(`/api/v1/exams/sessions`,
+        {
+            params: {
+                page: pageable.page,
+                size: pageable.size,
+                sort: `${pageable.sort},${pageable.direction}`
+            }
+        }
+    );
 }

@@ -1,4 +1,5 @@
 import { getErrorCode, getErrorMessage } from "@/apis/error";
+import * as P from "@/apis/problem";
 import four_default from "@/assets/icon/icon_four_default.svg";
 import four_primary from "@/assets/icon/icon_four_primary.svg";
 import one_default from "@/assets/icon/icon_one_default.svg";
@@ -14,7 +15,6 @@ import TerminalBG from "@/components/common/terminal";
 import { useToast } from "@/contexts/toastContext";
 import { useState } from "react";
 import * as S from "./styles";
-import * as P from "@/apis/problem";
 
 const OPTION_ICON = [
     {
@@ -101,7 +101,7 @@ const ExamFreeProblem = ({
                     <span
                         className="typo-content-3"
                         style={{color: "var(--color-text-default)"}}
-                    >{Object.keys(selectedAnswers).length}/{problems.length} 답안 작성</span>
+                    >{Object.keys(selectedAnswers).length} / {problems.length} 답안 작성</span>
                 </div>
                 <Button
                     text={buttonText}
@@ -167,7 +167,7 @@ const ExamFreeProblem = ({
                 <span className="typo-content-1"
                     style={{color: "var(--color-text-default)"}}
                 >
-                    {selectedProblem + 1}/{problems.length}
+                    {selectedProblem + 1} / {problems.length}
                 </span>
 
                 <div>

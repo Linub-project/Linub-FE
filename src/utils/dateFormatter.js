@@ -8,6 +8,7 @@ export const DATE_FORMAT = {
   KOREAN_DATE_TIME_WITH_SECONDS: "KOREAN_DATE_TIME_WITH_SECONDS",
   SMART_DATE_TIME_WITH_SECONDS: "SMART_DATE_TIME_WITH_SECONDS",
   KOREAN_DATE_HOUR: "KOREAN_DATE_HOUR",
+  DOT_DATE_TIME: "DOT_DATE_TIME",
 };
 
 export const TIME_FORMAT = {
@@ -65,6 +66,9 @@ export const formatDate = (dateString, formatType = DATE_FORMAT.KOREAN_DATE) => 
 
     case DATE_FORMAT.KOREAN_DATE_HOUR:
       return `${year}년 ${month}월 ${day}일 ${hour}시`;
+
+    case DATE_FORMAT.DOT_DATE_TIME:
+      return `${year}.${month}.${day} ${hour}:${minute}`;
 
     default:
       return dateString;

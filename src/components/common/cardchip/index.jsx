@@ -3,7 +3,7 @@ import { getSessionStyle } from "@/utils/sessionStyler";
 const SessionStatusChip = ({status}) => {
     return (
         <span
-            className="typo-content-1"
+            className="typo-content-3"
             style={{
                 color: `var(${getSessionStyle(status).text})`,
                 backgroundColor: `var(${getSessionStyle(status).bg})`,
