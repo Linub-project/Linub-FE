@@ -26,6 +26,7 @@ export const BookmarkItem = styled.div`
     justify-content: space-between;
     padding: 12px 16px;
     background-color: var(--white);
+    gap: 8px;
 
     &:hover {
         background-color: var(--color-bg-subtle);

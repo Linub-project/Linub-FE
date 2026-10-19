@@ -37,10 +37,9 @@ const HeaderSection = ({
                     {
                         problems.length === selectedProblem+1 ?
                         <Button
-                            text="학습 중단"
+                            text="학습 종료"
                             size="small"
-                            variant="tertiary"
-                            style={{fontSize: "12px"}}
+                            variant="quinary"
                             onClick={handleExit}
                         />
                         :
@@ -48,7 +47,6 @@ const HeaderSection = ({
                             text="학습 중단"
                             size="small"
                             variant="tertiary"
-                            style={{fontSize: "12px"}}
                             onClick={handleExit}
                         />
                     }

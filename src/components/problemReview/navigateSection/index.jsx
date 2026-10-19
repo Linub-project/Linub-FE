@@ -1,3 +1,4 @@
+import Button from "@/components/common/button/default";
 import * as S from "./styles";
 
 const NavigateSection = ({
