@@ -1,9 +1,12 @@
 import certified from "@/assets/icon/icon_certified.svg";
 import Button from "@/components/common/button/default";
 import ProfileImage from "@/components/common/profile";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const Profile = ({user}) => {
+    const navigate = useNavigate();
+    
     return (
         <S.Container>
             <ProfileImage user={user} size={80} font="24px" />
@@ -85,11 +88,22 @@ const Profile = ({user}) => {
                         </div>
                 }
             </S.InformationArea>
-            <Button
-                text="프로필 수정"
-                variant="tertiary"
-                size="small"
-            />
+            <S.ButtonArea>
+                <Button
+                    text="프로필 수정"
+                    variant="tertiary"
+                    size="small"
+                />
+                {
+                    user.role === "ADMIN" &&
+                        <Button
+                            text="관리자 페이지"
+                            variant="quinary"
+                            size="small"
+                            onClick={() => navigate("/admin")}
+                        />
+                }
+            </S.ButtonArea>
         </S.Container>
     );
 }

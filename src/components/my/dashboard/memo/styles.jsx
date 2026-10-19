@@ -9,7 +9,7 @@ export const Container = styled.div`
     width: 100%;
 `
 
-export const ExamSessionList = styled.div`
+export const MemoList = styled.div`
     display: flex;
     flex-direction: column;
     background-color: var(--white);
@@ -24,12 +24,13 @@ export const ExamSessionList = styled.div`
     }
 `
 
-export const ExamSessionItem = styled.div`
+export const MemoItem = styled.div`
     display: flex;
     padding: 16px 24px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 
     @media (max-width: ${breakpoint.xsmall}) {
         flex-direction: column;

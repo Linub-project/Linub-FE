@@ -1,11 +1,9 @@
 import * as D from "@/apis/dictionary";
-import SessionStatusChip from "@/components/common/cardchip";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
 import Pagination from "@/components/common/pagination";
-import ScoreText from "@/components/common/text/score";
 import Tooltip from "@/components/common/tooltip";
 import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
-import { calculate } from "@/utils/scoreCalculator";
+import { getLegendStyle } from "@/utils/legendStyler";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import * as S from "./styles";
@@ -60,26 +58,27 @@ const Memo = () => {
                     height: "28px"
                 }}
             >
-                <p
-                    className="typo-title-1"
-                    style={{color: "var(--color-text-primary)"}}
-                >메모</p>
+                <div>
+                    <p
+                        className="typo-title-1"
+                        style={{color: "var(--color-text-primary)"}}
+                    >메모</p>
+                    <p
+                        className="typo-content-3"
+                        style={{color: "var(--color-text-default)"}}
+                    >사전에서 작성한 메모를 확인하고, 학습 내용을 다시 복습해보세요.</p>
+                </div>
             </div>
             {
                 sessions?.content?.length > 0 ?
-                    <S.ExamSessionList>
+                    <S.MemoList>
                         {
                             sessions.content.map((item) => {
+                                const legendStyle = getLegendStyle(item.type);
                                 return <Tooltip text={item.status === "IN_PROGRESS" || item.status === "STOPPED" ? "클릭하여 시험 재개" : ""} key={item.id}>
-                                    <S.ExamSessionItem
+                                    <S.MemoItem
                                         className="typo-content-1"
-                                        style={{
-                                            cursor: item.status === "STOPPED" || item.status === "IN_PROGRESS" ? "pointer" : "default"
-                                        }}
-                                        onClick={() => {
-                                            if(item.status === "COMPLETED" || item.status === "ABORTED") return;
-                                            navigate(`/exam/mock/${item.id}`, {replace: true})
-                                        }}
+                                        onClick
                                     >
                                         <div
                                             style={{
@@ -90,54 +89,53 @@ const Memo = () => {
                                                 flex: 1
                                             }}
                                         >
-                                            <div>
-                                                <SessionStatusChip status={item.status} />
-                                            </div>
-                                            <span
-                                                className="typo-title-1"
-                                                style={{color: "var(--color-text-primary)"}}
-                                            >{item.exam}</span>
                                             <div
-                                                className="typo-content-3"
                                                 style={{
                                                     display: "flex",
-                                                    flexWrap: "wrap",
-                                                    gap: "8px"
+                                                    gap: "8px",
+                                                    alignItems: "center"
                                                 }}
                                             >
                                                 <span
-                                                    style={{color: "var(--color-text-label)"}}
-                                                >{formatDate(item.startAt, DATE_FORMAT.KOREAN_DATE_TIME)}</span>
+                                                    className="terminal typo-title-1"
+                                                    style={{
+                                                        color: `var(${legendStyle.text})`,
+                                                    }}
+                                                >
+                                                    {item.topic}
+                                                </span>
                                                 <span
-                                                    style={{color: "var(--color-text-label)"}}
-                                                >·</span>
-                                                <span
-                                                    style={{color: "var(--color-text-label)"}}
-                                                >{Math.round(item.lastingSecond/60)}분 소요</span>
-                                                <span
-                                                    style={{color: "var(--color-text-label)"}}
-                                                >·</span>
-                                                <span
-                                                    style={{color: "var(--color-text-label)"}}
-                                                >{item.correctAnswerCnt+item.wrongAnswerCnt}문항 </span>
-                                                <span
-                                                    style={{color: "var(--color-text-label)"}}
-                                                >·</span>
-                                                <span
-                                                    style={{color: "var(--color-text-label)"}}
-                                                >정답 {item.correctAnswerCnt}문제</span>
+                                                    className="typo-content-3"
+                                                    style={{
+                                                        color: `var(${legendStyle.text})`,
+                                                        backgroundColor: `var(${legendStyle.bg})`,
+                                                        padding: "2px 6px"
+                                                    }}
+                                                >
+                                                    {item.type}
+                                                </span>
                                             </div>
+                                            <span
+                                                className="typo-content-1"
+                                                style={{color: "var(--color-text-default)"}}
+                                            >{item.content}</span>
                                         </div>
-                                        <ScoreText status={item.status} score={calculate(item.correctAnswerCnt+item.wrongAnswerCnt, item.correctAnswerCnt)} />
-                                    </S.ExamSessionItem>
+                                        <span
+                                            className="typo-content-3"
+                                            style={{
+                                                color: "var(--color-text-label)",
+                                                alignSelf: "flex-start"
+                                            }}
+                                        >{formatDate(item.updatedAt, DATE_FORMAT.SMART_DATE)}</span>
+                                    </S.MemoItem>
                                 </Tooltip>
                             })
                         }
-                    </S.ExamSessionList>
+                    </S.MemoList>
                     :
                     <EmptyStateGlobal
-                        title="시험 기록이 존재하지 않습니다."
-                        description="새로운 시험을 시작해보세요."
+                        title="메모가 존재하지 않습니다."
+                        description="학습 중 중요한 내용을 메모로 남겨보세요."
                         minHeight="240px"
                     />
             }

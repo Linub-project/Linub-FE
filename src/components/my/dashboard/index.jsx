@@ -1,4 +1,5 @@
 import Bookmark from "@/components/my/dashboard/bookmark";
+import CertificationRequest from "@/components/my/dashboard/certification";
 import ProblemBookmarkDetail from "@/components/my/dashboard/detail";
 import Intro from "@/components/my/dashboard/intro";
 import Memo from "@/components/my/dashboard/memo";
@@ -34,7 +35,7 @@ const Dashboard = ({user}) => {
         } else if(menu === MYPAGE_SIDEBAR[6].path) {
             return <Bookmark />
         } else if(menu === MYPAGE_SIDEBAR[7].path) {
-            return <Bookmark />
+            return <CertificationRequest />
         } else if(menu === MYPAGE_SIDEBAR[8].path) {
             return <Bookmark />
         } else if(menu === MYPAGE_SIDEBAR[9].path) {

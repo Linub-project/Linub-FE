@@ -60,10 +60,16 @@ const ExamSession = () => {
                     height: "28px"
                 }}
             >
-                <p
-                    className="typo-title-1"
-                    style={{color: "var(--color-text-primary)"}}
-                >시험 기록</p>
+                <div>
+                    <p
+                        className="typo-title-1"
+                        style={{color: "var(--color-text-primary)"}}
+                    >시험 기록</p>
+                    <p
+                        className="typo-content-3"
+                        style={{color: "var(--color-text-default)"}}
+                    >응시한 시험의 결과와 기록을 확인해보세요.</p>
+                </div>
             </div>
             {
                 sessions?.content?.length > 0 ?

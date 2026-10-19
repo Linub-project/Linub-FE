@@ -90,10 +90,16 @@ const WrongProblem = () => {
                     height: "28px"
                 }}
             >
-                <p
-                    className="typo-title-1"
-                    style={{color: "var(--color-text-primary)"}}
-                >틀린 문제</p>
+                <div>
+                    <p
+                        className="typo-title-1"
+                        style={{color: "var(--color-text-primary)"}}
+                    >틀린 문제</p>
+                    <p
+                        className="typo-content-3"
+                        style={{color: "var(--color-text-default)"}}
+                    >시험에서 틀린 문제가 자동으로 기록됩니다.</p>
+                </div>
                 <div
                     className="typo-content-3"
                     style={{
