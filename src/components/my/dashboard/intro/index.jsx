@@ -98,6 +98,19 @@ const Intro = () => {
         }
     }
 
+    const handleResumeExam = async (item) => {
+        if(item.status === "COMPLETED" || item.status === "ABORTED") return;
+        try {
+            const request = {
+                status: "IN_PROGRESS"
+            };
+            await E.updateExamSession(item.id, request);
+            navigate(`/exam/mock/${item.id}`, {replace: true})
+        } catch (error) {
+
+        }
+    }
+
     return (
         <S.Container>
             <S.AggregationArea>
@@ -135,10 +148,7 @@ const Intro = () => {
                                         style={{
                                             cursor: item.status === "STOPPED" || item.status === "IN_PROGRESS" ? "pointer" : "default"
                                         }}
-                                        onClick={() => {
-                                            if(item.status === "COMPLETED" || item.status === "ABORTED") return;
-                                            navigate(`/exam/mock/${item.id}`, {replace: true})
-                                        }}
+                                        onClick={() => handleResumeExam(item)}
                                     >
                                         <div
                                             style={{

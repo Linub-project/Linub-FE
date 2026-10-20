@@ -23,7 +23,7 @@ export const INTRO_AGGREGATION = [
     },
     {
         id: 5,
-        title: "작성한 문제",
+        title: "작성한 게시글",
         key: "problemCnt",
     },
     {

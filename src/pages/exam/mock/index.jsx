@@ -83,11 +83,11 @@ const ExamMockPage = () => {
         return <WrongComponent />
     }
 
-    if(examSession.status !== "IN_PROGRESS") {
-        const title = examSession.status === "STOPPED" ? "현재 중단된 시험입니다." : "이미 종료된 시험입니다.";
-        const description = examSession.status === "STOPPED" ? "마이페이지에서 시험을 재개할 수 있습니다." : "새로운 시험을 시작해주세요.";
-        const path = examSession.status === "STOPPED" ? "/mypage" : "/exam/entry";
-        const label = examSession.status === "STOPPED" ? "마이페이지로 이동" : "시험 시작하기";
+    if(examSession.status === "COMPLETED" || examSession.status === "ABORTED") {
+        const title = "이미 종료된 시험입니다.";
+        const description = "새로운 시험을 시작해주세요.";
+        const path = "/exam/entry";
+        const label = "새로운 시험 시작하기";
 
         return <div
                     style={{
@@ -137,6 +137,7 @@ const ExamMockPage = () => {
                     setSelectedAnswers={setSelectedAnswers}
                 />
                 <ExamMockSidebar
+                    examSession={examSession}
                     problems={problems}
                     selectedProblem={selectedProblem}
                     setSelectedProblem={setSelectedProblem}

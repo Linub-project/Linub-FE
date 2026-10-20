@@ -1,10 +1,28 @@
+import * as U from "@/apis/user";
 import Hr from "@/components/common/layout/hr";
 import Progressbar from "@/components/common/progressbar";
+import { useEffect, useState } from "react";
 import * as S from "./styles";
 
-const Record = ({user}) => {
+const Record = () => {
+    const [studyMaps, setStudyMaps] = useState([]);
+    const [consecutiveDay, setConsecutiveDay] = useState(0);
     const target = 100;
     const curr = 22;
+
+    const fetchStatistics = async () => {
+        try {
+            const response = await U.getRecordStatistic();
+            setStudyMaps(response.data.studyMaps);
+            setConsecutiveDay(response.data.consecutiveDay);
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        fetchStatistics();
+    }, []);
 
     return (
         <S.Container>
@@ -25,7 +43,7 @@ const Record = ({user}) => {
                 <span
                     className="typo-heading-1"
                     style={{color: "var(--color-primary)"}}
-                >{3}</span>
+                >{consecutiveDay}</span>
                 <span
                     className="typo-content-1"
                     style={{color: "var(--color-text-primary)"}}
@@ -33,7 +51,7 @@ const Record = ({user}) => {
             </div>
             <S.WeekArea>
                 {
-                    Array.from({length: 7}).map((item, idx) => {
+                    studyMaps.map((item, idx) => {
                         return (
                             <S.DayItem
                                 key={idx}
@@ -42,7 +60,7 @@ const Record = ({user}) => {
                                     className="typo-content-3"
                                     style={{color: "var(--color-text-default)"}}
                                 >월</span>
-                                <S.MarkItem $ok={idx != 3} $today={idx == 6} />
+                                <S.MarkItem $ok={item} $today={idx == 6} />
                             </S.DayItem>
                         );
                     })
