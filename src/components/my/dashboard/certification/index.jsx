@@ -275,23 +275,33 @@ const CertificationRequest = () => {
                                             </>
                                         )}
                                     </div>
-                                    <span
-                                        className="typo-content-1"
+                                    <div
                                         style={{
-                                            color: `var(${getCertificationStatusStyle(item.status).text})`,
-                                            backgroundColor: `var(${getCertificationStatusStyle(item.status).bg})`,
-                                            padding: "2px 6px",
-                                            alignSelf: "flex-start"
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "flex-end",
+                                            width: "fit-content",
+                                            height: "100%",
+                                            gap: "8px"
                                         }}
-                                    >{`${getCertificationStatusStyle(item.status).value}`}</span>
-                                    {
-                                        item.status !== "WAIT" && <span
-                                            className="typo-content-3"
+                                    >
+                                        <span
+                                            className="typo-content-1"
                                             style={{
-                                                color: "var(--color-text-default)"
+                                                color: `var(${getCertificationStatusStyle(item.status).text})`,
+                                                backgroundColor: `var(${getCertificationStatusStyle(item.status).bg})`,
+                                                padding: "2px 6px"
                                             }}
-                                        >{item.reason}</span>
-                                    }
+                                        >{`${getCertificationStatusStyle(item.status).value}`}</span>
+                                        {
+                                            item.status !== "WAIT" && <span
+                                                className="typo-content-3"
+                                                style={{
+                                                    color: "var(--color-text-default)"
+                                                }}
+                                            >{item.reason}</span>
+                                        }
+                                    </div>
                                 </S.RequestItem>
                             })
                         }

@@ -29,8 +29,9 @@ export const RequestItem = styled.div`
     padding: 16px 24px;
     width: 100%;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
+    height: 100%;
 
     &:hover {
         background-color: var(--color-bg-hover);

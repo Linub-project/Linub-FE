@@ -5,10 +5,11 @@ import Tooltip from "@/components/common/tooltip";
 import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
 import { getLegendStyle } from "@/utils/legendStyler";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "./styles";
 
 const Memo = () => {
+    const navigate = useNavigate();
     const [sessions, setSessions] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
     const page = Math.max(Number(searchParams.get("page") ?? 1) - 1, 0);
@@ -78,7 +79,7 @@ const Memo = () => {
                                 return <Tooltip text={item.status === "IN_PROGRESS" || item.status === "STOPPED" ? "클릭하여 시험 재개" : ""} key={item.id}>
                                     <S.MemoItem
                                         className="typo-content-1"
-                                        onClick
+                                        onClick={() => navigate(`/dictionary/item/${item.dictionaryId}#memo`)}
                                     >
                                         <div
                                             style={{
