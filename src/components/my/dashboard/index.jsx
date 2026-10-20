@@ -1,10 +1,14 @@
 import Bookmark from "@/components/my/dashboard/bookmark";
+import CertificationRequest from "@/components/my/dashboard/certification";
+import ProblemBookmarkDetail from "@/components/my/dashboard/detail";
 import Intro from "@/components/my/dashboard/intro";
+import Memo from "@/components/my/dashboard/memo";
+import ExamSession from "@/components/my/dashboard/session";
 import MyDashboardSidebar from "@/components/my/dashboard/sidebar";
+import WrongProblem from "@/components/my/dashboard/wrong";
 import { MYPAGE_SIDEBAR } from "@/constants/mypageSidebar";
 import { Navigate, useParams } from "react-router-dom";
 import * as S from "./styles";
-import ProblemBookmarkDetail from "./detail";
 
 const Dashboard = ({user}) => {
     const { menu = "intro", id } = useParams();
@@ -21,17 +25,17 @@ const Dashboard = ({user}) => {
         } else if(menu === MYPAGE_SIDEBAR[1].path) {
             return id ? <ProblemBookmarkDetail /> : <Bookmark />
         } else if(menu === MYPAGE_SIDEBAR[2].path) {
-            return <Bookmark />
+            return <WrongProblem />
         } else if(menu === MYPAGE_SIDEBAR[3].path) {
-            return <Bookmark />
+            return <ExamSession />
         } else if(menu === MYPAGE_SIDEBAR[4].path) {
-            return <Bookmark />
+            return <Memo />
         } else if(menu === MYPAGE_SIDEBAR[5].path) {
             return <Bookmark />
         } else if(menu === MYPAGE_SIDEBAR[6].path) {
             return <Bookmark />
         } else if(menu === MYPAGE_SIDEBAR[7].path) {
-            return <Bookmark />
+            return <CertificationRequest />
         } else if(menu === MYPAGE_SIDEBAR[8].path) {
             return <Bookmark />
         } else if(menu === MYPAGE_SIDEBAR[9].path) {

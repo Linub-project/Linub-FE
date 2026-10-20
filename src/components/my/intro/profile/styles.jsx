@@ -50,3 +50,15 @@ export const CertificationItem = styled.div`
     gap: 8px;
     border-radius: 24px;
 `
+
+export const ButtonArea = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 12px;
+
+    @media (max-width: ${breakpoint.small}) {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+`

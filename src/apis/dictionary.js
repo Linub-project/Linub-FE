@@ -19,6 +19,10 @@ export const getSubcommand = (id, subcommandId) => {
     return publicApi.get(`/api/v1/dictionaries/${id}/subcommands/${subcommandId}`);
 };
 
+export const getAllDictionaryMemos = () => {
+    return api.get(`/api/v1/dictionaries/memos`)
+}
+
 export const getDictionaryMemo = (id) => {
     return api.get(`/api/v1/dictionaries/${id}/memo`)
 }

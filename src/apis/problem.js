@@ -30,3 +30,13 @@ export const getProblemWrongListReview = (ids) => {
         }
     });
 }
+
+export const getAllProblemWrongs = (pageable) => {
+    return api.get("/api/v1/problems/wrong", {
+        params: {
+            page: pageable.page,
+            size: pageable.size,
+            sort: `${pageable.sort},${pageable.direction}`
+        }
+    });
+}

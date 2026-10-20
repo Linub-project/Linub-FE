@@ -179,7 +179,7 @@ const AdminDashboard = ({menu}) => {
                             <span
                                 className="typo-heading-2"
                                 style={{color: "var(--color-warning)"}}
-                            >000</span>
+                            >0</span>
                             <span
                                 className="typo-content-3"
                             >명</span>
@@ -200,7 +200,7 @@ const AdminDashboard = ({menu}) => {
                             <span
                                 className="typo-heading-2"
                                 style={{color: "var(--color-warning)"}}
-                            >000</span>
+                            >0</span>
                             <span
                                 className="typo-content-3"
                             >명</span>

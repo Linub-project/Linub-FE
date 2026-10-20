@@ -1,5 +1,6 @@
 import * as E from "@/apis/exam";
 import * as P from "@/apis/problem";
+import * as PR from "@/apis/problemRequest";
 import * as U from "@/apis/user";
 import SessionStatusChip from "@/components/common/cardchip";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
@@ -13,7 +14,6 @@ import { calculate } from "@/utils/scoreCalculator";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
-import * as PR from "@/apis/problemRequest";
 
 const Intro = () => {
     const navigate = useNavigate();
@@ -74,7 +74,6 @@ const Intro = () => {
             };
             const response = await PR.getProblemRequest(pageable);
             setRequests(response.data);
-            console.log(requests)
         } catch (error) {
 
         }

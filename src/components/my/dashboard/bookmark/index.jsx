@@ -55,10 +55,16 @@ const Bookmark = () => {
                     height: "28px"
                 }}
             >
-                <p
-                    className="typo-title-1"
-                    style={{color: "var(--color-text-primary)"}}
-                >북마크한 문제</p>
+                <div>
+                    <p
+                        className="typo-title-1"
+                        style={{color: "var(--color-text-primary)"}}
+                    >북마크한 문제</p>
+                    <p
+                        className="typo-content-3"
+                        style={{color: "var(--color-text-default)"}}
+                    >저장해둔 문제를 언제든 다시 확인해보세요.</p>
+                </div>
                 {
                     removeCandidate.length > 0 &&
                         <Button
