@@ -3,6 +3,7 @@ import CertificationRequest from "@/components/my/dashboard/certification";
 import ProblemBookmarkDetail from "@/components/my/dashboard/detail";
 import Intro from "@/components/my/dashboard/intro";
 import Memo from "@/components/my/dashboard/memo";
+import Posts from "@/components/my/dashboard/posts";
 import ExamSession from "@/components/my/dashboard/session";
 import MyDashboardSidebar from "@/components/my/dashboard/sidebar";
 import WrongProblem from "@/components/my/dashboard/wrong";
@@ -37,7 +38,7 @@ const Dashboard = ({user}) => {
         } else if(menu === MYPAGE_SIDEBAR[7].path) {
             return <CertificationRequest />
         } else if(menu === MYPAGE_SIDEBAR[8].path) {
-            return <Bookmark />
+            return <Posts />
         } else if(menu === MYPAGE_SIDEBAR[9].path) {
             return <Bookmark />
         }
