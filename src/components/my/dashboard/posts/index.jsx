@@ -1,14 +1,15 @@
 import * as C from "@/apis/community";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
 import Pagination from "@/components/common/pagination";
-import Tooltip from "@/components/common/tooltip";
+import { useAuth } from "@/contexts/authContext";
 import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
-import { getLegendStyle } from "@/utils/legendStyler";
+import { getPostTypeStyle } from "@/utils/postTypeStyler";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "./styles";
 
 const Posts = () => {
+    const { user } = useAuth();
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -19,10 +20,15 @@ const Posts = () => {
         sort: 'createdAt',
         direction: "desc"
     };
+    const condition = {
+        userId: user.userId,
+        type: null,
+        keyword: null
+    };
 
     const fetchMyPosts = async () => {
         try {
-            const response = await C.getAllDictionaryMemos(pageable);
+            const response = await C.getPostList(condition, pageable);
             setPosts(response.data);
         } catch (error) {
 
@@ -49,7 +55,7 @@ const Posts = () => {
         setSearchParams(params);
     };
 
-    return (
+    return ( // 게시글 구현 후 수정 필요
         <S.Container>
             <div
                 style={{
@@ -72,71 +78,68 @@ const Posts = () => {
             </div>
             {
                 posts?.content?.length > 0 ?
-                    <S.MemoList>
+                    <S.PostList>
                         {
                             posts.content.map((item) => {
-                                const legendStyle = getLegendStyle(item.type);
-                                return <Tooltip text={item.status === "IN_PROGRESS" || item.status === "STOPPED" ? "클릭하여 시험 재개" : ""} key={item.id}>
-                                    <S.MemoItem
-                                        className="typo-content-1"
-                                        onClick={() => navigate(`/dictionary/item/${item.dictionaryId}#memo`)}
-                                    >
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                alignItems: "flex-start",
-                                                gap: "8px",
-                                                flex: 1
-                                            }}
+                                const postTypeStyle = getPostTypeStyle(item.data.type);
+                                return (
+                                        <S.PostItem
+                                            key={item.id}
+                                            className="typo-content-1"
+                                            onClick={() => navigate(`/community/${item.id}`)}
                                         >
                                             <div
                                                 style={{
                                                     display: "flex",
+                                                    flexDirection: "column",
+                                                    alignItems: "flex-start",
                                                     gap: "8px",
-                                                    alignItems: "center"
+                                                    flex: 1
                                                 }}
                                             >
-                                                <span
-                                                    className="terminal typo-title-1"
+                                                <div
                                                     style={{
-                                                        color: `var(${legendStyle.text})`,
+                                                        display: "flex",
+                                                        gap: "8px",
+                                                        alignItems: "center"
                                                     }}
                                                 >
-                                                    {item.topic}
-                                                </span>
-                                                <span
-                                                    className="typo-content-3"
-                                                    style={{
-                                                        color: `var(${legendStyle.text})`,
-                                                        backgroundColor: `var(${legendStyle.bg})`,
-                                                        padding: "2px 6px"
-                                                    }}
-                                                >
-                                                    {item.type}
-                                                </span>
+                                                    <span
+                                                        className="typo-title-1"
+                                                        style={{
+                                                            color: `var(${postTypeStyle.text})`,
+                                                        }}
+                                                    >
+                                                        {item.title}
+                                                    </span>
+                                                    <span
+                                                        className="typo-content-3"
+                                                        style={{
+                                                            color: `var(${postTypeStyle.text})`,
+                                                            backgroundColor: `var(${postTypeStyle.bg})`,
+                                                            padding: "2px 6px"
+                                                        }}
+                                                    >
+                                                        {postTypeStyle.value}
+                                                    </span>
+                                                </div>
                                             </div>
                                             <span
-                                                className="typo-content-1"
-                                                style={{color: "var(--color-text-default)"}}
-                                            >{item.content}</span>
-                                        </div>
-                                        <span
-                                            className="typo-content-3"
-                                            style={{
-                                                color: "var(--color-text-label)",
-                                                alignSelf: "flex-start"
-                                            }}
-                                        >{formatDate(item.updatedAt, DATE_FORMAT.SMART_DATE)}</span>
-                                    </S.MemoItem>
-                                </Tooltip>
+                                                className="typo-content-3"
+                                                style={{
+                                                    color: "var(--color-text-label)",
+                                                    alignSelf: "flex-start"
+                                                }}
+                                            >{formatDate(item.createdAt, DATE_FORMAT.SMART_DATE)}</span>
+                                        </S.PostItem>
+                                );
                             })
                         }
-                    </S.MemoList>
+                    </S.PostList>
                     :
                     <EmptyStateGlobal
-                        title="메모가 존재하지 않습니다."
-                        description="학습 중 중요한 내용을 메모로 남겨보세요."
+                        title="작성한 게시글이 존재하지 않습니다."
+                        description="궁금한 점이나 다양한 의견을 게시판에 남겨보세요."
                         minHeight="240px"
                     />
             }

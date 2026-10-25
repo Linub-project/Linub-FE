@@ -72,7 +72,7 @@ const Intro = () => {
                 sort: "createdAt",
                 direction: "DESC"
             };
-            const response = await PR.getProblemRequest(pageable);
+            const response = await PR.getMyProblemRequest(pageable);
             setRequests(response.data);
         } catch (error) {
 

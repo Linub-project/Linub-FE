@@ -9,7 +9,7 @@ export const Container = styled.div`
     width: 100%;
 `
 
-export const MemoList = styled.div`
+export const PostList = styled.div`
     display: flex;
     flex-direction: column;
     background-color: var(--white);
@@ -24,7 +24,7 @@ export const MemoList = styled.div`
     }
 `
 
-export const MemoItem = styled.div`
+export const PostItem = styled.div`
     display: flex;
     padding: 16px 24px;
     width: 100%;

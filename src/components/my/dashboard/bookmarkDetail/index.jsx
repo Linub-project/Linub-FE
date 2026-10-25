@@ -1,37 +1,10 @@
 import * as P from "@/apis/problem";
-import four_default from "@/assets/icon/icon_four_default.svg";
-import four_primary from "@/assets/icon/icon_four_primary.svg";
-import one_default from "@/assets/icon/icon_one_default.svg";
-import one_primary from "@/assets/icon/icon_one_primary.svg";
-import three_default from "@/assets/icon/icon_three_default.svg";
-import three_primary from "@/assets/icon/icon_three_primary.svg";
-import two_default from "@/assets/icon/icon_two_default.svg";
-import two_primary from "@/assets/icon/icon_two_primary.svg";
-import { SkeletonBox } from "@/components/common/skeleton/style";
+import Button from "@/components/common/button/default";
+import { OPTION_ICON } from "@/constants/optionIcon";
 import { shuffleArray } from "@/utils/shuffle";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./styles";
-import Button from "@/components/common/button/default";
-
-const OPTION_ICON = [
-    {
-        primary: one_primary,
-        default: one_default
-    },
-    {
-        primary: two_primary,
-        default: two_default
-    },
-    {
-        primary: three_primary,
-        default: three_default
-    },
-    {
-        primary: four_primary,
-        default: four_default
-    },
-]
 
 const ProblemBookmarkDetail = () => {
     const {id} = useParams();
