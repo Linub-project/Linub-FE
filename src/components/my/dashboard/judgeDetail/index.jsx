@@ -114,7 +114,7 @@ const ProblemJudgeDetail = () => {
                                         backgroundColor: "var(--color-secondary-bg)",
                                         padding: "2px 6px"
                                     }}
-                                >{sub.subject}</span>
+                                >{sub.code}. {sub.subject}</span>
                             ))
                         }
                     </div>
@@ -216,19 +216,45 @@ const ProblemJudgeDetail = () => {
                         <S.JudgeList>
                             {
                                 request.judges.map((judge, idx) => (
-                                    <img key={idx}
-                                        src={judge.judge ? judge_accept : judge_reject}
-                                        width="32px"
-                                        height="32px"
-                                    />
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                            gap: "4px"
+                                        }}
+                                    >
+                                        <img key={idx}
+                                            src={judge.judge ? judge_accept : judge_reject}
+                                            width="32px"
+                                            height="32px"
+                                        />
+                                        <span
+                                            className="typo-title-1"
+                                            style={{color: judge.judge ? "var(--color-primary)" : "var(--color-danger)"}}
+                                        >Reviewer {idx+1}{judge.judgeId === user.userId && " (본인)"}</span>
+                                    </div>
                                 ))
                             }{
-                                Array.from({length: 3-request.judges}).map((_, idx) => (
-                                    <img key={idx}
-                                        src={judge_disable}
-                                        width="32px"
-                                        height="32px"
-                                    />
+                                Array.from({length: 3-request.judges.length}).map((_, idx) => (
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                            gap: "4px"
+                                        }}
+                                    >
+                                        <img key={idx}
+                                            src={judge_disable}
+                                            width="32px"
+                                            height="32px"
+                                        />
+                                        <span
+                                            className="typo-title-1"
+                                            style={{color: "var(--color-text-label)"}}
+                                        >Reviewer {request.judges.length+idx+1}</span>
+                                    </div>
                                 ))
                             }
                         </S.JudgeList>

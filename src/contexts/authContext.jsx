@@ -13,6 +13,7 @@ import {
 } from "@/utils/tokenStore";
 
 import {
+    api,
     authApi,
     reissueAccessToken,
 } from "@/apis/instance";
@@ -113,7 +114,9 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await authApi.post("/api/v1/auth/logout");
+            await api.post("/api/v1/auth/logout", null, {
+                withCredentials: true
+            });
         } finally {
             clearAccessToken();
             setUser(null);

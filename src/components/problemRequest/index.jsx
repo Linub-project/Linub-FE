@@ -155,7 +155,7 @@ const ProblemRequest = () => {
                                 text={buttonText}
                                 size="small"
                                 style={{fontSize: "12px"}}
-                                disabled={!validate()}
+                                disabled={currentPage === sequence.length-1 && !validate()}
                                 onClick={handleSubmit}
                             />
                         </div>
@@ -200,7 +200,13 @@ const ProblemRequest = () => {
                                 size="small"
                                 variant={currentPage === sequence.length-1 ? "primary" : "tertiary"}
                                 disabled={currentPage === sequence.length-1 && !validate()}
-                                onClick={() => handlePageChange(1)}
+                                onClick={() => {
+                                    if(currentPage === sequence.length-1) {
+                                        handleSubmit();
+                                    } else {
+                                        handlePageChange(1);
+                                    }
+                                }}
                             />
                         </div>
                     </S.SubContainer>

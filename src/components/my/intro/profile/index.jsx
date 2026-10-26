@@ -1,12 +1,17 @@
 import * as C from "@/apis/certification";
+import { getErrorMessage } from "@/apis/error";
 import certified from "@/assets/icon/icon_certified.svg";
 import Button from "@/components/common/button/default";
 import ProfileImage from "@/components/common/profile";
+import { useAuth } from "@/contexts/authContext";
+import { useToast } from "@/contexts/toastContext";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const Profile = ({user}) => {
+    const { logout } = useAuth();
+    const {showToast} = useToast();
     const navigate = useNavigate();
     const [certs, setCerts] = useState([]);
 
@@ -22,6 +27,16 @@ const Profile = ({user}) => {
     useEffect(() => {
         fetchCertifications();
     }, []);
+
+    const handleLogout = async () => {
+        if(!user) return;
+        try {
+            await logout();
+            navigate("/");
+        } catch (error) {
+            showToast(getErrorMessage(error));
+        }
+    }
     
     return (
         <S.Container>
@@ -91,11 +106,17 @@ const Profile = ({user}) => {
                     user.role === "ADMIN" &&
                         <Button
                             text="관리자 페이지"
-                            variant="quinary"
+                            variant="secondary"
                             size="small"
                             onClick={() => navigate("/admin")}
                         />
                 }
+                <Button
+                    text="로그아웃"
+                    variant="quinary"
+                    size="small"
+                    onClick={handleLogout}
+                />
             </S.ButtonArea>
         </S.Container>
     );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "@/styles/breakpoint";
 
 export const Container = styled.div`
     display: flex;
@@ -57,5 +58,12 @@ export const JudgeList = styled.div`
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
     justify-content: space-between;
+    background-color: var(--color-bg);
     padding: 24px;
+    gap: 12px;
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+    }
 `
