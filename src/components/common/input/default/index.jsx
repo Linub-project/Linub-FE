@@ -13,7 +13,7 @@ const Input = ({
 }) => {
     return (
         <S.Input
-            style={{minHeight: minHeight}}
+            style={{minHeight}}
             value={value}
             placeholder={placeholder}
             onChange={onChange}

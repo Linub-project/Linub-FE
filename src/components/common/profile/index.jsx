@@ -1,20 +1,30 @@
 import { useNavigate } from "react-router-dom";
 
-const ProfileImage = ({user, size, font = "14px", weight = "600"}) => {
+const IMAGE_BASE_URL = `${import.meta.env.VITE_BACKEND_URL}/images`;
+
+const ProfileImage = ({user, size, font = "14px", weight = "600", disableNavigation = false}) => {
     const navigate = useNavigate();
     const first = user.nickname.charAt(0);
+
+    const handleClick = () => {
+        if (!disableNavigation) {
+            navigate("/mypage");
+        }
+    };
+
     return (
         <>
         {
-            user.profileImage ?
-                <img src={user.profileImage} 
+            user.profileUrl ?
+                <img src={`${IMAGE_BASE_URL}/${user.profileUrl}`} 
                     style={{
                         width: size,
                         height: size,
                         borderRadius: "50%",
                         cursor: "pointer",
+                        objectFit: "cover"
                     }}
-                    onClick={() => navigate(`/mypage`)}
+                    onClick={handleClick}
                 />
                 :
                 <div
@@ -32,7 +42,7 @@ const ProfileImage = ({user, size, font = "14px", weight = "600"}) => {
                         fontSize: font,
                         fontWeight: weight,
                     }}
-                    onClick={() => navigate(`/mypage`)}
+                    onClick={handleClick}
                 >
                     {first}
                 </div>

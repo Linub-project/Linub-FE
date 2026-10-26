@@ -15,3 +15,7 @@ export const getProfileStatistic = () => {
 export const getRecordStatistic = () => {
     return api.get("/api/v1/users/record/statistics");
 }
+
+export const updateProfile = (form) => {
+    return api.patch("/api/v1/users/profile", form);
+}

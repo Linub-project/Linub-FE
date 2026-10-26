@@ -169,7 +169,7 @@ const Intro = () => {
                                                 style={{color: "var(--color-text-primary)"}}
                                             >{item.exam}</span>
                                             <span
-                                                className="typo-content-1"
+                                                className="typo-content-3"
                                                 style={{color: "var(--color-text-default)"}}
                                             >시작: {formatDate(item.startAt, DATE_FORMAT.KOREAN_DATE_TIME)}</span>
                                         </div>
@@ -199,7 +199,7 @@ const Intro = () => {
                     style={{color: "var(--color-text-primary)"}}
                 >오늘 다시 풀어볼 문제</p>
                 {
-                    recommendProblems ? 
+                    recommendProblems.length > 0 ? 
                         <S.RecommendProblemList>
                             {
                                 recommendProblems.map((item, idx) => (
@@ -220,7 +220,7 @@ const Intro = () => {
                                         >
                                             <span
                                                 style={{
-                                                    color: "var(--color-text-default)",
+                                                    color: "var(--color-text-label)",
                                                     backgroundColor: "var(--color-bg-subtle)",
                                                     padding: "2px 6px"
                                                 }}
@@ -237,6 +237,10 @@ const Intro = () => {
                                             className="typo-title-1"
                                             style={{color: "var(--color-text-primary)"}}
                                         >Q. {item.question}</span>
+                                        <span
+                                            className="typo-content-3"
+                                            style={{color: "var(--color-text-default)"}}
+                                        >최근 풀이: {formatDate(item.updatedAt, DATE_FORMAT.KOREAN_DATE_TIME)}</span>
                                     </S.RecommendProblemItem>
                                 ))
                             }
