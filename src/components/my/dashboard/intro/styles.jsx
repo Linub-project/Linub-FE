@@ -123,16 +123,31 @@ export const ProblemRequestList = styled.div`
     }
 `
 
-export const ProblemRequestItem = styled.div`
+export const RequestItem = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px 24px;
     width: 100%;
-    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
     cursor: pointer;
+    gap: 16px;
 
     &:hover {
         background-color: var(--color-bg-hover);
     }
+`
+
+export const RequestInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    gap: 8px;
+    padding: 12px 16px;
+`
+
+export const JudgeList = styled.div`
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 16px;
 `

@@ -1,6 +1,9 @@
 import { getErrorMessage } from "@/apis/error";
 import * as PJ from "@/apis/problemJudge";
 import * as PR from "@/apis/problemRequest";
+import judge_accept from "@/assets/icon/icon_judge_accept.svg";
+import judge_disable from "@/assets/icon/icon_judge_disable.svg";
+import judge_reject from "@/assets/icon/icon_judge_reject.svg";
 import Button from "@/components/common/button/default";
 import Image from "@/components/common/image";
 import { TextArea } from "@/components/common/input/textarea/styles";
@@ -12,9 +15,6 @@ import { formatDate } from "@/utils/dateFormatter";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import * as S from "./styles";
-import judge_disable from "@/assets/icon/icon_judge_disable.svg";
-import judge_accept from "@/assets/icon/icon_judge_accept.svg";
-import judge_reject from "@/assets/icon/icon_judge_reject.svg";
 
 const ProblemJudgeDetail = () => {
     const { user } = useAuth();
@@ -218,13 +218,16 @@ const ProblemJudgeDetail = () => {
                                 request.judges.map((judge, idx) => (
                                     <img key={idx}
                                         src={judge.judge ? judge_accept : judge_reject}
+                                        width="32px"
+                                        height="32px"
                                     />
                                 ))
-                            }
-                            {
+                            }{
                                 Array.from({length: 3-request.judges}).map((_, idx) => (
                                     <img key={idx}
                                         src={judge_disable}
+                                        width="32px"
+                                        height="32px"
                                     />
                                 ))
                             }
