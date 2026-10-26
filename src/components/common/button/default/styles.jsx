@@ -117,6 +117,18 @@ export const StyledButton = styled.button`
         background-color: var(--neutral-800);
       }
     `}
+
+  ${({ $variant }) =>
+    $variant === "octonary" &&
+    css`
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      background-color: var(--color-bg);
+
+      &:hover {
+        background-color: var(--color-bg-hover);
+      }
+    `}
 `;
 
 const spin = keyframes`

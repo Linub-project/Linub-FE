@@ -1,39 +1,13 @@
 import { getErrorCode, getErrorMessage } from "@/apis/error";
 import * as P from "@/apis/problem";
-import four_default from "@/assets/icon/icon_four_default.svg";
-import four_primary from "@/assets/icon/icon_four_primary.svg";
-import one_default from "@/assets/icon/icon_one_default.svg";
-import one_primary from "@/assets/icon/icon_one_primary.svg";
-import three_default from "@/assets/icon/icon_three_default.svg";
-import three_primary from "@/assets/icon/icon_three_primary.svg";
-import two_default from "@/assets/icon/icon_two_default.svg";
-import two_primary from "@/assets/icon/icon_two_primary.svg";
 import Button from "@/components/common/button/default";
 import Image from "@/components/common/image";
 import Hr from "@/components/common/layout/hr";
 import TerminalBG from "@/components/common/terminal";
+import { OPTION_ICON } from "@/constants/optionIcon";
 import { useToast } from "@/contexts/toastContext";
 import { useState } from "react";
 import * as S from "./styles";
-
-const OPTION_ICON = [
-    {
-        primary: one_primary,
-        default: one_default
-    },
-    {
-        primary: two_primary,
-        default: two_default
-    },
-    {
-        primary: three_primary,
-        default: three_default
-    },
-    {
-        primary: four_primary,
-        default: four_default
-    },
-]
 
 const ExamFreeProblem = ({
     problems,

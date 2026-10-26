@@ -173,8 +173,8 @@ const CertificationRequest = () => {
                         />
                         {
                             ["LM1", "LM2"].includes(certification) && <>
-                                <p className="typo-content-3" style={{color: "var(--color-text-default)"}}>리눅스마스터 자격증의 경우, 인증 요청을 일정 건수 취합한 후 한국정보통신진흥협회에 일괄적으로 진위 확인을 요청합니다. 따라서 인증 심사 및 처리에 다소 시간이 소요될 수 있습니다.</p>
-                                <p className="typo-content-3" style={{color: "var(--color-text-default)"}}>제출 정보가 일치하지 않거나 진위가 확인되지 않을 경우 인증이 반려될 수 있습니다.</p>
+                                <p className="typo-content-3" style={{color: "var(--color-text-label)"}}>리눅스마스터 자격증의 경우, 인증 요청을 일정 건수 취합한 후 한국정보통신진흥협회에 일괄적으로 진위 확인을 요청합니다. 따라서 인증 심사 및 처리에 다소 시간이 소요될 수 있습니다.</p>
+                                <p className="typo-content-3" style={{color: "var(--color-text-label)"}}>제출 정보가 일치하지 않거나 진위가 확인되지 않을 경우 인증이 반려될 수 있습니다.</p>
                             </>
                         }
                     </div>

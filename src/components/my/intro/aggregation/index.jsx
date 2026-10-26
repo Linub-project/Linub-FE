@@ -1,9 +1,33 @@
+import * as U from "@/apis/user";
 import { PROFILE_AGGREGATION } from "@/constants/profileAggregation";
+import { useEffect, useState } from "react";
 import * as S from "./styles";
 
-const arr = ["총 풀이 문제", "완료한 모의시험", "전체 정답률", "누적 시험 일수"]
+const Aggregation = () => {
+    const [statistic, setStatistic] = useState({
+        totalSolveCnt: 0,
+        increaseSolveCnt: 0,
+        totalCorrectRate: 0,
+        latestCorrectRate: 0,
+        totalExamSession: 0,
+        latestExamSessionScore: 0,
+        totalStudyDay: 0,
+        thisMonthStudyDay: 0
+    });
 
-const Aggregation = ({user}) => {
+    const fetchStatistics = async () => {
+        try {
+            const response = await U.getProfileStatistic();
+            setStatistic(response.data);
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        fetchStatistics();
+    }, []);
+
     return (
         <S.Container>
             {
@@ -25,7 +49,7 @@ const Aggregation = ({user}) => {
                                 <span
                                     className="typo-heading-1"
                                     style={{color: "var(--color-text-primary)", lineHeight: "-2px"}}
-                                >{item.value}</span>
+                                >{statistic[item.key] ?? 0}</span>
                                 <span
                                     className="typo-title-1"
                                     style={{color: "var(--color-text-primary)"}}
@@ -34,7 +58,7 @@ const Aggregation = ({user}) => {
                             <span
                                 className="typo-content-3"
                                 style={{color: "var(--color-text-label)"}}
-                            >{item.compare}</span>
+                            >{item.compare} {statistic[item.compareKey] ?? 0}{item.subunit ?? item.unit}</span>
                         </S.AggregationItem>
                     );
                 })

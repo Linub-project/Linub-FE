@@ -1,7 +1,11 @@
 import { api } from "./instance";
 
 export const getMyCertificationRequests = () => {
-    return api.get("/api/v1/users/certifications");
+    return api.get("/api/v1/users/certifications/requests/all");
+}
+
+export const getMyCertifications = () => {
+    return api.get("/api/v1/users/certifications/all");
 }
 
 export const createCertificationRequest = (form) => {

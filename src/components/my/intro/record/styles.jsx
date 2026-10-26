@@ -32,5 +32,5 @@ export const MarkItem = styled.div`
     width: 20px;
     height: 20px;
     background-color: ${({$ok}) => $ok ? "var(--color-primary)" : "var(--color-border)"};
-    border: 3px solid ${({$today}) => $today ? "var(--primary-300)" : "none"};
+    border: 3px solid ${({$today}) => $today ? "var(--primary-200)" : "none"};
 `

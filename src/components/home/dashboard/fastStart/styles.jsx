@@ -19,7 +19,7 @@ export const MenuArea = styled.div`
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: ${breakpoint.small}) {
+    @media (max-width: ${breakpoint.xsmall}) {
         grid-template-columns: 1fr;
     }
 `;

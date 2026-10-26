@@ -9,9 +9,14 @@ export const TextArea = styled.textarea`
   resize: vertical;
   outline: none;
   height: ${({$h}) => $h};
+  min-height: 36px;
 
   &:focus {
-    border: 1px solid var(--color-primary);
-    box-shadow: var(--shadow-input);
+    border: 1px solid ${({$focusBorder}) => $focusBorder || "var(--color-primary)"};
+    box-shadow: ${({$shadow}) => $shadow || "var(--shadow-input)"};
+  }
+
+  &::placeholder {
+    color: ${({$pc}) => $pc ? $pc : ""};
   }
 `;

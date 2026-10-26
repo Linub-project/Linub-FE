@@ -7,10 +7,11 @@ import Tooltip from "@/components/common/tooltip";
 import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
 import { calculate } from "@/utils/scoreCalculator";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "./styles";
 
 const ExamSession = () => {
+    const navigate = useNavigate();
     const [sessions, setSessions] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
     const page = Math.max(Number(searchParams.get("page") ?? 1) - 1, 0);
@@ -50,6 +51,19 @@ const ExamSession = () => {
         setSearchParams(params);
     };
 
+    const handleResumeExam = async (item) => {
+        if(item.status === "COMPLETED" || item.status === "ABORTED") return;
+        try {
+            const request = {
+                status: "IN_PROGRESS"
+            };
+            await E.updateExamSession(item.id, request);
+            navigate(`/exam/mock/${item.id}`, {replace: true})
+        } catch (error) {
+
+        }
+    }
+
     return (
         <S.Container>
             <div
@@ -82,10 +96,7 @@ const ExamSession = () => {
                                         style={{
                                             cursor: item.status === "STOPPED" || item.status === "IN_PROGRESS" ? "pointer" : "default"
                                         }}
-                                        onClick={() => {
-                                            if(item.status === "COMPLETED" || item.status === "ABORTED") return;
-                                            navigate(`/exam/mock/${item.id}`, {replace: true})
-                                        }}
+                                        onClick={() => handleResumeExam(item)}
                                     >
                                         <div
                                             style={{

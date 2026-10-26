@@ -1,11 +1,14 @@
-import Hr from "../layout/hr";
 import * as S from "./styles";
 
 const Modal = ({
     width = "",
     height = "fit-content",
-    title = "MODAL",
+    title = "",
     onClick,
+    bg = "var(--white)",
+    padding = "16px 24px",
+    maxWidth = "80%",
+    maxHeight = "80%",
     children
 }) => {
     return (
@@ -17,14 +20,21 @@ const Modal = ({
                 style={{
                     width: width,
                     height: height,
+                    backgroundColor: bg,
+                    padding: padding,
+                    maxWidth: maxWidth,
+                    maxHeight: maxHeight
                 }}
             >
-                <p
-                    className="typo-heading-3"
-                    style={{
-                        color: "var(--color-text-primary)"
-                    }}
-                >{title}</p>
+                {
+                    title &&
+                        <p
+                            className="typo-heading-3"
+                            style={{
+                                color: "var(--color-text-primary)"
+                            }}
+                        >{title}</p>
+                }
                 {children}
             </S.Subcontainer>
         </S.Container>

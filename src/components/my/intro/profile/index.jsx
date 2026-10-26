@@ -1,11 +1,42 @@
+import * as C from "@/apis/certification";
+import { getErrorMessage } from "@/apis/error";
 import certified from "@/assets/icon/icon_certified.svg";
 import Button from "@/components/common/button/default";
 import ProfileImage from "@/components/common/profile";
+import { useAuth } from "@/contexts/authContext";
+import { useToast } from "@/contexts/toastContext";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const Profile = ({user}) => {
+    const { logout } = useAuth();
+    const {showToast} = useToast();
     const navigate = useNavigate();
+    const [certs, setCerts] = useState([]);
+
+    const fetchCertifications = async () => {
+        try {
+            const response = await C.getMyCertifications();
+            setCerts(response.data);
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        fetchCertifications();
+    }, []);
+
+    const handleLogout = async () => {
+        if(!user) return;
+        try {
+            await logout();
+            navigate("/");
+        } catch (error) {
+            showToast(getErrorMessage(error));
+        }
+    }
     
     return (
         <S.Container>
@@ -39,7 +70,7 @@ const Profile = ({user}) => {
                         marginBottom: "16px"
                     }}
                 >가입일 2026.02.12</p>
-                { // api 호출 필요
+                {
                     !user.isCertified &&
                         <div
                             style={{
@@ -49,42 +80,19 @@ const Profile = ({user}) => {
                                 gap: "8px"
                             }}
                         >
-                            <S.CertificationItem>
-                                <img src={certified} width="16px" height="16px" />
-                                <span
-                                    className="typo-title-2"
-                                    style={{
-                                        color: "var(--color-primary)"
-                                    }}
-                                >리눅스마스터 1급</span>
-                            </S.CertificationItem>
-                            <S.CertificationItem>
-                                <img src={certified} width="16px" height="16px" />
-                                <span
-                                    className="typo-title-2"
-                                    style={{
-                                        color: "var(--color-primary)"
-                                    }}
-                                >리눅스마스터 2급</span>
-                            </S.CertificationItem>
-                            <S.CertificationItem>
-                                <img src={certified} width="16px" height="16px" />
-                                <span
-                                    className="typo-title-2"
-                                    style={{
-                                        color: "var(--color-primary)"
-                                    }}
-                                >RHCSA</span>
-                            </S.CertificationItem>
-                            <S.CertificationItem>
-                                <img src={certified} width="16px" height="16px" />
-                                <span
-                                    className="typo-title-2"
-                                    style={{
-                                        color: "var(--color-primary)"
-                                    }}
-                                >LPIC1</span>
-                            </S.CertificationItem>
+                            {
+                                certs.map((item, idx) => (
+                                    <S.CertificationItem key={idx}>
+                                        <img src={certified} width="16px" height="16px" />
+                                        <span
+                                            className="typo-title-2"
+                                            style={{
+                                                color: "var(--color-primary)"
+                                            }}
+                                        >{item.certification}</span>
+                                    </S.CertificationItem>
+                                ))
+                            }
                         </div>
                 }
             </S.InformationArea>
@@ -98,11 +106,17 @@ const Profile = ({user}) => {
                     user.role === "ADMIN" &&
                         <Button
                             text="관리자 페이지"
-                            variant="quinary"
+                            variant="secondary"
                             size="small"
                             onClick={() => navigate("/admin")}
                         />
                 }
+                <Button
+                    text="로그아웃"
+                    variant="quinary"
+                    size="small"
+                    onClick={handleLogout}
+                />
             </S.ButtonArea>
         </S.Container>
     );

@@ -103,6 +103,7 @@ const ExamMockHeader = ({
                         style={{fontSize: "12px"}}
                         onClick={handleStop}
                         loading={isSend}
+                        disabled={isSend}
                     />
                     <Button
                         text={buttonText}
@@ -110,6 +111,7 @@ const ExamMockHeader = ({
                         style={{fontSize: "12px"}}
                         onClick={handleSubmit}
                         loading={isSend}
+                        disabled={isSend}
                     />
                 </S.RightArea>
             </S.SubContainer>

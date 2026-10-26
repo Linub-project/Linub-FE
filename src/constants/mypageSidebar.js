@@ -38,7 +38,7 @@ export const MYPAGE_SIDEBAR = [
         id: 6,
         key: "PROBLEM_REQUEST",
         path: "problem-requests",
-        label: "업로드 요청 문제",
+        label: "문제 업로드 요청",
         auth: false
     },
     {

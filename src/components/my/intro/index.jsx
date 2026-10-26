@@ -8,8 +8,8 @@ const Intro = ({user}) => {
         <S.Container>
             <S.SubContainer>
                 <Profile user={user} />
-                <Record user={user} />
-                <Aggregation user={user} />
+                <Record />
+                <Aggregation />
             </S.SubContainer>
         </S.Container>
     );

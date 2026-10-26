@@ -2,6 +2,9 @@ import * as E from "@/apis/exam";
 import * as P from "@/apis/problem";
 import * as PR from "@/apis/problemRequest";
 import * as U from "@/apis/user";
+import judge_accept from "@/assets/icon/icon_judge_accept.svg";
+import judge_disable from "@/assets/icon/icon_judge_disable.svg";
+import judge_reject from "@/assets/icon/icon_judge_reject.svg";
 import SessionStatusChip from "@/components/common/cardchip";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
 import NavigateText from "@/components/common/text/navigate";
@@ -72,7 +75,7 @@ const Intro = () => {
                 sort: "createdAt",
                 direction: "DESC"
             };
-            const response = await PR.getProblemRequest(pageable);
+            const response = await PR.getMyProblemRequest(pageable);
             setRequests(response.data);
         } catch (error) {
 
@@ -95,6 +98,19 @@ const Intro = () => {
             navigate("/problem/review", {replace: true});
         } catch (error) {
             
+        }
+    }
+
+    const handleResumeExam = async (item) => {
+        if(item.status === "COMPLETED" || item.status === "ABORTED") return;
+        try {
+            const request = {
+                status: "IN_PROGRESS"
+            };
+            await E.updateExamSession(item.id, request);
+            navigate(`/exam/mock/${item.id}`, {replace: true})
+        } catch (error) {
+
         }
     }
 
@@ -135,10 +151,7 @@ const Intro = () => {
                                         style={{
                                             cursor: item.status === "STOPPED" || item.status === "IN_PROGRESS" ? "pointer" : "default"
                                         }}
-                                        onClick={() => {
-                                            if(item.status === "COMPLETED" || item.status === "ABORTED") return;
-                                            navigate(`/exam/mock/${item.id}`, {replace: true})
-                                        }}
+                                        onClick={() => handleResumeExam(item)}
                                     >
                                         <div
                                             style={{
@@ -248,14 +261,45 @@ const Intro = () => {
                     style={{color: "var(--color-text-primary)"}}
                 >심사 중인 내 문제</p>
                 {
-                    requests.length > 0 ?
+                    requests.content?.length > 0 ?
                         <S.ProblemRequestList>
                             {
-                                requests.map((item) => (
-                                    <S.ProblemRequestItem key={item.id}>
-                                        // 컴포넌트 및 디자인 나중에 구현
-                                    </S.ProblemRequestItem>
-                                ))
+                                requests.content?.map((request) => {
+                                    return <S.RequestItem key={request.id}
+                                        onClick={() => navigate(`/mypage/problem-requests`)}
+                                    >
+                                        <S.RequestInfo>
+                                            <span
+                                                className="typo-content-3"
+                                                style={{
+                                                    color: "var(--color-text-label)"
+                                                }}
+                                            >{formatDate(request.createdAt, DATE_FORMAT.SMART_DATE)} 요청</span>
+                                            <span
+                                                className="typo-title-1"
+                                            >{request.title}</span>
+                                        </S.RequestInfo>
+                                        <S.JudgeList>
+                                            {
+                                                request.judges.map((judge, idx) => (
+                                                    <img key={idx}
+                                                        src={judge.judge ? judge_accept : judge_reject}
+                                                        width="16px"
+                                                        height="16px"
+                                                    />
+                                                ))
+                                            }{
+                                                Array.from({length: 3-request.judges.length}).map((_, idx) => (
+                                                    <img key={idx}
+                                                        src={judge_disable}
+                                                        width="16px"
+                                                        height="16px"
+                                                    />
+                                                ))
+                                            }
+                                        </S.JudgeList>
+                                    </S.RequestItem>
+                                })
                             }
                         </S.ProblemRequestList>
                         :
@@ -268,7 +312,7 @@ const Intro = () => {
                         />
                 }
                 <NavigateText
-                    text="내가 요청한 문제 전체"
+                    text="요청한 문제 전체"
                     path="/mypage/problem-requests"
                 />
             </S.ContentArea>

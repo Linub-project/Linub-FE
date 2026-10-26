@@ -13,6 +13,7 @@ import ExamResultPage from "@/pages/exam/result";
 import HomePage from "@/pages/home";
 import ItemPage from "@/pages/item";
 import MyPage from "@/pages/my";
+import ProblemRequestPage from "@/pages/problem/request";
 import ProblemReviewPage from "@/pages/problem/review";
 import WrongPage from "@/pages/wrong";
 import { createBrowserRouter, Navigate } from "react-router-dom";
@@ -80,6 +81,14 @@ export const RouterList = () => [
       {
         path: "/problem/review",
         element: <ProblemReviewPage />
+      },
+      {
+        path: "/problem/request",
+        element: <Navigate to="/problem/request/intro" />
+      },
+      {
+        path: "/problem/request/:page",
+        element: <ProblemRequestPage />
       },
 
       {
