@@ -1,4 +1,5 @@
 import * as C from "@/apis/community";
+import { getErrorMessage } from "@/apis/error";
 import Button from "@/components/common/button/default";
 import Input from "@/components/common/input/default";
 import Select from "@/components/common/input/select";
@@ -9,7 +10,6 @@ import { useToast } from "@/contexts/toastContext";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
-import { getErrorMessage } from "@/apis/error";
 
 const CommunityWrite = ({user}) => {
     const navigate = useNavigate();
@@ -46,8 +46,11 @@ const CommunityWrite = ({user}) => {
         setButtonText("등록 중");
         try {
             const formData = new FormData();
-            formData.append("board", selectedBoard);
-            if(selectedBoard === "ANNOUNCEMENT") formData.append("type", selectedAnnouncementType);
+            formData.append("type", selectedBoard);
+            if(selectedBoard === "ANNOUNCEMENT") {
+                formData.append("announcementType", selectedAnnouncementType);
+                formData.append("fixed", false);
+            }
             formData.append("title", title.trim());
             formData.append("content", content);
 
