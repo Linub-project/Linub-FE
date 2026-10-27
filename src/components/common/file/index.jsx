@@ -45,7 +45,7 @@ const Attachment = ({ file, id }) => {
             <S.FileInformation>
                 <img src={clip} width="12px" />
                 <span className="typo-content-3"
-                    style={{color: "var(--color-primary)"}}
+                    style={{color: "var(--color-text-default)"}}
                 >
                     {fileName}
                 </span>
@@ -53,6 +53,7 @@ const Attachment = ({ file, id }) => {
             <Button
                 text="저장"
                 size="small"
+                variant="tertiary"
                 onClick={handleDownload}
                 style={{fontSize: "12px"}}
             />
