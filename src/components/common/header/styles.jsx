@@ -55,13 +55,13 @@ export const DesktopMenuContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
 
     transition: var(--transition-media-query);
     @media (max-width: ${breakpoint.small}) {
         gap: 3px;
     };
-    @media (max-width: ${breakpoint.xsmall}) {
+    @media (max-width: ${breakpoint.small}) {
         display: none;
     };
 `
@@ -76,7 +76,7 @@ export const MobileMenuContainer = styled.div`
     margin-bottom: 14px;
 
     transition: var(--transition--media-query);
-    @media (min-width: ${breakpoint.xsmall}) {
+    @media (min-width: ${breakpoint.small}) {
         display: none;
     }
 `
@@ -94,7 +94,7 @@ export const MenuText = styled.div`
     text-align: left;
 
     transition: var(--transition--media-query);
-    @media (max-width: ${breakpoint.xsmall}) {
+    @media (max-width: ${breakpoint.small}) {
         width: 100%;
     }
 `
@@ -109,7 +109,7 @@ export const SearchArea = styled.div`
     background-color: var(--color-bg-subtle);
 
     transition: var(--transition--media-query);
-    @media (max-width: ${breakpoint.xsmall}) {
+    @media (max-width: ${breakpoint.small}) {
         width: 100%;
     }
 `

@@ -53,6 +53,7 @@ const HomeIntro = () => {
                     <Button
                         size={"large"}
                         text={"검색"}
+                        disabled={!searchText}
                     />
                 </S.SearchArea>
                 <div style={{display: "flex", alignItems: "center", gap: "16px"}}>

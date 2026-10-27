@@ -4,6 +4,9 @@ import MainLayout from "@/layouts/mainLayout";
 import AdminPage from "@/pages/admin";
 import LoginPage from "@/pages/authentication/login";
 import SignupPage from "@/pages/authentication/signup";
+import CommunityListPage from "@/pages/community/list";
+import CommunityPostPage from "@/pages/community/post";
+import CommunityWritePage from "@/pages/community/write";
 import DictionaryPage from "@/pages/dictionary";
 import DictionaryComparePage from "@/pages/dictionaryCompare";
 import ExamEntryPage from "@/pages/exam/entry";
@@ -98,6 +101,19 @@ export const RouterList = () => [
       {
         path: "/mypage/:menu/:id?",
         element: <MyPage />
+      },
+
+      {
+        path: "/community",
+        element: <CommunityListPage />,
+      },
+      {
+        path: "/community/post/:id",
+        element: <CommunityPostPage />
+      },
+      {
+        path: "/community/write",
+        element: <CommunityWritePage />
       },
 
       {

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { breakpoint } from "@/styles/breakpoint";
 
 export const Container = styled.div`
     display: flex;
@@ -26,17 +25,13 @@ export const CommentList = styled.div`
 
 export const CommentItem = styled.div`
     display: flex;
+    flex-direction: column;
     padding: 16px 24px;
     width: 100%;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
-
-    @media (max-width: ${breakpoint.xsmall}) {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
+    gap: 8px;
 
     &:hover {
         background-color: var(--color-bg-hover);

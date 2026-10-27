@@ -1,14 +1,22 @@
 import { api } from "@/apis/instance";
 
-export const getPostList = (condition, pageable) => {
+export const getPostList = (condition = {}, pageable = {}) => {
     return api.get("/api/v1/posts", {
         params: {
             ...condition,
-            page: pageable.page || 0,
-            size: pageable.size || 20,
-            sort: `${pageable.sort},${pageable.direction}`
+            page: pageable.page ?? 0,
+            size: pageable.size ?? 20,
+            sort: `${pageable.sort ?? "id"},${pageable.direction ?? "DESC"}`
         }
     });
+};
+
+export const getPost = (id) => {
+    return api.get(`/api/v1/posts/${id}`);
+}
+
+export const createPost = (form) => {
+    return api.post("/api/v1/posts", form);
 }
 
 export const getMyComments = (pageable) => {
@@ -31,8 +39,8 @@ export const getAllPostComments = (id, pageable) => {
     });
 }
 
-export const createComment = (id) => {
-    return api.post(`/api/v1/posts/${id}/comments`);
+export const createComment = (id, form) => {
+    return api.post(`/api/v1/posts/${id}/comments`, form);
 }
 
 export const updateComment = (postId, commentId, fix) => {
