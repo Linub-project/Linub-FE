@@ -20,15 +20,10 @@ const Posts = () => {
         sort: 'createdAt',
         direction: "desc"
     };
-    const condition = {
-        userId: user.userId,
-        type: null,
-        keyword: null
-    };
 
     const fetchMyPosts = async () => {
         try {
-            const response = await C.getPostList(condition, pageable);
+            const response = await C.getPostList({userId: user.userId}, pageable);
             setPosts(response.data);
         } catch (error) {
 

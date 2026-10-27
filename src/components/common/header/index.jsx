@@ -33,9 +33,11 @@ const Header = () => {
                 setSelectedMenu("DICTIONARY");
             } else if(location.pathname.startsWith("/exam")) {
                 setSelectedMenu("EXAM");
-            } else if(location.pathname.startsWith("lab")) {
-                setSelectedMenu("LAB");
-            } else if(location.pathname.startsWith("guide")) {
+            } else if(location.pathname.startsWith("/lab")) {
+                setSelectedMenu("LINUXLAB");
+            } else if(location.pathname.startsWith("/community")) {
+                setSelectedMenu("COMMUNITY");
+            } else if(location.pathname.startsWith("/guide")) {
                 setSelectedMenu("GUIDE");
             } else {
                 setSelectedMenu("");
