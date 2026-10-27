@@ -7,9 +7,9 @@ export const Container = styled.div`
     gap: 12px;
     width: 100%;
     padding: 6px 12px;
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--color-border);
     border-radius: 6px;
-    background-color: var(--color-primary-bg);
+    background-color: var(--color-bg-subtle);
 
     & > button {
         flex-shrink: 0;
