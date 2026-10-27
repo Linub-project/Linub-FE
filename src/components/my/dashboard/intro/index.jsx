@@ -234,7 +234,7 @@ const Intro = () => {
                                             >{item.wrongCnt}회 틀림</span>
                                         </div>
                                         <span
-                                            className="typo-title-1"
+                                            className="typo-content-1"
                                             style={{color: "var(--color-text-primary)"}}
                                         >Q. {item.question}</span>
                                         <span
@@ -280,7 +280,7 @@ const Intro = () => {
                                                 }}
                                             >{formatDate(request.createdAt, DATE_FORMAT.SMART_DATE)} 요청</span>
                                             <span
-                                                className="typo-title-1"
+                                                className="typo-content-1"
                                             >{request.title}</span>
                                         </S.RequestInfo>
                                         <S.JudgeList>

@@ -11,6 +11,10 @@ export const getPostList = (condition = {}, pageable = {}) => {
     });
 };
 
+export const getPost = (id) => {
+    return api.get(`/api/v1/posts/${id}`);
+}
+
 export const createPost = (form) => {
     return api.post("/api/v1/posts", form);
 }
@@ -35,8 +39,8 @@ export const getAllPostComments = (id, pageable) => {
     });
 }
 
-export const createComment = (id) => {
-    return api.post(`/api/v1/posts/${id}/comments`);
+export const createComment = (id, form) => {
+    return api.post(`/api/v1/posts/${id}/comments`, form);
 }
 
 export const updateComment = (postId, commentId, fix) => {

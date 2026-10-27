@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import { getErrorMessage } from "@/apis/error";
 
-const PostWrite = ({user}) => {
+const CommunityWrite = ({user}) => {
     const navigate = useNavigate();
     const {showToast} = useToast();
     const [selectedBoard, setSelectedBoard] = useState("FREE");
@@ -172,4 +172,4 @@ const PostWrite = ({user}) => {
     );
 }
 
-export default PostWrite;
+export default CommunityWrite;

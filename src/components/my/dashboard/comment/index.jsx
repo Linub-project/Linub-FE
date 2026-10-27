@@ -1,11 +1,12 @@
 import * as C from "@/apis/community";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
 import Pagination from "@/components/common/pagination";
+import { getCommunityBoardStyle } from "@/utils/communityBoardStyler";
 import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
-import { getPostTypeStyle } from "@/utils/postTypeStyler";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "./styles";
+import NavigateText from "@/components/common/text/navigate";
 
 const Comment = () => {
     const navigate = useNavigate();
@@ -73,57 +74,25 @@ const Comment = () => {
                 comments?.content?.length > 0 ?
                     <S.CommentList>
                         {
-                            comments.content.map((item) => {
-                                const postTypeStyle = getPostTypeStyle(item.data.type);
+                            comments.content.map((comment) => {
                                 return (
-                                        <S.CommentItem
-                                            key={item.id}
-                                            className="typo-content-1"
-                                            onClick={() => navigate(`/community/${item.id}`)}
-                                        >
-                                            <div
+                                        <S.CommentItem key={comment.id}>
+                                            <span 
+                                                className="typo-content-3"
+                                                style={{color: "var(--color-text-label)"}}
+                                            >{formatDate(comment.createdAt, DATE_FORMAT.SMART_DATE)}</span>
+                                            <p
+                                                className="typo-content-1"
                                                 style={{
-                                                    display: "flex",
-                                                    flexDirection: "column",
-                                                    alignItems: "flex-start",
-                                                    gap: "8px",
-                                                    flex: 1
+                                                    color: "var(--color-text-primary)"
                                                 }}
                                             >
-                                                <div
-                                                    style={{
-                                                        display: "flex",
-                                                        gap: "8px",
-                                                        alignItems: "center"
-                                                    }}
-                                                >
-                                                    <span
-                                                        className="typo-title-1"
-                                                        style={{
-                                                            color: `var(${postTypeStyle.text})`,
-                                                        }}
-                                                    >
-                                                        {item.title}
-                                                    </span>
-                                                    <span
-                                                        className="typo-content-3"
-                                                        style={{
-                                                            color: `var(${postTypeStyle.text})`,
-                                                            backgroundColor: `var(${postTypeStyle.bg})`,
-                                                            padding: "2px 6px"
-                                                        }}
-                                                    >
-                                                        {postTypeStyle.value}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <span
-                                                className="typo-content-3"
-                                                style={{
-                                                    color: "var(--color-text-label)",
-                                                    alignSelf: "flex-start"
-                                                }}
-                                            >{formatDate(item.createdAt, DATE_FORMAT.SMART_DATE)}</span>
+                                                {comment.content}
+                                            </p>
+                                            <NavigateText
+                                                text={comment.title}
+                                                path={`/community/post/${comment.postId}`}
+                                            />
                                         </S.CommentItem>
                                 );
                             })

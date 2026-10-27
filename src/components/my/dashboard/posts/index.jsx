@@ -1,9 +1,10 @@
 import * as C from "@/apis/community";
+import clip from "@/assets/icon/icon_clip.svg";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
 import Pagination from "@/components/common/pagination";
 import { useAuth } from "@/contexts/authContext";
+import { getCommunityBoardStyle } from "@/utils/communityBoardStyler";
 import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
-import { getPostTypeStyle } from "@/utils/postTypeStyler";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "./styles";
@@ -50,7 +51,7 @@ const Posts = () => {
         setSearchParams(params);
     };
 
-    return ( // 게시글 구현 후 수정 필요
+    return (
         <S.Container>
             <div
                 style={{
@@ -75,57 +76,49 @@ const Posts = () => {
                 posts?.content?.length > 0 ?
                     <S.PostList>
                         {
-                            posts.content.map((item) => {
-                                const postTypeStyle = getPostTypeStyle(item.data.type);
+                            posts.content.map((post) => {
+                                const style = getCommunityBoardStyle(post.data.type);
                                 return (
                                         <S.PostItem
-                                            key={item.id}
+                                            key={post.id}
                                             className="typo-content-1"
-                                            onClick={() => navigate(`/community/${item.id}`)}
+                                            onClick={() => navigate(`/community/post/${post.id}`)}
                                         >
                                             <div
-                                                style={{
-                                                    display: "flex",
-                                                    flexDirection: "column",
-                                                    alignItems: "flex-start",
-                                                    gap: "8px",
-                                                    flex: 1
-                                                }}
-                                            >
-                                                <div
-                                                    style={{
-                                                        display: "flex",
-                                                        gap: "8px",
-                                                        alignItems: "center"
-                                                    }}
-                                                >
-                                                    <span
-                                                        className="typo-title-1"
-                                                        style={{
-                                                            color: `var(${postTypeStyle.text})`,
-                                                        }}
-                                                    >
-                                                        {item.title}
-                                                    </span>
-                                                    <span
-                                                        className="typo-content-3"
-                                                        style={{
-                                                            color: `var(${postTypeStyle.text})`,
-                                                            backgroundColor: `var(${postTypeStyle.bg})`,
-                                                            padding: "2px 6px"
-                                                        }}
-                                                    >
-                                                        {postTypeStyle.value}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <span
                                                 className="typo-content-3"
                                                 style={{
-                                                    color: "var(--color-text-label)",
-                                                    alignSelf: "flex-start"
+                                                    display: "flex",
+                                                    gap: "8px",
+                                                    alignItems: "center"
                                                 }}
-                                            >{formatDate(item.createdAt, DATE_FORMAT.SMART_DATE)}</span>
+                                            >
+                                                <span
+                                                    style={{
+                                                        color: style.text,
+                                                        backgroundColor: style.bg,
+                                                        padding: "2px 6px"
+                                                    }}
+                                                >{style.value}</span>
+                                                <span
+                                                    style={{color: "var(--color-text-default)"}}
+                                                >{formatDate(post.createdAt, DATE_FORMAT.SMART_DATE)}</span>
+                                                <span
+                                                    style={{color: "var(--color-text-default)"}}
+                                                >조회 {post.viewCnt}</span>
+                                            </div>
+                                            <span
+                                                className="typo-content-1"
+                                                style={{
+                                                    color: "var(--color-text-primary)", 
+                                                    display: "flex", 
+                                                    alignItems: "center", 
+                                                    gap: "4px"
+                                                }}
+                                            >{post.title}{post.hasFile && <img src={clip} width="12px" />}</span>
+                                            <span
+                                                className="typo-content-3"
+                                                style={{color: "var(--color-text-default)"}}
+                                            >{post.content}</span>
                                         </S.PostItem>
                                 );
                             })

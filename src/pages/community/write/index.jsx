@@ -1,5 +1,5 @@
 import Footer from "@/components/common/footer";
-import PostWrite from "@/components/postWrite";
+import CommunityWrite from "@/components/communityWrite";
 import { useAuth } from "@/contexts/authContext";
 import { Navigate } from "react-router-dom";
 import * as S from "./styles";
@@ -21,7 +21,7 @@ const CommunityWritePage = () => {
 
     return (
         <S.Container>
-            <PostWrite user={user} />
+            <CommunityWrite user={user} />
             <Footer />
         </S.Container>
     );

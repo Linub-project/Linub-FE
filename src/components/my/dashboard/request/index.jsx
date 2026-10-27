@@ -122,7 +122,7 @@ const ProblemRequest = () => {
                                             >{formatDate(request.createdAt, DATE_FORMAT.SMART_DATE)} 요청</span>
                                         </div>
                                         <span
-                                            className="typo-title-1"
+                                            className="typo-content-1"
                                         >{request.title}</span>
                                     </S.RequestInfo>
                                     <S.JudgeList>

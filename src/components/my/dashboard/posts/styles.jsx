@@ -26,19 +26,17 @@ export const PostList = styled.div`
 
 export const PostItem = styled.div`
     display: flex;
-    padding: 16px 24px;
+    flex-direction: column;
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
     cursor: pointer;
-
-    @media (max-width: ${breakpoint.xsmall}) {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
 
     &:hover {
         background-color: var(--color-bg-hover);
+    }
+
+    &:not(:last-child) {
+        border-bottom: 1px solid var(--color-border);
     }
 `
