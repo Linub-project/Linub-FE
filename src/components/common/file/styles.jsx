@@ -5,29 +5,28 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-
     width: 100%;
-    padding: 12px 16px;
-
-    border: 1px solid var(--color-border);
+    padding: 6px 12px;
+    border: 1px solid var(--color-primary);
     border-radius: 6px;
-    background-color: var(--color-bg-subtle);
+    background-color: var(--color-primary-bg);
+
+    & > button {
+        flex-shrink: 0;
+    }
 `;
 
 export const FileInformation = styled.div`
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    gap: 6px;
+    align-items: center;
+    flex: 1;
     min-width: 0;
 
-    span:first-child {
+    span {
         color: var(--color-text-primary);
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-    }
-
-    span:last-child {
-        color: var(--color-text-label);
     }
 `;

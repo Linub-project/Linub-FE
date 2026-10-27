@@ -1,34 +1,60 @@
+import { getErrorMessage } from "@/apis/error";
+import * as F from "@/apis/file";
+import clip from "@/assets/icon/icon_clip.svg";
 import Button from "@/components/common/button/default";
+import { useToast } from "@/contexts/toastContext";
+import { useState } from "react";
 import * as S from "./styles";
 
-const Attachment = ({ file, onDownload }) => {
+const Attachment = ({ file, id }) => {
+    const { showToast } = useToast();
+    const [downloading, setDownloading] = useState(false);
+
     if (!file) return null;
 
-    const formatFileSize = (size) => {
-        if (size == null) return "";
-        if (size < 1024) return `${size} B`;
-        if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)} KB`;
-        return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+    const fileName = file.split("/").pop();
+
+    const handleDownload = async () => {
+        if (downloading) return;
+
+        setDownloading(true);
+
+        try {
+            const response = await F.downloadPostFile(id, file);
+
+            const url = URL.createObjectURL(response.data);
+            const link = document.createElement("a");
+
+            link.href = url;
+            link.download = fileName;
+
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            URL.revokeObjectURL(url);
+        } catch (error) {
+            showToast(getErrorMessage(error));
+        } finally {
+            setDownloading(false);
+        }
     };
 
     return (
         <S.Container>
             <S.FileInformation>
-                <span className="typo-content-1">
-                    {file.fileName}
+                <img src={clip} width="12px" />
+                <span className="typo-content-3"
+                    style={{color: "var(--color-primary)"}}
+                >
+                    {fileName}
                 </span>
-                {file.fileSize != null && (
-                    <span className="typo-content-3">
-                        {formatFileSize(file.fileSize)}
-                    </span>
-                )}
             </S.FileInformation>
-
             <Button
-                text="다운로드"
-                variant="tertiary"
+                text="저장"
                 size="small"
-                onClick={() => onDownload?.(file)}
+                onClick={handleDownload}
+                style={{fontSize: "12px"}}
             />
         </S.Container>
     );

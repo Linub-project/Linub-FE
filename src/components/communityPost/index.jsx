@@ -87,7 +87,11 @@ const CommunityPost = () => {
                     {getPostComponent()}
                     {
                         post.fileUrl && <S.FileArea>
-                            <File  />
+                            <p
+                                className="typo-title-2"
+                                style={{color: "var(--color-text-default)"}}
+                            >첨부파일</p>
+                            <File file={post.fileUrl} id={id} />
                         </S.FileArea>
                     }
                 </div>
