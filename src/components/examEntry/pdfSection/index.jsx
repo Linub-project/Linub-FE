@@ -43,8 +43,8 @@ const PdfSection = ({
                 problemWrongIds: null,
                 examPdfType: mode
             }
-            const response = await E.createExamPdf(request);
-            navigate(`/mypage/pdf/${response.data}`);
+            await E.createExamPdf(request);
+            navigate(`/mypage/pdfs`);
         } catch (error) {
             showToast(getErrorMessage(error));
         } finally {
@@ -75,8 +75,12 @@ const PdfSection = ({
                 <Button
                     text={buttonText}
                     loading={isLoading}
+                    loadingText="PDF 생성 중"
                     disabled={isSend}
-                    style={{backgroundColor: "var(--color-secondary)"}}
+                    style={{
+                        backgroundColor: "var(--secondary-200)",
+                        color: "var(--color-secondary)",
+                    }}
                     onClick={handleSubmit}
                 />
             </S.TopArea>

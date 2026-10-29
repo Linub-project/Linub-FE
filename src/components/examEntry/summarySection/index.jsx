@@ -76,6 +76,7 @@ const SummarySection = ({
                 <Button
                     text={buttonText}
                     loading={isLoading}
+                    loadingText="시험 준비 중"
                     disabled={isSend}
                     onClick={handleSubmit}
                 />

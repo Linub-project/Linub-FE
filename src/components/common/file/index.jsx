@@ -6,7 +6,7 @@ import { useToast } from "@/contexts/toastContext";
 import { useState } from "react";
 import * as S from "./styles";
 
-const Attachment = ({ file, id }) => {
+const Attachment = ({ file, id, display = true }) => {
     const { showToast } = useToast();
     const [downloading, setDownloading] = useState(false);
 
@@ -41,7 +41,11 @@ const Attachment = ({ file, id }) => {
     };
 
     return (
-        <S.Container>
+        <S.Container
+            style={{
+                display: display
+            }}
+        >
             <S.FileInformation>
                 <img src={clip} width="12px" />
                 <span className="typo-content-3"

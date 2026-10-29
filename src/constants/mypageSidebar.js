@@ -73,7 +73,7 @@ export const MYPAGE_SIDEBAR = [
         id: 11,
         key: "PDF",
         path: "pdfs",
-        label: "생성한 시험지",
+        label: "내 시험지",
         auth: false
     },
 ]

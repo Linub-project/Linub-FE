@@ -1,4 +1,8 @@
+import { getErrorMessage } from "@/apis/error";
 import * as E from "@/apis/exam";
+import * as F from "@/apis/file";
+import download from "@/assets/icon/icon_download.svg";
+import IconButton from "@/components/common/button/icon";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
 import { useToast } from "@/contexts/toastContext";
 import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
@@ -14,9 +18,29 @@ const PdfList = () => {
             const response = await E.getAllExamPdfs();
             setPdfs(response.data);
         } catch (error) {
-
+            showToast(getErrorMessage(error));
         }
     }
+
+    const handleDownload = async (id, name) => {
+        try {
+            const response = await F.downloadPdfFile(id);
+
+            const url = URL.createObjectURL(response.data);
+            const link = document.createElement("a");
+
+            link.href = url;
+            link.download = `${name}.pdf`;
+
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            URL.revokeObjectURL(url);
+        } catch (error) {
+            showToast(getErrorMessage(error));
+        }
+    };
 
     useEffect(() => {
         fetchPdfs();
@@ -40,7 +64,7 @@ const PdfList = () => {
                     <p
                         className="typo-title-1"
                         style={{color: "var(--color-text-primary)"}}
-                    >생성한 시험지</p>
+                    >내 시험지</p>
                     <p
                         className="typo-content-3"
                         style={{color: "var(--color-text-default)"}}
@@ -71,6 +95,13 @@ const PdfList = () => {
                                             className="typo-title-1"
                                         >{item.name}</span>
                                     </div>
+                                    <IconButton
+                                        icon={download}
+                                        width="28px"
+                                        height="28px"
+                                        padding="6px"
+                                        onClick={() => handleDownload(item.id, item.name)}
+                                    />
                                 </S.PdfItem>
                             })
                         }

@@ -29,11 +29,7 @@ export const PdfItem = styled.div`
     padding: 16px 24px;
     width: 100%;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     cursor: pointer;
     height: 100%;
-
-    &:hover {
-        background-color: var(--color-bg-hover);
-    }
 `

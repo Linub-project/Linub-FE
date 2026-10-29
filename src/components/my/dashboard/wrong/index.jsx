@@ -1,15 +1,19 @@
+import { getErrorMessage } from "@/apis/error";
+import * as E from "@/apis/exam";
 import * as P from "@/apis/problem";
 import Button from "@/components/common/button/default";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
 import Checkbox from "@/components/common/input/checkbox";
 import Pagination from "@/components/common/pagination";
 import { useProblemReview } from "@/contexts/problemReviewContext";
+import { useToast } from "@/contexts/toastContext";
 import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "./styles";
 
 const WrongProblem = () => {
+    const { showToast } = useToast();
     const navigate = useNavigate();
     const { setProblems } = useProblemReview();
     const [wrongs, setWrongs] = useState([]);
@@ -17,6 +21,9 @@ const WrongProblem = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const page = Math.max(Number(searchParams.get("page") ?? 1) - 1, 0);
     const [sort, setSort] = useState("updatedAt");
+    const [isSend, setIsSend] = useState(false);
+    const [isWebLoading, setIsWebLoading] = useState(false);
+    const [isPdfLoading, setIsPdfLoading] = useState(false);
     const pageable = {
         page,
         size: 20,
@@ -47,14 +54,51 @@ const WrongProblem = () => {
     }
 
     const handleProblemReview = async () => {
+        if (isSend || solvecandidate.length === 0) return;
+
+        setIsSend(true);
+        setIsWebLoading(true);
+
         try {
             const response = await P.getProblemWrongListReview(solvecandidate);
+
             setProblems(response.data);
             navigate("/problem/review");
-        } catch(error) {
+        } catch (error) {
 
+        } finally {
+            setIsSend(false);
+            setIsWebLoading(false);
         }
-    }
+    };
+
+    const handlePdfCreate = async () => {
+        if (isSend || solvecandidate.length === 0) return;
+
+        setIsSend(true);
+        setIsPdfLoading(true);
+
+        try {
+            const request = {
+                id: null,
+                scope: null,
+                type: null,
+                ids: null,
+                count: null,
+                problemWrongIds: solvecandidate,
+                examPdfType: "WRONG"
+            }
+            const response = await E.createExamPdf(request);
+
+            setProblems(response.data);
+            navigate("/mypage/pdfs");
+        } catch (error) {
+            showToast(getErrorMessage(error));
+        } finally {
+            setIsSend(false);
+            setIsPdfLoading(false);
+        }
+    };
 
     const handlePageChange = (page) => {
         const params = new URLSearchParams(searchParams);
@@ -123,13 +167,28 @@ const WrongProblem = () => {
                     >많이 틀린 순</span>
                 </div>
             </div>
-            {
-                solvecandidate.length > 0 &&
+            {solvecandidate.length > 0 && (
+                <>
                     <Button
                         text={`선택한 ${solvecandidate.length}문제 풀기`}
+                        loading={isWebLoading}
+                        loadingText="문제 준비 중.."
+                        disabled={isSend}
                         onClick={handleProblemReview}
                     />
-            }
+                    <Button
+                        text={`선택한 ${solvecandidate.length}문제 PDF 생성`}
+                        loading={isPdfLoading}
+                        loadingText="PDF 생성 중.."
+                        disabled={isSend}
+                        style={{
+                            backgroundColor: "var(--color-secondary-bg)",
+                            color: "var(--color-secondary)"
+                        }}
+                        onClick={handlePdfCreate}
+                    />
+                </>
+            )}
             {
                 wrongs?.content?.length > 0 ?
                     <S.ProblemList>
