@@ -69,4 +69,11 @@ export const MYPAGE_SIDEBAR = [
         label: "내가 쓴 댓글",
         auth: false
     },
+    {
+        id: 11,
+        key: "PDF",
+        path: "pdfs",
+        label: "내 시험지",
+        auth: false
+    },
 ]

@@ -11,12 +11,14 @@ const SummarySection = ({
     selectedSubjectIds,
     exam,
     count,
-    duration
+    duration,
+    isSend,
+    setIsSend
 }) => {
     const navigate = useNavigate();
     const [buttonText, setButtonText] = useState("시험 시작");
-    const [isSend, setIsSend] = useState(false);
     const { setProblems } = useExamFree();
+    const [isLoading, setIsLoading] = useState(false);
 
     if(mode === "FREE" && (!scope || selectedSubjectIds.length === 0)) {
         return;
@@ -25,7 +27,11 @@ const SummarySection = ({
     }
 
     const handleSubmit = async () => {
+        if (isSend) return;
+
         setIsSend(true);
+        setIsLoading(true);
+        setButtonText("시험 준비 중..");
         try {
             if(mode === "FREE") {
                 const request = {
@@ -69,14 +75,15 @@ const SummarySection = ({
                 </div>
                 <Button
                     text={buttonText}
-                    loading={isSend}
-                    loadingText="시험 준비 중.."
+                    loading={isLoading}
+                    loadingText="시험 준비 중"
+                    disabled={isSend}
                     onClick={handleSubmit}
                 />
             </S.TopArea>
             {mode === "MOCK" &&
                 <div
-                    className="typo-content-1"
+                    className="typo-content-3"
                     style={{
                         width: "100%",
                         textAlign: "center"
