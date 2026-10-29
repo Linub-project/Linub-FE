@@ -36,7 +36,7 @@ export const updateExamSessionProblems = (id, problemId, optionId) => {
     return api.patch(
         `/api/v1/exams/sessions/${id}/problems/${problemId}`, null, {params: {optionId: optionId}}
     );
-};
+}
 
 export const submitExamSession = (id) => {
     return api.patch(`/api/v1/exams/sessions/${id}/submit`);
@@ -52,4 +52,12 @@ export const getExamSessions = (pageable) => {
             }
         }
     );
+}
+
+export const createExamPdf = (form) => {
+    return api.post("/api/v1/exam-pdfs", form);
+}
+
+export const getAllExamPdfs = () => {
+    return api.get("/api/v1/exam-pdfs/all");
 }

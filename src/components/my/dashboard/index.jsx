@@ -1,10 +1,12 @@
 import Bookmark from "@/components/my/dashboard/bookmark";
+import ProblemBookmarkDetail from "@/components/my/dashboard/bookmarkDetail";
 import CertificationRequest from "@/components/my/dashboard/certification";
 import Comment from "@/components/my/dashboard/comment";
-import ProblemBookmarkDetail from "@/components/my/dashboard/bookmarkDetail";
 import Intro from "@/components/my/dashboard/intro";
 import ProblemJudgeList from "@/components/my/dashboard/judge";
+import ProblemJudgeDetail from "@/components/my/dashboard/judgeDetail";
 import Memo from "@/components/my/dashboard/memo";
+import PdfList from "@/components/my/dashboard/pdf";
 import Posts from "@/components/my/dashboard/posts";
 import ProblemRequest from "@/components/my/dashboard/request";
 import ExamSession from "@/components/my/dashboard/session";
@@ -13,7 +15,6 @@ import WrongProblem from "@/components/my/dashboard/wrong";
 import { MYPAGE_SIDEBAR } from "@/constants/mypageSidebar";
 import { Navigate, useParams } from "react-router-dom";
 import * as S from "./styles";
-import ProblemJudgeDetail from "./judgeDetail";
 
 const Dashboard = ({user}) => {
     const { menu = "intro", id } = useParams();
@@ -45,6 +46,8 @@ const Dashboard = ({user}) => {
             return <Posts />
         } else if(menu === MYPAGE_SIDEBAR[9].path) {
             return <Comment />
+        } else if(menu === MYPAGE_SIDEBAR[10].path) {
+            return <PdfList />
         }
     }
 

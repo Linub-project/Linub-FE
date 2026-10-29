@@ -32,3 +32,14 @@ export const DisableSummary = styled.span`
     padding: 25px 12px;
     cursor: not-allowed;
 `
+
+export const BottomArea = styled.div`
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    justify-content: space-between;
+
+    @media (max-width: ${breakpoint.small}) {
+        flex-direction: column;
+    }
+`
