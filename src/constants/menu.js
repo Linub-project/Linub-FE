@@ -4,5 +4,5 @@ export const MENU = [
   { key: "LINUXLAB", label: "Linux Lab", path: "lab" },
   { key: "EXAM", label: "시험", path: "exam" },
   { key: "COMMUNITY", label: "커뮤니티", path: "community" },
-  { key: "GUIDE", label: "학습가이드", path: "guide" },
+  { key: "GUIDE", label: "Linub 가이드", path: "guide" },
 ];
