@@ -15,7 +15,7 @@ export const StyledButton = styled.button`
     $size === "large" &&
     css`
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 500;
       padding: 8px 20px;
     `}
 

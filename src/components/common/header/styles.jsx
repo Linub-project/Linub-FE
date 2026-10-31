@@ -21,7 +21,7 @@ export const SubContainer = styled.div`
 export const LeftArea = styled.div`
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
 `
 
 export const RightArea = styled.div`
