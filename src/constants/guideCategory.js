@@ -9,7 +9,12 @@ export const GUIDE_CATEGORY = [
             {
                 key: "INTRODUCTION",
                 label: "Linub 소개",
-                description: "Linub 서비스의 소개와 학습 목표 및 제공 기능 안내"
+                description: "리눅스를 이해하고, 직접 활용하며, 실력을 점검할 수 있는 통합 학습 플랫폼입니다.",
+                relation: [
+                    "ROADMAP",
+                    "DICTIONARY",
+                    "EXAM"
+                ]
             },
         ]
     },
@@ -22,28 +27,50 @@ export const GUIDE_CATEGORY = [
             {
                 key: "DICTIONARY",
                 label: "사전",
-                description: "리눅스 명령어와 개념을 검색하고 학습하는 방법"
+                description: "리눅스의 주요 개념과 명령어, 시스템 파일을 한곳에서 찾아보세요.",
+                relation: [
+                    "STUDY_METHOD",
+                    "ROADMAP"
+                ]
             },
             {
                 key: "LINUX_LAB",
                 label: "Linux Lab",
-                description: "웹 터미널을 활용한 리눅스 실습 기능 안내",
-                disabled: true
+                description: "설치 없이 웹 브라우저에서 리눅스 명령어를 직접 실행하는 실습 환경입니다.",
+                disabled: true,
+                relation: [
+                    "DICTIONARY",
+                    "STUDY_METHOD"
+                ]
             },
             {
                 key: "EXAM",
-                label: "시험",
-                description: "자유 시험과 모의시험을 이용하는 방법"
+                label: "시험 및 문제",
+                description: "자유롭게 문제를 풀거나 실제 시험을 대비하면서 자신의 실력을 확인하세요.",
+                relation: [
+                    "CERTIFICATION",
+                    "WRONG_PROBLEM",
+                    "PDF"
+                ]
             },
             {
                 key: "COMMUNITY",
                 label: "커뮤니티",
-                description: "게시글과 댓글을 통한 질문 및 정보 공유 방법"
+                description: "리눅스 지식을 나누고 궁금한 점을 질문하며 다른 학습자와 함께 성장하세요.",
+                relation: [
+                    "SERVICE_GUIDE",
+                    "FAQ"
+                ]
             },
             {
                 key: "MYPAGE",
                 label: "마이페이지",
-                description: "학습 기록과 개인 정보를 관리하는 방법"
+                description: "지금까지의 학습 활동을 확인하고 자신의 학습 상태를 점검하세요.",
+                relation: [
+                    "STATISTICS",
+                    "WRONG_PROBLEM",
+                    "PDF"
+                ]
             }
         ]
     },
@@ -56,17 +83,32 @@ export const GUIDE_CATEGORY = [
             {
                 key: "ROADMAP",
                 label: "학습 로드맵",
-                description: "리눅스 학습 단계와 수준별 학습 순서 안내"
+                description: "현재 실력과 학습 목표에 맞는 경로를 선택해 보세요.",
+                relation: [
+                    "STUDY_METHOD",
+                    "DICTIONARY",
+                    "CERTIFICATION"
+                ]
             },
             {
                 key: "CERTIFICATION",
                 label: "자격시험 준비",
-                description: "리눅스 관련 자격시험의 준비 과정과 학습 범위 안내"
+                description: "Linub의 학습 기능을 연결해 리눅스 자격시험을 체계적으로 준비해 보세요.",
+                relation: [
+                    "ROADMAP",
+                    "EXAM",
+                    "WRONG_PROBLEM"
+                ]
             },
             {
                 key: "STUDY_METHOD",
                 label: "학습 방법",
-                description: "효율적인 개념 학습과 실습 및 복습 방법 안내"
+                description: "개념 이해부터 반복 복습까지 효율적인 학습 사이클을 확인하세요.",
+                relation: [
+                    "ROADMAP",
+                    "DICTIONARY",
+                    "WRONG_PROBLEM"
+                ]
             }
         ]
     },
@@ -79,22 +121,41 @@ export const GUIDE_CATEGORY = [
             {
                 key: "WRONG_PROBLEM",
                 label: "오답 학습",
-                description: "틀린 문제를 관리하고 다시 풀이하는 방법"
+                description: "오답을 관련 개념과 연결하고 반복 학습하는 방법을 안내합니다.",
+                relation: [
+                    "EXAM",
+                    "STUDY_METHOD",
+                    "PDF"
+                ]
             },
             {
                 key: "PDF",
                 label: "PDF 문제집",
-                description: "PDF 시험지를 생성하고 다운로드하는 방법"
+                description: "웹에서 풀던 문제를 PDF로 생성하여 오프라인에서도 학습해 보세요.",
+                relation: [
+                    "EXAM",
+                    "WRONG_PROBLEM",
+                    "MYPAGE"
+                ]
             },
             {
                 key: "PROBLEM_CREATION",
                 label: "문제 제작",
-                description: "사용자 문제 작성 및 심사 과정 안내"
+                description: "학습자가 문제를 제안하고 검토를 거쳐 공유하는 과정을 알아보세요.",
+                relation: [
+                    "EXAM",
+                    "SERVICE_GUIDE"
+                ]
             },
             {
                 key: "STATISTICS",
                 label: "학습 통계",
-                description: "학습 기록과 정답률 등 통계 정보를 확인하는 방법"
+                description: "학습 통계를 다음 학습 행동으로 연결하는 방법을 알아보세요.",
+                relation: [
+                    "MYPAGE",
+                    "EXAM",
+                    "WRONG_PROBLEM"
+                ]
             }
         ]
     },
@@ -107,12 +168,21 @@ export const GUIDE_CATEGORY = [
             {
                 key: "FAQ",
                 label: "자주 묻는 질문",
-                description: "서비스 이용 중 자주 발생하는 질문과 답변"
+                description: "Linub를 이용하면서 궁금할 수 있는 내용을 확인해 보세요.",
+                relation: [
+                    "SERVICE_GUIDE",
+                    "INTRODUCTION"
+                ]
             },
             {
                 key: "SERVICE_GUIDE",
                 label: "서비스 이용 안내",
-                description: "서비스 이용 정책과 주요 유의사항 안내"
+                description: "콘텐츠, PDF, 커뮤니티 이용 시 알아두어야 할 내용을 안내합니다.",
+                relation: [
+                    "FAQ",
+                    "COMMUNITY",
+                    "PDF"
+                ]
             }
         ]
     }

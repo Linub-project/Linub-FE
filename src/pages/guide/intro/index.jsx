@@ -3,7 +3,7 @@ import GuideDashboard from "@/components/guide/dashboard";
 import GuideIntro from "@/components/guide/intro";
 import * as S from "./styles";
 
-const Guide = () => {
+const GuidePage = () => {
     return (
         <S.Container>
             <GuideIntro /> 
@@ -13,4 +13,4 @@ const Guide = () => {
     );
 }
 
-export default Guide;
+export default GuidePage;

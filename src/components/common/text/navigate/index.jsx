@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 const NavigateText = ({
     text = "",
-    path
+    path,
+    size
 }) => {
     const navigate = useNavigate();
     return (
@@ -12,7 +13,8 @@ const NavigateText = ({
             onClick={() => navigate(path)}
             style={{
                 cursor: "pointer",
-                color: "var(--color-primary)"
+                color: "var(--color-primary)",
+                fontSize: size
             }}
         >{text} →</Text>
     );

@@ -13,7 +13,8 @@ import ExamEntryPage from "@/pages/exam/entry";
 import ExamFreePage from "@/pages/exam/free";
 import ExamMockPage from "@/pages/exam/mock";
 import ExamResultPage from "@/pages/exam/result";
-import Guide from "@/pages/guide/intro";
+import GuideContentPage from "@/pages/guide/content";
+import GuidePage from "@/pages/guide/intro";
 import HomePage from "@/pages/home";
 import ItemPage from "@/pages/item";
 import MyPage from "@/pages/my";
@@ -119,11 +120,11 @@ export const RouterList = () => [
 
       {
         path: "/guide",
-        element: <Guide />
+        element: <GuidePage />
       },
       {
         path: "/guide/:category",
-        element: <Guide />
+        element: <GuideContentPage />
       },
 
       {

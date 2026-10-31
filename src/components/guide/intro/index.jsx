@@ -48,7 +48,7 @@ const GuideIntro = () => {
                     text="처음 시작하기"
                     width="fit-content"
                     style={{padding: "12px 16px"}}
-                    onClick={() => navigate("/guide/GETTING_STARTED")}
+                    onClick={() => navigate("/guide/INTRODUCTION")}
                 />
                 <Button
                     text="학습 로드맵 보기"
