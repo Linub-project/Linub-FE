@@ -1,9 +1,35 @@
+import * as D from "@/apis/dictionary";
+import { SkeletonBox } from "@/components/common/skeleton/style";
 import NavigateText from "@/components/common/text/navigate";
-import { DUMMY_RECENT_DICTIONARY } from "@/constants/dummy";
+import { DATE_FORMAT, formatDate } from "@/utils/dateFormatter";
 import { getLegendStyle } from "@/utils/legendStyler";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const RecentDictionary = () => {
+    const navigate = useNavigate();
+    const [dictionaries, setDictionaries] = useState([]);
+    
+    const fetchRecentDictionaries = async () => {
+        try {
+            const size = 5;
+            const sort = "updatedAt"
+            const response = await D.getHomeDictionaries(size, sort);
+            setDictionaries(response.data);
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        fetchRecentDictionaries();
+    }, []);
+
+    if(dictionaries.length === 0) {
+        return <SkeletonBox $h="360px" />;
+    }
+
     return (
         <S.Container>
             <span
@@ -24,14 +50,15 @@ const RecentDictionary = () => {
                 <S.Table>
                     <tbody>
                         {
-                            DUMMY_RECENT_DICTIONARY.map((item) => {
-                                const legendStyle = getLegendStyle(item.tag);
-
+                            dictionaries.content?.map((item) => {
+                                const legendStyle = getLegendStyle(item.type);
                                 return (
-                                    <tr key={item.id}>
+                                    <tr key={item.id}
+                                        onClick={() => navigate(`/dictionary/item/${item.id}`)}
+                                    >
                                         <S.Keyword
-                                            className="typo-title-1 terminal"
-                                        >{item.keyword}</S.Keyword>
+                                            className="typo-title-2 terminal"
+                                        >{item.topic}</S.Keyword>
                                         <S.Tag
                                             className="typo-content-3"
                                         >
@@ -44,13 +71,13 @@ const RecentDictionary = () => {
                                                     margin: "0 auto"
                                                 }}
                                             >
-                                                {item.tag}
+                                                {item.type}
                                             </div>
                                         </S.Tag>
-                                        <S.Description>{item.description}</S.Description>
+                                        <S.Description>{item.summary}</S.Description>
                                         <S.Time
                                             className="typo-content-3"
-                                        >{item.time}</S.Time>
+                                        >{formatDate(item.updatedAt, DATE_FORMAT.SMART_RELATIVE)}</S.Time>
                                     </tr>
                                 );
                             })

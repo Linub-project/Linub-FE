@@ -1,9 +1,14 @@
 import Button from "@/components/common/button/default";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const GuideIntro = () => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo({top: 0, behavior: "smooth"});
+    }, []);
 
     return (
         <S.Container>

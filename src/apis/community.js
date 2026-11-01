@@ -1,4 +1,4 @@
-import { api } from "@/apis/instance";
+import { api, publicApi } from "@/apis/instance";
 
 export const getPostList = (condition = {}, pageable = {}) => {
     return api.get("/api/v1/posts", {
@@ -10,6 +10,16 @@ export const getPostList = (condition = {}, pageable = {}) => {
         }
     });
 };
+
+export const getHomePostList = () => {
+    return publicApi.get("/api/v1/posts/home", {
+        params: {
+            page: 0,
+            size: 5,
+            sort: "createdAt,desc"
+        }
+    });
+}
 
 export const getPost = (id) => {
     return api.get(`/api/v1/posts/${id}`);

@@ -33,6 +33,7 @@ const CommunityPost = () => {
     }
 
     useEffect(() => {
+        window.scrollTo({top: 0, behavior: "smooth"});
         fetchPost();
     }, [id]);
 

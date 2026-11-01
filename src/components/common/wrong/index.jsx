@@ -1,4 +1,5 @@
 import Button from "@/components/common/button/default";
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
@@ -6,6 +7,10 @@ const WrongComponent = () => {
     const locate = useLocation();
     const decodedPathname = decodeURIComponent(locate.pathname);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo({top: 0, behavior: "smooth"});
+    }, []);
 
     return (
         <S.Container>
