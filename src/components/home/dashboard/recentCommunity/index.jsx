@@ -1,8 +1,32 @@
+import * as C from "@/apis/community";
+import { SkeletonBox } from "@/components/common/skeleton/style";
 import NavigateText from "@/components/common/text/navigate";
-import { DUMMY_COMMUNITY } from "@/constants/dummy";
+import { getCommunityBoardStyle } from "@/utils/communityBoardStyler";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const RecentCommunity = () => {
+    const navigate = useNavigate();
+    const [posts, setPosts] = useState([]);
+
+    const fetchPosts = async () => {
+        try {
+            const response = await C.getHomePostList();
+            setPosts(response.data);
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        fetchPosts();
+    }, []);
+
+    if(posts.length === 0) {
+        return <SkeletonBox $h="130px" />
+    }
+
     return (
         <S.Container>
             <span
@@ -14,33 +38,33 @@ const RecentCommunity = () => {
             <S.TableArea>
                 <table>
                     <colgroup>
-                        <col style={{ width: "25%" }} />
-                        <col style={{ width: "75%" }} />
+                        <col style={{ width: "20%" }} />
+                        <col style={{ width: "80%" }} />
                     </colgroup>
                     <tbody>
                         {
-                            DUMMY_COMMUNITY.map((item) => (
-                                <tr key={item.id}>
+                            posts?.map((item) => (
+                                <tr key={item.id}
+                                    onClick={() => navigate(`/community/post/${item.id}`)}
+                                >
                                     <td
                                         style={{
                                             display: "flex",
-                                            justifyContent: "center"
+                                            justifyContent: "center",
                                         }}
                                     >
                                         <div
                                             className="typo-content-3"
                                             style={{
-                                                backgroundColor: "var(--color-bg-subtle)",
-                                                color: "var(--color-text-default)",
+                                                backgroundColor: getCommunityBoardStyle(item.postType).bg,
+                                                color: getCommunityBoardStyle(item.postType).text,
                                                 padding: "2px 6px",
                                                 textAlign: "center",
                                                 border: "1px solid var(--color-border)"
                                             }}
-                                        >
-                                            {item.tag}
-                                        </div>
+                                        >{getCommunityBoardStyle(item.postType).value}</div>
                                     </td>
-                                    <S.Title className="typo-content-4">{item.description}</S.Title>
+                                    <S.Title className="typo-content-4">{item.title}</S.Title>
                                 </tr>
                             ))
                         }

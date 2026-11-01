@@ -3,5 +3,5 @@ export const COMMUNITY_BOARD = [
     { id: "ANNOUNCEMENT", label: "공지사항" },
     { id: "FREE", label: "자유" },
     { id: "QNA", label: "QNA" },
-    { id: "SUGGESTION", label: "건의/신고" }
+    { id: "COMPLAINT", label: "건의/신고" }
 ];

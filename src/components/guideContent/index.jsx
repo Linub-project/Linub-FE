@@ -17,6 +17,7 @@ import Statistic from "@/components/guideContent/statistic";
 import Study from "@/components/guideContent/study";
 import Wrong from "@/components/guideContent/wrong";
 import { GUIDE_CATEGORY } from "@/constants/guideCategory";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as S from "./styles";
 
@@ -57,6 +58,10 @@ const Guide = () => {
             case "SERVICE_GUIDE": return <Service />;
         }
     }
+
+    useEffect (() => {
+        window.scrollTo({top: 0, behavior: "smooth"});
+    }, [category]);
 
     return (
         <S.Container>

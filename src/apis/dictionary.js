@@ -11,6 +11,16 @@ export const getDictionaries = (pageable, condition) => {
     });
 };
 
+export const getHomeDictionaries = (size, sort) => {
+    return publicApi.get("/api/v1/dictionaries/home", {
+        params: {
+            page: 0,
+            size: size,
+            sort: `${sort},desc`
+        }
+    });
+};
+
 export const getDictionary = (id) => {
     return publicApi.get(`/api/v1/dictionaries/${id}`);
 };

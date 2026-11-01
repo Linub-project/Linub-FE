@@ -27,25 +27,25 @@ export const Table = styled.table`
 `;
 
 export const Time = styled.td`
-    width: 10%;
+    width: 8%;
     color: var(--neutral-500);
     text-align: right;
 `
 
 export const Keyword = styled.td`
-    width: 20%;
+    width: 22%;
     color: var(--color-primary);
-    text-align: center;
+    text-align: left;
     white-space: preserve;
 `
 
 export const Tag = styled.td`
-    width: 20%;
+    width: 15%;
     color: var(--color-text-default);
 `
 
 export const Description = styled.td`
-    width: 50%;
+    width: 55%;
     font-size: 14px;
     color: var(--color-text-default);
     text-align: left;

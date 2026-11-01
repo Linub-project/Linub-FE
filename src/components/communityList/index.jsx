@@ -38,6 +38,7 @@ const CommunityList = () => {
 
     useEffect(() => {
         fetchCommunities();
+        window.scrollTo({top: 0, behavior: "smooth"});
     }, [page, selectedTab]);
 
     const handlePageChange = (page) => {

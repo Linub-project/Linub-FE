@@ -13,12 +13,13 @@ import ExamSession from "@/components/my/dashboard/session";
 import MyDashboardSidebar from "@/components/my/dashboard/sidebar";
 import WrongProblem from "@/components/my/dashboard/wrong";
 import { MYPAGE_SIDEBAR } from "@/constants/mypageSidebar";
+import { useEffect, useRef } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import * as S from "./styles";
 
 const Dashboard = ({user}) => {
     const { menu = "intro", id } = useParams();
-    
+    const contentRef = useRef(null);
     const selectedMenu = MYPAGE_SIDEBAR.find(m => m.path === menu)?.id;
 
     if(!selectedMenu) {
@@ -51,9 +52,16 @@ const Dashboard = ({user}) => {
         }
     }
 
+    useEffect(() => {
+        contentRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, [selectedMenu]);
+
     return (
         <S.Container>
-            <S.SubContainer>
+            <S.SubContainer ref={contentRef}>
                 <MyDashboardSidebar user={user} selectedMenu={selectedMenu} />
                 {getComponentStrategy()}
             </S.SubContainer>
