@@ -7,14 +7,16 @@ import * as S from "./styles";
 const Record = () => {
     const [studyMaps, setStudyMaps] = useState([]);
     const [consecutiveDay, setConsecutiveDay] = useState(0);
-    const target = 100;
-    const curr = 22;
+    const [target, setTarget] = useState(0);
+    const [curr, setCurr] = useState(0);
 
     const fetchStatistics = async () => {
         try {
             const response = await U.getRecordStatistic();
             setStudyMaps(response.data.studyMaps);
             setConsecutiveDay(response.data.consecutiveDay);
+            setTarget(response.data.targetCnt);
+            setCurr(response.data.currentCnt);
         } catch (error) {
 
         }
