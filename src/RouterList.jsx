@@ -20,6 +20,7 @@ import ItemPage from "@/pages/item";
 import MyPage from "@/pages/my";
 import ProblemRequestPage from "@/pages/problem/request";
 import ProblemReviewPage from "@/pages/problem/review";
+import SearchPage from "@/pages/search";
 import WrongPage from "@/pages/wrong";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
@@ -116,6 +117,11 @@ export const RouterList = () => [
       {
         path: "/community/write",
         element: <CommunityWritePage />
+      },
+
+      {
+        path: "/search",
+        element: <SearchPage />
       },
 
       {

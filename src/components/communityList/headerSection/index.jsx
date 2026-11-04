@@ -1,6 +1,6 @@
 import Button from "@/components/common/button/default";
-import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
+import * as S from "./styles";
 
 const HeaderSection = () => {
     const navigate = useNavigate();
