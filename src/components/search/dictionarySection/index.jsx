@@ -1,5 +1,6 @@
 
 import * as SS from "@/apis/search";
+import { TagChip } from "@/components/common/cardchip/CardChip";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
 import Pagination from "@/components/common/pagination";
 import { getLegendStyle } from "@/utils/legendStyler";
@@ -145,6 +146,22 @@ const DictionarySection = ({
                                         color: "var(--color-text-default)"
                                     }}
                                 >{item.summary}</p>
+                                {
+                                    item.tags.length > 0 &&
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                flexWrap: "wrap",
+                                                gap: "8px"
+                                            }}
+                                        >{
+                                            item.tags.map((tag) => (
+                                                <TagChip key={tag.id}>
+                                                    {tag.name}
+                                                </TagChip>
+                                            ))
+                                        }</div>
+                                }
                             </S.DictionaryItem>
                         })}
                     </S.DictionaryList>
@@ -156,12 +173,10 @@ const DictionarySection = ({
                             >사전 검색 결과 전체 보기</S.MoreButton>
                         )
                     ) : (
-                        dictionaries.totalPages > 1 && (
-                            <Pagination
-                                page={dictionaries}
-                                onChange={onPageChange}
-                            />
-                        )
+                        <Pagination
+                            page={dictionaries}
+                            onChange={onPageChange}
+                        />
                     )}
                 </>
             ) : (

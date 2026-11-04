@@ -3,15 +3,25 @@ import Button from "@/components/common/button/default";
 import { Chip } from "@/components/common/cardchip/CardChip.jsx";
 import { getRandomCommand } from "@/utils/commandUtil";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 
 const HomeIntro = () => {
+    const navigate = useNavigate();
     const [randomCommand, setRandomCommand] = useState([]);
-    const [searchText, setSearchText] = useState();
+    const [keyword, setKeyword] = useState();
 
     useEffect(() => {
         setRandomCommand(getRandomCommand(5));
     }, []);
+
+    const handleSubmit = () => {
+        const value = keyword.trim();
+
+        if (!value) return;
+
+        navigate(`/search?keyword=${value}`);
+    };
 
     return (
         <S.Container>
@@ -47,13 +57,19 @@ const HomeIntro = () => {
                     <img src={magnify} />
                     <S.SearchInput 
                         className="typo-content-1"
-                        value={searchText}
-                        onChange={(e) => setSearchText(e.target.value)}
+                        value={keyword}
+                        onChange={(e) => setKeyword(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                handleSubmit();
+                            }
+                        }}
                     />
                     <Button
                         size={"large"}
                         text={"검색"}
-                        disabled={!searchText}
+                        disabled={!keyword}
+                        onClick={handleSubmit}
                     />
                 </S.SearchArea>
                 <div style={{display: "flex", alignItems: "center", gap: "16px"}}>
@@ -78,7 +94,7 @@ const HomeIntro = () => {
                             randomCommand.map((com, idx) => {
                                 return (
                                     <Chip key={idx}
-                                        onClick={() => setSearchText(com)}
+                                        onClick={() => setKeyword(com)}
                                     >{com}</Chip>
                                 )
                             })
