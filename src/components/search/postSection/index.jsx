@@ -1,5 +1,6 @@
 
 import * as SS from "@/apis/search";
+import { TagChip } from "@/components/common/cardchip/CardChip";
 import EmptyStateGlobal from "@/components/common/emptyState/global";
 import Pagination from "@/components/common/pagination";
 import { getLegendStyle } from "@/utils/legendStyler";
@@ -96,7 +97,7 @@ const PostSection = ({
             {!keyword.trim() ? (
                 <EmptyStateGlobal
                     title="검색어를 입력해주세요."
-                    description="찾고 싶은 리눅스 개념이나 명령어를 검색해보세요."
+                    description="찾고 싶은 게시글의 제목이나 내용을 검색해보세요."
                 />
             ) : isLoading ? (
                 <S.LoadingArea>
@@ -145,6 +146,22 @@ const PostSection = ({
                                         color: "var(--color-text-default)"
                                     }}
                                 >{item.summary}</p>
+                                {
+                                    item.tags.length > 0 &&
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                flexWrap: "wrap",
+                                                gap: "8px"
+                                            }}
+                                        >{
+                                            item.tags.map((tag) => (
+                                                <TagChip key={tag.id}>
+                                                    {tag.name}
+                                                </TagChip>
+                                            ))
+                                        }</div>
+                                }
                             </S.DictionaryItem>
                         })}
                     </S.DictionaryList>
@@ -153,15 +170,13 @@ const PostSection = ({
                             <S.MoreButton
                                 type="button"
                                 onClick={onViewAll}
-                            >사전 검색 결과 전체 보기</S.MoreButton>
+                            >게시글 검색 결과 전체 보기</S.MoreButton>
                         )
                     ) : (
-                        dictionaries.totalPages > 1 && (
-                            <Pagination
-                                page={dictionaries}
-                                onChange={onPageChange}
-                            />
-                        )
+                        <Pagination
+                            page={dictionaries}
+                            onChange={onPageChange}
+                        />
                     )}
                 </>
             ) : (
