@@ -20,6 +20,9 @@ import ItemPage from "@/pages/item";
 import MyPage from "@/pages/my";
 import ProblemRequestPage from "@/pages/problem/request";
 import ProblemReviewPage from "@/pages/problem/review";
+import SupportIntroPage from "@/pages/support/intro";
+import SupportViewPage from "@/pages/support/view";
+import SupportWritePage from "@/pages/support/write";
 import WrongPage from "@/pages/wrong";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
@@ -125,6 +128,19 @@ export const RouterList = () => [
       {
         path: "/guide/:category",
         element: <GuideContentPage />
+      },
+
+      {
+        path: "/support",
+        element: <SupportIntroPage />
+      },
+      {
+        path: "/support/write",
+        element: <SupportWritePage />
+      },
+      {
+        path: "/support/view",
+        element: <SupportViewPage />
       },
 
       {
