@@ -4,8 +4,8 @@ import Input from "@/components/common/input/default";
 import { useAuth } from "@/contexts/authContext";
 import { useToast } from "@/contexts/toastContext";
 import { useState } from "react";
-import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
+import * as S from "./styles";
 
 const LoginPage = () => {
     const { login } = useAuth();
@@ -23,7 +23,7 @@ const LoginPage = () => {
 
             navigate("/");
         } catch (error) {
-            showToast(error.response.message);
+            showToast("이메일 또는 비밀번호가 올바르지 않습니다.");
         }
     }
 
