@@ -21,17 +21,17 @@ export const FOOTER_MENU = [
             {
                 key: "EXAM",
                 label: "시험",
-                path: ""
+                path: "/exam"
             },
             {
                 key: "LINUXLAB",
                 label: "Linux Lab",
-                path: ""
+                path: "/lab"
             },
             {
                 key: "COMMUNITY",
                 label: "커뮤니티",
-                path: ""
+                path: "/community"
             },
         ]
     },
@@ -42,22 +42,22 @@ export const FOOTER_MENU = [
             {
                 key: "PRIVACY",
                 label: "개인정보처리방침",
-                path: ""
+                path: "/policy"
             },
             {
                 key: "TERM",
                 label: "서비스 이용 약관",
-                path: ""
+                path: "/terms"
             },
             {
                 key: "RESPONSIBILITY",
                 label: "책임의 한계",
-                path: ""
+                path: "/responsibility"
             },
             {
                 key: "ILLEGAL",
                 label: "법적 고지",
-                path: ""
+                path: "/illegal-notice"
             },
         ]
     },
@@ -68,12 +68,22 @@ export const FOOTER_MENU = [
             {
                 key: "INQUIRE",
                 label: "문의 / 고객지원",
-                path: ""
+                path: "/support"
             },
             {
                 key: "GITHUB",
                 label: "Github",
-                path: "https://github.com/Linub-project"
+                thirdPath: "https://github.com/jueunseuk"
+            },
+            {
+                key: "BLOG",
+                label: "Blog",
+                thirdPath: "https://jundyu.tistory.com/"
+            },
+            {
+                key: "EMAIL",
+                label: "Email",
+                value: "linub@gmail.com"
             },
         ]
     },

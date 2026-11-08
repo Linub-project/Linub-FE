@@ -1,9 +1,33 @@
-import Hr from "@/components/common/layout/hr";
-import * as S from "./styles";
 import logo from "@/assets/logo.svg";
+import Hr from "@/components/common/layout/hr";
 import { FOOTER_MENU } from "@/constants/footerMenu";
+import { useToast } from "@/contexts/toastContext";
+import { useNavigate } from "react-router-dom";
+import * as S from "./styles";
 
 const Footer = () => {
+    const navigate = useNavigate();
+    const { showToast } = useToast();
+
+    const handleNavigate = (menu) => {
+        if(menu.thirdPath) {
+            window.open(menu.thirdPath, "_blank", "noopener,noreferrer");
+            return;
+        }
+
+        if(menu.value) {
+            navigator.clipboard.writeText(menu.value);
+            showToast("클립보드에 이메일 복사 완료");
+            return;
+        }
+
+        if(!menu.path) {
+            return;
+        }
+
+        navigate(`${menu.path}`);
+    }
+    
     return (
         <S.Container>
             <S.MainArea>
@@ -30,6 +54,7 @@ const Footer = () => {
                                                 <S.MenuText
                                                     key={menu.key}
                                                     className="typo-content-2"
+                                                    onClick={() => handleNavigate(menu)}
                                                 >{menu.label}</S.MenuText>
                                             );
                                         })
