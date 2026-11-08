@@ -122,6 +122,11 @@ export const RouterList = () => [
       },
 
       {
+        path: "/search",
+        element: <SearchPage />
+      },
+
+      {
         path: "/guide",
         element: <GuidePage />
       },

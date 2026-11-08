@@ -19,6 +19,7 @@ const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [selectedMenu, setSelectedMenu] = useState("HOME");
+    const [keyword, setKeyword] = useState("");
 
     const handleMenuSelect = (key, path) => {
         setSelectedMenu(key);
@@ -47,6 +48,14 @@ const Header = () => {
         fetchSelectedMenu();
     }, [location.pathname]);
 
+    const handleSubmit = () => {
+        const value = keyword.trim();
+
+        if (!value) return;
+
+        navigate(`/search?keyword=${value}`);
+    };
+
     return (
         <S.Container>
             <S.SubContainer>
@@ -74,7 +83,16 @@ const Header = () => {
                 <S.RightArea>
                     <S.SearchArea className="search-area">
                         <img src={magnify} />
-                        <S.SearchInput />
+                        <S.SearchInput
+                            type="search"
+                            value={keyword}
+                            onChange={(e) => setKeyword(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                    handleSubmit();
+                                }
+                            }}
+                        />
                     </S.SearchArea>
                     {
                         isAuthReady  && isAuthenticated && <IconButton icon={bell_active} />
