@@ -1,28 +1,26 @@
 import Select from "@/components/common/input/select";
-import Privacy_1_0 from "@/components/static/privacy/snapshot/1.0";
-import Privacy_1_1 from "@/components/static/privacy/snapshot/1.1";
-import { useEffect, useState } from "react";
+import Privacy_0_1 from "@/components/static/privacy/snapshot/0.1";
+import { useState } from "react";
 
-const SNAPSHOT = [
+export const SNAPSHOT = [
     {
-        value: "1.0",
-        label: "1.0",
-        component: <Privacy_1_0 />,
-    },
-    {
-        value: "1.1",
-        label: "1.1",
-        component: <Privacy_1_1 />,
+        value: "0.1",
+        label: "v0.1",
+        announcedAt: "2026.11.11",
+        effectiveAt: "2026.11.11",
+        apply: "2026.11.11 ~ 현재",
+        revision: "개인정보처리방침 초안",
+        component: Privacy_0_1,
     },
 ]
 
 const Privacy = () => {
-    const [snapshot, setSnapshot] = useState(SNAPSHOT[SNAPSHOT.length-1].value);
-    const [current, setCurrent] = useState(snapshot ? SNAPSHOT.find(s => s.value === snapshot) : SNAPSHOT[SNAPSHOT.length-1]);
+    const [snapshot, setSnapshot] = useState(
+        SNAPSHOT[SNAPSHOT.length - 1].value
+    );
 
-    useEffect(() => {
-        setCurrent(SNAPSHOT.find(s => s.value === snapshot));
-    }, [snapshot]);
+    const current = SNAPSHOT.find(s => s.value === snapshot);
+    const Document = current.component;
 
     return (
         <>
@@ -30,9 +28,9 @@ const Privacy = () => {
                 value={snapshot}
                 options={SNAPSHOT}
                 onChange={setSnapshot}
-                placeholder="여기를 눌러 이전 버전을 확인할 수 있습니다."
             />
-            {current.component}
+            <Document current={current} />
+
         </>
     );
 }
