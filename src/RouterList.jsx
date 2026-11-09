@@ -21,6 +21,7 @@ import MyPage from "@/pages/my";
 import ProblemRequestPage from "@/pages/problem/request";
 import ProblemReviewPage from "@/pages/problem/review";
 import SearchPage from "@/pages/search";
+import StaticPage from "@/pages/static";
 import SupportIntroPage from "@/pages/support/intro";
 import SupportViewPage from "@/pages/support/view";
 import SupportWritePage from "@/pages/support/write";
@@ -147,6 +148,11 @@ export const RouterList = () => [
       {
         path: "/support/view",
         element: <SupportViewPage />
+      },
+
+      {
+        path: "/:category",
+        element: <StaticPage />
       },
 
       {

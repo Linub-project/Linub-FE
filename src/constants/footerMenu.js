@@ -42,7 +42,7 @@ export const FOOTER_MENU = [
             {
                 key: "PRIVACY",
                 label: "개인정보처리방침",
-                path: "/policy"
+                path: "/privacy"
             },
             {
                 key: "TERM",
@@ -57,7 +57,7 @@ export const FOOTER_MENU = [
             {
                 key: "ILLEGAL",
                 label: "법적 고지",
-                path: "/illegal-notice"
+                path: "/legal-notice"
             },
         ]
     },
