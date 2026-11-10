@@ -1,4 +1,5 @@
 import Privacy from "@/components/static/privacy";
+import Terms from "@/components/static/terms";
 import { FOOTER_MENU } from "@/constants/footerMenu";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -12,7 +13,7 @@ const Static = () => {
     const getComponent = () => {
         switch(category) {
             case "privacy": return <Privacy />;
-            case "terms": return <Privacy />;
+            case "terms": return <Terms />;
             case "responsibility": return <Privacy />;
             case "legal-notice": return <Privacy />;
         }
@@ -20,7 +21,7 @@ const Static = () => {
 
     useEffect( () => {
         window.scrollTo({top: 0, behavior: "smooth"});
-    }, []);
+    }, [category]);
 
     return (
         <S.Container>

@@ -48,6 +48,7 @@ export const Table = styled.table`
 `
 
 export const Th = styled.th`
+    border-bottom: 1px solid var(--color-border);
 `
 
 export const Tr = styled.tr`
@@ -65,21 +66,44 @@ export const Td = styled.td`
     color: ${({$c}) => $c && "var(--color-danger)"}; // 최종 삭제
 `
 
+export const Ul = styled.ul`
+    margin: 8px 0;
+    padding: 0;
+    list-style: none;
+`;
+
 export const Ol = styled.ol`
     margin: 8px 0;
-`
+    padding-left: 28px;
+    list-style-position: outside;
+`;
 
-export const Li = styled.li`
+export const Uli = styled.li`
+    position: relative;
+    padding-left: 4px;
     color: var(--color-text-default);
     font-size: 14px;
     line-height: 1.6;
     list-style-type: none;
+
     &::before {
         content: "·";
-        padding-left: 4px;
-        padding-right: 12px;
+        position: absolute;
+        left: -12px;
     }
-`
+`;
+
+export const Oli = styled.li`
+    padding-left: 4px;
+    color: var(--color-text-default);
+    font-size: 14px;
+    line-height: 1.6;
+
+    &::marker {
+        color: var(--color-text-default);
+        font-size: 14px;
+    }
+`;
 
 export const Link = styled.a`
     text-decoration: underline;
