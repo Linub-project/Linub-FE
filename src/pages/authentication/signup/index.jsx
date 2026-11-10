@@ -1,4 +1,3 @@
-import * as A from "@/apis/auth";
 import * as E from "@/apis/email";
 import { getErrorMessage } from "@/apis/error";
 import logo from "@/assets/logo.svg";
@@ -9,6 +8,7 @@ import { useToast } from "@/contexts/toastContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
+import Checkbox from "@/components/common/input/checkbox";
 
 const SignupPage = () => {
     const { signup } = useAuth();
@@ -18,6 +18,7 @@ const SignupPage = () => {
     const [nickname, setNickname] = useState("");
     const [isSend, setIsSend] = useState(false);
     const [isVerified, setIsVerified] = useState(false);
+    const [agreeTerms, setAgreeTerms] = useState(false);
     const [sendButtonText, setSendButtonText] = useState("인증코드 요청");
     const [sendButtonLoading, setSendButtonLoading] = useState(false);
     const [verifyButtonLoading, setVerifyButtonLoading] = useState(false);
@@ -27,10 +28,10 @@ const SignupPage = () => {
     const navigate = useNavigate();
 
     const handleEmailSendButtonClick = async () => {
-        setIsSend(true);
-        setSendButtonText("");
-        setSendButtonLoading(true);
         try {
+            setIsSend(true);
+            setSendButtonLoading(true);
+
             await E.sendMailForSignup({email});
 
             setSendButtonText("전송 완료");
@@ -40,7 +41,7 @@ const SignupPage = () => {
             setSendButtonLoading(false);
             setTimeout(() => {
                 setSendButtonText("인증코드 요청");
-            }, 3000)
+            }, 3000);
         }
     }
 
@@ -70,7 +71,8 @@ const SignupPage = () => {
                 confirmPassword
             });
 
-            navigate("/");
+            showToast("회원가입이 완료되었습니다. 이제 로그인 후 Linub을 이용할 수 있습니다.");
+            navigate("/login", { replace: true });
         } catch (error) {
             showToast(getErrorMessage(error));
         }
@@ -252,12 +254,31 @@ const SignupPage = () => {
                         disabled={!isVerified}
                     />
                 </div>
+                <div
+                    style={{
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "12px"
+                    }}
+                >
+                    <span
+                        className="typo-content-1"
+                        style={{color: "var(--color-text-primary)", alignSelf: "flex-start"}}
+                    >이용약관 및 개인정보 안내</span>
+                    <Checkbox
+                        checked={agreeTerms}
+                        label="[필수] 서비스 이용약관에 동의합니다."
+                        onChange={() => setAgreeTerms(prev => !prev)}
+                    />
+                </div>
                 <Button
                     text={buttonText}
                     disabled={email.length === 0 
                         || !isVerified
                         || password.length === 0
-                        || password !== confirmPassword}
+                        || password !== confirmPassword
+                        || !agreeTerms}
                     onClick={() => handleSignup()}
                 />
             </S.InputArea>

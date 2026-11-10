@@ -35,7 +35,7 @@ const LegalNotice_0_1 = ({current}) => {
             <section>
                 <PS.Title>5. 명칭 · 상표와 공식 관계의 표시</PS.Title>
                 <PS.Content>Linub(리눕)의 명칭과 로고는 서비스를 식별하기 위한 표지입니다. 운영자가 제공하는 공식 서비스나 제휴 관계가 있는 것처럼 오인시키는 사용, 사칭 또는 권리를 침해하는 사용은 허용되지 않습니다. 적법한 서비스 소개 · 비평 · 출처 표시 등은 관계 법령이 허용하는 범위에 따릅니다.</PS.Content>
-                <PS.Content>Linux®는 미국 및 그 밖의 국가에서 Linus Torvalds의 등록상표입니다. 관련 표시는 <PS.Link href="https://www.linuxfoundation.org/legal/the-linux-mark">Linux Foundation의 Linux 상표 안내</PS.Link>를 참고할 수 있습니다. 그 밖의 제품 · 배포판 · 프로젝트 · 단체 및 자격의 명칭과 로고는 각각의 권리자에게 있습니다. 저작권에 관한 이용 허락과 상표의 사용 조건은 별도로 적용될 수 있습니다.</PS.Content>
+                <PS.Content>Linux®는 미국 및 그 밖의 국가에서 Linus Torvalds의 등록상표입니다. 관련 표시는 <PS.Link href="https://www.linuxfoundation.org/legal/the-linux-mark" target="_blank">Linux Foundation의 Linux 상표 안내</PS.Link>를 참고할 수 있습니다. 그 밖의 제품 · 배포판 · 프로젝트 · 단체 및 자격의 명칭과 로고는 각각의 권리자에게 있습니다. 저작권에 관한 이용 허락과 상표의 사용 조건은 별도로 적용될 수 있습니다.</PS.Content>
                 <PS.Content>서비스에서 제품명, 프로젝트명, 단체명 또는 자격명을 사용하는 것은 원칙적으로 학습 대상과 관련 정보를 식별하기 위한 것입니다. 공식 제휴 · 승인 · 인증 사실은 실제로 확인된 범위에서 별도로 표시하며, 명칭을 언급했다는 사실만으로 해당 권리자가 Linub를 운영 · 지원 · 보증한다는 의미는 아닙니다.</PS.Content>
                 <PS.Content>Linub의 모의시험은 학습용 평가이고, 회원의 자격증 인증은 서비스 내부의 자격 확인입니다. 실제 자격시험의 응시 · 합격 · 자격 취득 및 발급에 관한 권한은 해당 시행기관에 있습니다.</PS.Content>
             </section>

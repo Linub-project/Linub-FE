@@ -86,12 +86,6 @@ export const AuthProvider = ({ children }) => {
     const signup = async (signupData) => {
         const response = await A.signup(signupData);
 
-        const newAccessToken = response.data.accessToken;
-
-        setAccessToken(newAccessToken);
-
-        await fetchUser();
-
         return response.data;
     };
 
