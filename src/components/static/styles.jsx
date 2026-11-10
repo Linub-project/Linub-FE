@@ -39,7 +39,6 @@ export const Content = styled.p`
     margin-top: 8px;
     font-size: 14px;
     color: var(--color-text-default);
-    color: ${({$c}) => $c && "var(--color-danger)"}; // 최종 삭제
     line-height: 1.6;
 `;
 
@@ -63,7 +62,6 @@ export const Td = styled.td`
     text-align: ${({$align}) => $align || "center"};
     line-height: 1.6;
     color: var(--color-text-primary);
-    color: ${({$c}) => $c && "var(--color-danger)"}; // 최종 삭제
 `
 
 export const Ul = styled.ul`

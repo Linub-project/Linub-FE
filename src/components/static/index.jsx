@@ -1,3 +1,4 @@
+import LegalNotice from "@/components/static/legal";
 import Privacy from "@/components/static/privacy";
 import Responsibility from "@/components/static/responsibility";
 import Terms from "@/components/static/terms";
@@ -16,7 +17,7 @@ const Static = () => {
             case "privacy": return <Privacy />;
             case "terms": return <Terms />;
             case "responsibility": return <Responsibility />;
-            case "legal-notice": return <Privacy />;
+            case "legal-notice": return <LegalNotice />;
         }
     }
 
