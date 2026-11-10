@@ -331,8 +331,8 @@ const Terms_0_1 = ({current}) => {
             </section>
             <section>
                 <PS.Title>서비스 이용 약관의 변경과 이전 버전</PS.Title>
-                <PS.Content>이 방침의 시행일은 {current.effectiveAt} 입니다.</PS.Content>
-                <PS.Content>내용이 변경되면 변경일 · 시행일 · 주요 변경 내용과 이전 버전을 공개합니다. 수집 항목 · 목적 · 제공 · 보유기간처럼 이용자의 권리에 중요한 영향을 미치는 변경은 변경 전후를 비교할 수 있도록 별도로 안내하고, 새로운 동의가 필요한 변경은 개인정보 처리 전에 동의를 받습니다.</PS.Content>
+                <PS.Content>이 약관은 {current.effectiveAt}부터 시행합니다.</PS.Content>
+                <PS.Content>내용이 변경되면 변경일 · 시행일 · 주요 변경 내용과 이전 버전을 공개합니다.</PS.Content>
                 <PS.Table>
                     <colgroup>
                         <col width="10%" />

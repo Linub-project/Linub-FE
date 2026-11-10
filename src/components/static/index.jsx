@@ -1,4 +1,5 @@
 import Privacy from "@/components/static/privacy";
+import Responsibility from "@/components/static/responsibility";
 import Terms from "@/components/static/terms";
 import { FOOTER_MENU } from "@/constants/footerMenu";
 import { useEffect } from "react";
@@ -14,7 +15,7 @@ const Static = () => {
         switch(category) {
             case "privacy": return <Privacy />;
             case "terms": return <Terms />;
-            case "responsibility": return <Privacy />;
+            case "responsibility": return <Responsibility />;
             case "legal-notice": return <Privacy />;
         }
     }
