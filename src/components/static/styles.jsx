@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "@/styles/breakpoint";
 
 export const Container = styled.div`
     display: flex;
@@ -20,11 +21,14 @@ export const SubContainer = styled.div`
 `
 
 export const Title = styled.p`
-    margin-top: 28px;
     font-size: 24px;
     font-weight: 700;
     color: var(--color-text-primary);
     line-height: 1.5;
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        font-size: 18px;
+    }
 `;
 
 export const SubTitle = styled.p`
@@ -33,6 +37,10 @@ export const SubTitle = styled.p`
     font-weight: 600;
     color: var(--color-text-primary);
     line-height: 1.5;
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        font-size: 14px;
+    }
 `;
 
 export const Content = styled.p`
@@ -40,6 +48,10 @@ export const Content = styled.p`
     font-size: 14px;
     color: var(--color-text-default);
     line-height: 1.6;
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        font-size: 12px;
+    }
 `;
 
 export const Table = styled.table`
@@ -47,7 +59,13 @@ export const Table = styled.table`
 `
 
 export const Th = styled.th`
+    white-space: normal;
     border-bottom: 1px solid var(--color-border);
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        font-size: 12px;
+        padding: 6px;
+    }
 `
 
 export const Tr = styled.tr`
@@ -59,9 +77,17 @@ export const Tr = styled.tr`
 
 export const Td = styled.td`
     white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    overflow-wrap: anywhere;
     text-align: ${({$align}) => $align || "center"};
     line-height: 1.6;
     color: var(--color-text-primary);
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        font-size: 12px;
+        padding: 6px;
+    }
 `
 
 export const Ul = styled.ul`
@@ -72,13 +98,17 @@ export const Ul = styled.ul`
 
 export const Ol = styled.ol`
     margin: 8px 0;
-    padding-left: 28px;
+    padding-left: 20px;
     list-style-position: outside;
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        padding-left: 16px;
+    }
 `;
 
 export const Uli = styled.li`
     position: relative;
-    padding-left: 4px;
+    padding-left: 20px;
     color: var(--color-text-default);
     font-size: 14px;
     line-height: 1.6;
@@ -87,7 +117,16 @@ export const Uli = styled.li`
     &::before {
         content: "·";
         position: absolute;
-        left: -12px;
+        left: 4px;
+    }
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        padding-left: 16px;
+        font-size: 12px;
+
+        &::before {
+            left: 4px;
+        }
     }
 `;
 
@@ -100,6 +139,14 @@ export const Oli = styled.li`
     &::marker {
         color: var(--color-text-default);
         font-size: 14px;
+    }
+
+    @media (max-width: ${breakpoint.xsmall}) {
+        font-size: 12px;
+
+        &::marker {
+            font-size: 12px;
+        }
     }
 `;
 

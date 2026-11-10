@@ -2,13 +2,16 @@ import * as E from "@/apis/email";
 import { getErrorMessage } from "@/apis/error";
 import logo from "@/assets/logo.svg";
 import Button from "@/components/common/button/default";
+import Checkbox from "@/components/common/input/checkbox";
 import Input from "@/components/common/input/default";
+import Modal from "@/components/common/modal";
+import { SNAPSHOT as TERMS } from "@/components/static/terms";
+import { SNAPSHOT as PRIVACY } from "@/components/static/privacy";
 import { useAuth } from "@/contexts/authContext";
 import { useToast } from "@/contexts/toastContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
-import Checkbox from "@/components/common/input/checkbox";
 
 const SignupPage = () => {
     const { signup } = useAuth();
@@ -19,6 +22,9 @@ const SignupPage = () => {
     const [isSend, setIsSend] = useState(false);
     const [isVerified, setIsVerified] = useState(false);
     const [agreeTerms, setAgreeTerms] = useState(false);
+    const [agreePrivacy, setAgreePrivacy] = useState(false);
+    const [openTerms, setOpenTerms] = useState(false);
+    const [openPrivacy, setOpenPrivacy] = useState(false);
     const [sendButtonText, setSendButtonText] = useState("인증코드 요청");
     const [sendButtonLoading, setSendButtonLoading] = useState(false);
     const [verifyButtonLoading, setVerifyButtonLoading] = useState(false);
@@ -26,6 +32,11 @@ const SignupPage = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
+
+    const currentTerms = TERMS[TERMS.length-1];
+    const TermsDocument = currentTerms.component;
+    const currentPrivacy = PRIVACY[PRIVACY.length - 1];
+    const PrivacyDocument = currentPrivacy.component;
 
     const handleEmailSendButtonClick = async () => {
         try {
@@ -266,11 +277,74 @@ const SignupPage = () => {
                         className="typo-content-1"
                         style={{color: "var(--color-text-primary)", alignSelf: "flex-start"}}
                     >이용약관 및 개인정보 안내</span>
-                    <Checkbox
-                        checked={agreeTerms}
-                        label="[필수] 서비스 이용약관에 동의합니다."
-                        onChange={() => setAgreeTerms(prev => !prev)}
-                    />
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <Checkbox
+                            checked={agreeTerms}
+                            label="[필수] 서비스 이용약관에 동의합니다."
+                            onChange={() => setAgreeTerms(prev => !prev)}
+                        />
+                        <span
+                            className="typo-content-3"
+                            style={{color: "var(--color-primary)", cursor: "pointer"}}
+                            onClick={() => setOpenTerms(prev => !prev)}
+                        >[보기]</span>
+                        {openTerms && <Modal
+                            maxWidth="90%"
+                            maxHeight="90%"
+                        >
+                                <span
+                                    className="typo-content-4"
+                                    style={{
+                                        color: "var(--color-text-default)",
+                                        alignSelf: "flex-end",
+                                        cursor: "pointer",
+                                        padding: "4px"
+                                    }}
+                                    onClick={() => setOpenTerms(false)}
+                                >X</span>
+                                <TermsDocument current={currentTerms} />
+                            </Modal>
+                        }
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <Checkbox
+                            checked={agreePrivacy}
+                            label="[필수] 개인정보처리방침에 동의합니다."
+                            onChange={() => setAgreePrivacy(prev => !prev)}
+                        />
+                        <span
+                            className="typo-content-3"
+                            style={{color: "var(--color-primary)", cursor: "pointer"}}
+                            onClick={() => setOpenPrivacy(prev => !prev)}
+                        >[보기]</span>
+                        {openPrivacy && <Modal
+                            maxWidth="90%"
+                            maxHeight="90%"
+                        >
+                                <span
+                                    className="typo-content-4"
+                                    style={{
+                                        color: "var(--color-text-default)",
+                                        alignSelf: "flex-end",
+                                        cursor: "pointer",
+                                        padding: "4px"
+                                    }}
+                                    onClick={() => setOpenPrivacy(false)}
+                                >X</span>
+                                <PrivacyDocument current={currentPrivacy} />
+                            </Modal>
+                        }
+                    </div>
                 </div>
                 <Button
                     text={buttonText}
