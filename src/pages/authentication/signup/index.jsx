@@ -352,7 +352,8 @@ const SignupPage = () => {
                         || !isVerified
                         || password.length === 0
                         || password !== confirmPassword
-                        || !agreeTerms}
+                        || !agreeTerms
+                        || !agreePrivacy}
                     onClick={() => handleSignup()}
                 />
             </S.InputArea>
