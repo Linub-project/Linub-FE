@@ -101,6 +101,49 @@ const Pdf = () => {
                     style={{color: "var(--color-text-label)"}}
                 >생성 제한과 보관 기간 등의 운영 정책은 서비스 안내에서 별도로 공지됩니다.</p>
             </PS.Section>
+            <PS.Section>
+                <PS.TitleText>PDF 시험지 비교</PS.TitleText>
+                <table>
+                    <colgroup>
+                        <col width="25%" />
+                        <col width="25%" />
+                        <col width="25%" />
+                        <col width="25%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>구분</th>
+                            <th>자유 시험</th>
+                            <th>모의 시험</th>
+                            <th>틀린 문제</th>
+                        </tr>
+                        <tr>
+                            <S.Td>정답</S.Td>
+                            <S.Td>O</S.Td>
+                            <S.Td>X</S.Td>
+                            <S.Td>O</S.Td>
+                        </tr>
+                        <tr>
+                            <S.Td>해설</S.Td>
+                            <S.Td>O</S.Td>
+                            <S.Td>X</S.Td>
+                            <S.Td>O</S.Td>
+                        </tr>
+                        <tr>
+                            <S.Td>틀린 횟수</S.Td>
+                            <S.Td>X</S.Td>
+                            <S.Td>X</S.Td>
+                            <S.Td>O</S.Td>
+                        </tr>
+                        <tr>
+                            <S.Td>개별 문제 선택</S.Td>
+                            <S.Td>X</S.Td>
+                            <S.Td>X</S.Td>
+                            <S.Td>O</S.Td>
+                        </tr>
+                    </tbody>
+                </table>
+            </PS.Section>
         </PS.ContentContainer>
     );
 }

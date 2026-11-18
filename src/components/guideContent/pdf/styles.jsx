@@ -67,3 +67,8 @@ export const StepCircle = styled.div`
     background-color: var(--color-primary);
     color: white;
 `
+
+
+export const Td = styled.td`
+    white-space: normal;
+`
